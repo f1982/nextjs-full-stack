@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 async function publishPost(id: string): Promise<void> {
-  await fetch(`/api/publish/${id}`, {
+  await fetch(`/api/publish/?id=${id}`, {
     method: "PUT",
   });
   await Router.push("/");
