@@ -145,13 +145,9 @@ const Header: React.FC = () => {
           {session.user.name} ({session.user.email})
         </p>
         <Link href="/create">
-          <button>
-            <a>New post</a>
-          </button>
+          <button>New post</button>
         </Link>
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
-        </button>
+        <button onClick={() => signOut()}>Log out</button>
         <style jsx>{`
           a {
             text-decoration: none;
