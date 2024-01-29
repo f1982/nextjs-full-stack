@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import Post, { PostProps } from "../components/Post";
 import prisma from "../lib/prisma";
+import { getDateTime } from "../lib/utils";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.post.findMany({
@@ -14,13 +15,14 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   });
   return {
-    props: { feed },
+    props: { feed, updateTime: getDateTime() },
     revalidate: 10,
   };
 };
 
 type Props = {
   feed: PostProps[];
+  updateTime: string;
 };
 
 const Blog: React.FC<Props> = (props) => {
@@ -50,6 +52,7 @@ const Blog: React.FC<Props> = (props) => {
           margin-top: 2rem;
         }
       `}</style>
+      <p>{props.updateTime}</p>
     </Layout>
   );
 };
