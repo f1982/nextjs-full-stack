@@ -1,7 +1,7 @@
 // "use server";
 
-import prisma from "../../../lib/prisma";
-import { auth } from "../auth/[...nextauth]";
+import prisma from "../../_lib/prisma";
+import { auth } from "../auth/[...nextauth]/route";
 
 export default async function handle(req, res) {
   const { title, content } = req.body;
