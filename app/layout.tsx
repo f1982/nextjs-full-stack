@@ -16,7 +16,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <NextAuthProvider>
-        {/* <Header /> */}
         <body>{children}</body>
       </NextAuthProvider>
     </html>

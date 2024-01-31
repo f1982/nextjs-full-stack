@@ -3,12 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
   const router = useRouter();
+  const pathname = usePathname();
   const isActive: (pathname: string) => boolean = (pathname) =>
-    router.pathname === pathname;
+    pathname === pathname;
 
   const { data: session, status } = useSession();
 

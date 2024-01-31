@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Header from "../_modules/components/Header";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -16,6 +17,7 @@ export default async function RootLayout({
   return (
     <>
       <div>
+        <Header />
         <ul>
           <li>
             <Link href={"/"}>home</Link>
