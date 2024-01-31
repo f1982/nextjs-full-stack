@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import prisma from "../../../_lib/prisma";
 import { auth } from "../../../api/auth/[...nextauth]/route";
+import DraftPublishButton from "./_lib/publish-button";
 
 export const getData = async (params: any): Promise<{ post: any }> => {
   const post = await prisma.post.findUnique({
@@ -16,13 +17,6 @@ export const getData = async (params: any): Promise<{ post: any }> => {
   });
   return { post };
 };
-
-async function publishPost(id: string): Promise<void> {
-  await fetch(`/api/publish/?id=${id}`, {
-    method: "PUT",
-  });
-  redirect("/blog/");
-}
 
 export default async function Page({ params }: { params: { id: string } }) {
   const session = await auth();
@@ -45,7 +39,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <p>By {post?.author?.name || "Unknown author"}</p>
       <ReactMarkdown children={post.content} />
       {!post.published && userHasValidSession && postBelongsToUser && (
-        <button onClick={() => publishPost(post.id)}>Publish</button>
+        <DraftPublishButton postId={post.id} />
       )}
     </>
   );

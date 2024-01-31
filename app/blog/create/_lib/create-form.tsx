@@ -17,13 +17,13 @@ export default function CreateDraftForm() {
     e.preventDefault();
 
     try {
-      const body = { title, content, session };
+      const body = { title, content };
       await fetch("/api/post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      await router.push("/drafts");
+      router.push("/blog/drafts");
     } catch (error) {
       console.error(error);
     }
@@ -31,7 +31,10 @@ export default function CreateDraftForm() {
 
   return (
     <div>
-      <form onSubmit={submitData}>
+      <form
+        style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+        onSubmit={submitData}
+      >
         <h1>New Draft</h1>
         <input
           autoFocus

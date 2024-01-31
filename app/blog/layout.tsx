@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-import { SessionProvider } from "next-auth/react";
-import { getServerSession } from "next-auth";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -27,6 +25,9 @@ export default async function RootLayout({
           </li>
           <li>
             <Link href={"/blog/create"}>create</Link>
+          </li>
+          <li>
+            <Link href={"/blog/drafts"}>drafts</Link>
           </li>
           <li>
             <Link href="/api/auth/signin">Log in</Link>

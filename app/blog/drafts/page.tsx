@@ -1,11 +1,11 @@
+import { useSession } from "next-auth/react";
 import React from "react";
-import { GetServerSideProps } from "next";
-import { useSession, getSession } from "next-auth/react";
-import Post, { PostProps } from "../app/_modules/components/Post";
-import prisma from "../app/_lib/prisma";
+import prisma from "../../_lib/prisma";
+import Post, { PostProps } from "../../_modules/components/Post";
+import { auth } from "../../api/auth/[...nextauth]/route";
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const session = await getSession({ req });
+export const getData = async () => {
+  const session = await auth();
   if (!session) {
     res.statusCode = 403;
     return { props: { drafts: [] } };
@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     },
   });
   return {
-    props: { drafts },
+    drafts,
   };
 };
 
@@ -31,8 +31,8 @@ type Props = {
   drafts: PostProps[];
 };
 
-const Drafts: React.FC<Props> = (props) => {
-  const { data: session } = useSession();
+const Drafts: React.FC<Props> = async (props) => {
+  const session = await auth();
 
   if (!session) {
     return (
@@ -43,12 +43,13 @@ const Drafts: React.FC<Props> = (props) => {
     );
   }
 
+  const { drafts } = await getData();
   return (
     <>
       <div className="page">
         <h1>My Drafts</h1>
         <main>
-          {props.drafts.map((post) => (
+          {drafts?.map((post) => (
             <div key={post.id} className="post">
               <Post post={post} />
             </div>

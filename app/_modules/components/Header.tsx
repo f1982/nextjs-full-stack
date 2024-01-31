@@ -5,7 +5,7 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-const Header: React.FC = () => {
+export default function Header() {
   const router = useRouter();
   const isActive: (pathname: string) => boolean = (pathname) =>
     router.pathname === pathname;
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
     right = (
       <div className="right">
         <p>
-          {session.user.name} ({session.user.email})
+          {session?.user?.name} ({session?.user?.email})
         </p>
         <Link href="/create">
           <button>New post</button>
@@ -82,6 +82,4 @@ const Header: React.FC = () => {
       {right}
     </nav>
   );
-};
-
-export default Header;
+}
