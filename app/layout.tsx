@@ -1,11 +1,18 @@
 import { NextAuthProvider } from './_lib/next-auth-provider'
 import '@/app/globals.css'
+import { cn } from '@/lib/utils'
 import { Metadata } from 'next'
+import { Inter as FontSans } from 'next/font/google'
 
 export const metadata: Metadata = {
   title: 'Home',
   description: 'Welcome to Next.js'
 }
+
+export const fontSans = FontSans({
+  subsets: ['latin'],
+  variable: '--font-sans'
+})
 
 export default async function RootLayout({
   // Layouts must accept a children prop.
@@ -17,7 +24,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <NextAuthProvider>
-        <body>{children}</body>
+        <body
+          className={cn(
+            'min-h-screen bg-background font-sans antialiased',
+            fontSans.variable
+          )}>
+          {children}
+        </body>
       </NextAuthProvider>
     </html>
   )
