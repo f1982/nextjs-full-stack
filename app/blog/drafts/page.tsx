@@ -2,23 +2,22 @@ import { useSession } from "next-auth/react";
 import React from "react";
 import prisma from "../../_lib/prisma";
 import Post, { PostProps } from "../../_modules/components/Post";
-import { auth } from "../../api/auth/[...nextauth]/route";
+import { auth } from "../../_lib/auth-opt";
 
-export const getData = async () => {
+const getData = async () => {
   const session = await auth();
   if (!session) {
-    res.statusCode = 403;
     return { props: { drafts: [] } };
   }
 
   const drafts = await prisma.post.findMany({
     where: {
-      author: { email: session.user.email },
+      author: { email: session?.user?.email },
       published: false,
     },
     include: {
       author: {
-        select: { name: true },
+        select: { name: true, email: true },
       },
     },
   });
@@ -27,11 +26,7 @@ export const getData = async () => {
   };
 };
 
-type Props = {
-  drafts: PostProps[];
-};
-
-const Drafts: React.FC<Props> = async (props) => {
+const Drafts: React.FC = async (props) => {
   const session = await auth();
 
   if (!session) {

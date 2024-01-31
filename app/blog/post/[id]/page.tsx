@@ -1,10 +1,9 @@
-import { redirect } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import { auth } from "../../../_lib/auth-opt";
 import prisma from "../../../_lib/prisma";
-import { auth } from "../../../api/auth/[...nextauth]/route";
 import DraftPublishButton from "./_lib/publish-button";
 
-export const getData = async (params: any): Promise<{ post: any }> => {
+const getData = async (params: any): Promise<{ post: any }> => {
   const post = await prisma.post.findUnique({
     where: {
       id: String(params?.id),

@@ -1,8 +1,5 @@
 import { Metadata } from "next";
-import { getServerSession } from "next-auth";
 import { NextAuthProvider } from "./_lib/next-auth-provider";
-import { authOptions } from "./api/auth/[...nextauth]/route";
-import Header from "./_modules/components/Header";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -16,7 +13,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <NextAuthProvider>

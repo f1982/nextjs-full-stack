@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 export type PostProps = {
   id: string;
   title: string;
-  author: {
-    name: string;
-    email?: string;
+  author?: {
+    name?: string | null;
+    email?: string | null;
   } | null;
-  content: string;
+  content: string | null;
   published: boolean;
 };
 
