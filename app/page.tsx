@@ -1,4 +1,4 @@
-import NavBar from './_modules/components/common/nav-bar'
+import NavBar from './_modules/components/common/navbar'
 import { Button } from './_modules/components/ui/button'
 import { Input } from './_modules/components/ui/input'
 import { Metadata } from 'next'

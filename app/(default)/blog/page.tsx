@@ -1,6 +1,6 @@
-import prisma from '../_lib/prisma'
-import { getDateTime } from '../_lib/utils'
-import Post, { PostProps } from '../_modules/components/common/Post'
+import prisma from '../../_lib/prisma'
+import { getDateTime } from '../../_lib/utils'
+import Post, { PostProps } from '../../_modules/components/common/Post'
 import Link from 'next/link'
 
 type Props = {
