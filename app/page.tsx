@@ -7,10 +7,12 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div>
-      <h1>hello</h1>
-      <Link href={"/blog"}>Blog</Link> |
-      <Link href={"/dashboard"}>Dashboard</Link>
+    <div className="container">
+      <h1 className="text-xl">hello</h1>
+      <div className="flex flex-row gap-4">
+        <Link href={"/blog"}>Blog</Link>
+        <Link href={"/dashboard"}>Dashboard</Link>
+      </div>
     </div>
   );
 }

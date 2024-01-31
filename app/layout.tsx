@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { NextAuthProvider } from "./_lib/next-auth-provider";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Home",
