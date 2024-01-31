@@ -1,6 +1,6 @@
 import { auth } from '../../_lib/auth-opt'
 import prisma from '../../_lib/prisma'
-import Post, { PostProps } from '../../_modules/common/Post'
+import Post, { PostProps } from '../../_modules/components/common/Post'
 import { useSession } from 'next-auth/react'
 import React from 'react'
 

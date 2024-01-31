@@ -9,8 +9,7 @@ module.exports = {
     '@trivago/prettier-plugin-sort-imports'
   ],
   //prettier-plugin-tailwindcss
-  tailwindFunctions: ['clsx'],
-  // tailwindConfig: './tailwind.config.js',
+  tailwindFunctions: ['cn'],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true
 }

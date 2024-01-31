@@ -1,6 +1,6 @@
 import prisma from '../_lib/prisma'
 import { getDateTime } from '../_lib/utils'
-import Post, { PostProps } from '../_modules/common/Post'
+import Post, { PostProps } from '../_modules/components/common/Post'
 import Link from 'next/link'
 
 type Props = {
@@ -31,7 +31,7 @@ export default async function Page() {
         <h1>Public Feed</h1>
         <main>
           {feed.map((post) => (
-            <div key={post.id} className="post">
+            <div key={post.id} className="mb-3">
               <Post post={post} />
             </div>
           ))}

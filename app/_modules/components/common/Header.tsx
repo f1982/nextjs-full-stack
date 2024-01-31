@@ -55,21 +55,21 @@ export default function Header() {
 
   if (session) {
     left = (
-      <div className="left">
-        <Link href="/" data-active={isActive('/')}>
+      <div className="flex flex-row gap-3">
+        <Link href="/blog" data-active={isActive('/')}>
           Feed
         </Link>
-        <Link href="/drafts" data-active={isActive('/drafts')}>
+        <Link href="/blog/drafts" data-active={isActive('/drafts')}>
           My drafts
         </Link>
       </div>
     )
     right = (
-      <div className="right">
+      <div className="flex flex-row gap-3">
         <p>
           {session?.user?.name} ({session?.user?.email})
         </p>
-        <Link href="/create">
+        <Link href="/blog/create">
           <button>New post</button>
         </Link>
         <button onClick={() => signOut()}>Log out</button>
@@ -78,7 +78,7 @@ export default function Header() {
   }
 
   return (
-    <nav>
+    <nav className="flex flex-row justify-between items-center border-b-2 h-9 border-gray-300">
       {left}
       {right}
     </nav>

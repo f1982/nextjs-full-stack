@@ -1,6 +1,7 @@
 import { auth } from '../../../_lib/auth-opt'
 import prisma from '../../../_lib/prisma'
 import DraftPublishButton from './_lib/publish-button'
+import { cn } from '@/app/_modules/components/lib/utils'
 import ReactMarkdown from 'react-markdown'
 
 const getData = async (params: any): Promise<{ post: any }> => {
@@ -19,9 +20,6 @@ const getData = async (params: any): Promise<{ post: any }> => {
 
 export default async function Page({ params }: { params: { id: string } }) {
   const session = await auth()
-  // if (status === "loading") {
-  //   return <div>Authenticating ...</div>;
-  // }
   const userHasValidSession = Boolean(session)
 
   const { post } = await getData(params)
@@ -33,13 +31,16 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
 
   return (
-    <>
-      <h2>{title}</h2>
+    <div
+      className={cn(
+        'p-4 rounded-lg flex flex-col gap-3 border-2 border-gray-300  hover:border-gray-400 cursor-pointer'
+      )}>
+      <h2 className="text-xl">{title}</h2>
       <p>By {post?.author?.name || 'Unknown author'}</p>
       <ReactMarkdown children={post.content} />
       {!post.published && userHasValidSession && postBelongsToUser && (
         <DraftPublishButton postId={post.id} />
       )}
-    </>
+    </div>
   )
 }

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Welcome to Next.js'
 }
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans'
 })
