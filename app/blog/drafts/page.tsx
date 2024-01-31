@@ -1,33 +1,33 @@
-import { useSession } from "next-auth/react";
-import React from "react";
-import prisma from "../../_lib/prisma";
-import Post, { PostProps } from "../../_modules/components/Post";
-import { auth } from "../../_lib/auth-opt";
+import { auth } from '../../_lib/auth-opt'
+import prisma from '../../_lib/prisma'
+import Post, { PostProps } from '../../_modules/components/Post'
+import { useSession } from 'next-auth/react'
+import React from 'react'
 
 const getData = async () => {
-  const session = await auth();
+  const session = await auth()
   if (!session) {
-    return { props: { drafts: [] } };
+    return { props: { drafts: [] } }
   }
 
   const drafts = await prisma.post.findMany({
     where: {
       author: { email: session?.user?.email },
-      published: false,
+      published: false
     },
     include: {
       author: {
-        select: { name: true, email: true },
-      },
-    },
-  });
+        select: { name: true, email: true }
+      }
+    }
+  })
   return {
-    drafts,
-  };
-};
+    drafts
+  }
+}
 
 const Drafts: React.FC = async (props) => {
-  const session = await auth();
+  const session = await auth()
 
   if (!session) {
     return (
@@ -35,10 +35,10 @@ const Drafts: React.FC = async (props) => {
         <h1>My Drafts</h1>
         <div>You need to be authenticated to view this page.</div>
       </>
-    );
+    )
   }
 
-  const { drafts } = await getData();
+  const { drafts } = await getData()
   return (
     <>
       <div className="page">
@@ -52,7 +52,7 @@ const Drafts: React.FC = async (props) => {
         </main>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Drafts;
+export default Drafts

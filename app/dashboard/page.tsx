@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const Dashboard: React.FC = () => {
-  return <p>Dashboard</p>;
-};
+  return <p>Dashboard</p>
+}
 
-export default Dashboard;
+export default Dashboard

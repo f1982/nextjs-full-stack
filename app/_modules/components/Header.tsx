@@ -1,36 +1,36 @@
-"use client";
+'use client'
 
-import React from "react";
-import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+import { signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import React from 'react'
 
 export default function Header() {
-  const router = useRouter();
-  const pathname = usePathname();
+  const router = useRouter()
+  const pathname = usePathname()
   const isActive: (pathname: string) => boolean = (pathname) =>
-    pathname === pathname;
+    pathname === pathname
 
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession()
 
   let left = (
     <div className="left">
-      <Link href="/" data-active={isActive("/")}>
+      <Link href="/" data-active={isActive('/')}>
         Feed
       </Link>
     </div>
-  );
+  )
 
-  let right: any = null;
+  let right: any = null
 
-  if (status === "loading") {
+  if (status === 'loading') {
     left = (
       <div className="left">
-        <Link href="/" data-active={isActive("/")}>
+        <Link href="/" data-active={isActive('/')}>
           Feed
         </Link>
       </div>
-    );
+    )
     right = (
       <div className="right">
         <p>Validating session ...</p>
@@ -40,30 +40,30 @@ export default function Header() {
           }
         `}</style>
       </div>
-    );
+    )
   }
 
   if (!session) {
     right = (
       <div className="right">
-        <Link href="/api/auth/signin" data-active={isActive("/signup")}>
+        <Link href="/api/auth/signin" data-active={isActive('/signup')}>
           Log in
         </Link>
       </div>
-    );
+    )
   }
 
   if (session) {
     left = (
       <div className="left">
-        <Link href="/" data-active={isActive("/")}>
+        <Link href="/" data-active={isActive('/')}>
           Feed
         </Link>
-        <Link href="/drafts" data-active={isActive("/drafts")}>
+        <Link href="/drafts" data-active={isActive('/drafts')}>
           My drafts
         </Link>
       </div>
-    );
+    )
     right = (
       <div className="right">
         <p>
@@ -74,7 +74,7 @@ export default function Header() {
         </Link>
         <button onClick={() => signOut()}>Log out</button>
       </div>
-    );
+    )
   }
 
   return (
@@ -82,5 +82,5 @@ export default function Header() {
       {left}
       {right}
     </nav>
-  );
+  )
 }

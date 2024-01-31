@@ -1,40 +1,39 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { useSession } from 'next-auth/react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
 
 export default function CreateDraftForm() {
-  const router = useRouter();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const router = useRouter()
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
 
-  const { data: session, status } = useSession();
-  console.log("session", session);
+  const { data: session, status } = useSession()
+  console.log('session', session)
 
   const submitData = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      const body = { title, content };
-      await fetch("/api/post", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      router.push("/blog/drafts");
+      const body = { title, content }
+      await fetch('/api/post', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      router.push('/blog/drafts')
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
 
   return (
     <div>
       <form
-        style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-        onSubmit={submitData}
-      >
+        style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+        onSubmit={submitData}>
         <h1>New Draft</h1>
         <input
           autoFocus
@@ -51,10 +50,10 @@ export default function CreateDraftForm() {
           value={content}
         />
         <input disabled={!content || !title} type="submit" value="Create" />
-        <Link className="back" href="#" onClick={() => router.push("/")}>
+        <Link className="back" href="#" onClick={() => router.push('/')}>
           or Cancel
         </Link>
       </form>
     </div>
-  );
+  )
 }

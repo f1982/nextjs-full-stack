@@ -1,18 +1,18 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import Header from "../_modules/components/Header";
+import Header from '../_modules/components/Header'
+import { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: "Home",
-  description: "Welcome to Next.js",
-};
+  title: 'Home',
+  description: 'Welcome to Next.js'
+}
 
 export default async function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <>
@@ -20,16 +20,16 @@ export default async function RootLayout({
         <Header />
         <ul>
           <li>
-            <Link href={"/"}>home</Link>
+            <Link href={'/'}>home</Link>
           </li>
           <li>
-            <Link href={"/blog"}>blog</Link>
+            <Link href={'/blog'}>blog</Link>
           </li>
           <li>
-            <Link href={"/blog/create"}>create</Link>
+            <Link href={'/blog/create'}>create</Link>
           </li>
           <li>
-            <Link href={"/blog/drafts"}>drafts</Link>
+            <Link href={'/blog/drafts'}>drafts</Link>
           </li>
           <li>
             <Link href="/api/auth/signin">Log in</Link>
@@ -38,5 +38,5 @@ export default async function RootLayout({
       </div>
       <div>{children}</div>
     </>
-  );
+  )
 }

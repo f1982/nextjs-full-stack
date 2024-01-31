@@ -1,30 +1,30 @@
-import Post, { PostProps } from "../_modules/components/Post";
-import prisma from "../_lib/prisma";
-import { getDateTime } from "../_lib/utils";
-import Link from "next/link";
+import prisma from '../_lib/prisma'
+import { getDateTime } from '../_lib/utils'
+import Post, { PostProps } from '../_modules/components/Post'
+import Link from 'next/link'
 
 type Props = {
-  feed: PostProps[];
-  updateTime: string;
-};
+  feed: PostProps[]
+  updateTime: string
+}
 
 const getData = async () => {
   const feed = await prisma.post.findMany({
     where: { published: true },
     include: {
       author: {
-        select: { name: true },
-      },
+        select: { name: true }
+      }
     },
     orderBy: {
-      title: "asc",
-    },
-  });
-  return { feed, updateTime: getDateTime() };
-};
+      title: 'asc'
+    }
+  })
+  return { feed, updateTime: getDateTime() }
+}
 
 export default async function Page() {
-  const { feed, updateTime } = await getData();
+  const { feed, updateTime } = await getData()
   return (
     <>
       <div className="page">
@@ -39,7 +39,7 @@ export default async function Page() {
       </div>
       <p>{updateTime}</p>
     </>
-  );
+  )
 }
 
 // export default Blog;
