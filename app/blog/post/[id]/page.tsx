@@ -37,7 +37,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       )}>
       <h2 className="text-xl">{title}</h2>
       <p>By {post?.author?.name || 'Unknown author'}</p>
-      <ReactMarkdown children={post.content} />
+      <ReactMarkdown>{post.content}</ReactMarkdown>
       {!post.published && userHasValidSession && postBelongsToUser && (
         <DraftPublishButton postId={post.id} />
       )}

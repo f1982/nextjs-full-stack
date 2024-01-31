@@ -6,6 +6,7 @@
     "dev": "next",
     "postinstall": "prisma generate",
     "build": "next build",
+    "lint": "next lint",
     "start": "next start",
     "format:c": "prettier . --check",
     "format:w": "prettier . --write"
