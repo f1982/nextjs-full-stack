@@ -3,7 +3,9 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <footer className=" bg-cover bg-center " style={{ backgroundImage: '' }}>
+    <footer
+      className="bg-black text-white bg-cover bg-center "
+      style={{ backgroundImage: '' }}>
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <div className="flex flex-col items-center">
           <a href="#" className="mb-8 inline-block max-w-full">
