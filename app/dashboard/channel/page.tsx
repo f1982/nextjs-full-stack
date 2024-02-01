@@ -1,5 +1,8 @@
+import DelButton from './_lib/del-button'
+import { handleChannelDel } from './new/_lib/actions'
 import { auth } from '@/app/_lib/auth-opt'
 import prisma from '@/app/_lib/prisma'
+import { Button } from '@/app/_modules/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -24,19 +27,18 @@ const getData = async (): Promise<any[] | null> => {
 
 export default async function Page() {
   const channels = await getData()
+
   return (
     <div className="container">
-      <div>Channel List</div>
-      <Link href="/dashboard/channel/new">Create New Channel</Link>
-
       <section>
-        <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
-          <h2 className="text-center text-3xl font-bold md:text-5xl">
-            Our Team Members
-          </h2>
-          <p className="mx-auto mb-8 mt-4 text-center text-sm text-[#636262] sm:text-base md:mb-12 lg:mb-16">
+        <div className="flex flex-col items-center gap-9">
+          <h2 className="text-3xl font-bold md:text-5xl">Your Channel List</h2>
+          <p className="dtext-sm text-[#636262] sm:text-base">
             Lorem ipsum dolor sit amet elit ut aliquam
           </p>
+          <Link href="/dashboard/channel/new">
+            <Button>Create New Channel</Button>
+          </Link>
           <div className="mx-auto grid max-w-5xl justify-items-center gap-5 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:gap-6">
             {channels?.map((channel) => (
               <div
@@ -45,12 +47,17 @@ export default async function Page() {
                 <Image
                   width={100}
                   height={100}
-                  src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94016de6cf90_Rectangle%2035.svg"
+                  src="https://i.pravatar.cc/300
+"
                   alt=""
                   className="max-[479px]:max-w-[208px] mb-4 inline-block h-56 w-full object-cover lg:h-42"
                 />
                 <p className="font-bold"> {channel.channel_name}</p>
                 <p className="text-sm text-[#636262]">{channel.description}</p>
+                <DelButton
+                  actionHandler={handleChannelDel}
+                  postId={channel.id}
+                />
               </div>
             ))}
           </div>

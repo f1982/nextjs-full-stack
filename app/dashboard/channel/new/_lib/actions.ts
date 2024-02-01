@@ -10,6 +10,67 @@ type FormResponseState = {
   error?: string | null
 }
 
+export const handleChannelCreation = async (data: any) => {
+  'use server'
+  console.log('handleSubmit', data)
+  const session = await auth()
+  console.log('session', session)
+  if (!session) {
+    return { status: 'failure', message: 'You need to log in first' }
+  }
+  // await sleep(5000)
+  // return {}
+
+  try {
+    await prisma.channel.create({
+      data: {
+        channel_name: data.channel_name,
+        description: data.description,
+        keyword: data.keyword,
+        user: { connect: { email: session?.user?.email || '' } }
+      }
+    })
+
+    revalidatePath('/')
+    return {
+      status: 'success',
+      error: null,
+      message: `Added  successfully`
+    }
+  } catch (e) {
+    return { status: 'failure', message: 'failure to create ' }
+  }
+}
+
+export async function handleChannelDel(id: string) {
+  'use server'
+  console.log('deleteChannel is called...')
+  const session = await auth()
+  console.log('session', session)
+  if (!session) {
+    return { status: 'failure', message: 'You need to log in first' }
+  }
+  // await sleep(5000)
+  // return {}
+
+  try {
+    await prisma.channel.delete({
+      where: {
+        id
+      }
+    })
+
+    revalidatePath('/')
+    return {
+      status: 'success',
+      error: null,
+      message: `delete  successfully`
+    }
+  } catch (e) {
+    return { status: 'failure', message: 'failure to create ' }
+  }
+}
+
 export async function createChannel(
   prevState: FormResponseState,
   formData: FormData
@@ -19,23 +80,8 @@ export async function createChannel(
     return { status: 'failure', message: 'You need to log in first' }
   }
 
-  // const schema = z.object({
-  //   title: z.string().min(1),
-  //   content: z.string().min(1)
-  // })
-
-  // const parse = schema.safeParse({
-  //   title: formData.get('title'),
-  //   content: formData.get('content')
-  // })
-
-  // if (!parse.success) {
-  //   return { status: 'failure', error: 'failure to create todo' }
-  // }
-
-  // const data = parse.data
   try {
-    await prisma.channel.create({
+    await prisma.channel.delete({
       data: {
         channel_name: formData.get('channel_name') as string,
         description: formData.get('description') as string,
