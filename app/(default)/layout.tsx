@@ -17,7 +17,7 @@ export default async function RootLayout({
   return (
     <>
       <NavBar />
-      <div>{children}</div>
+      <div className="flex-1">{children}</div>
       <Footer />
     </>
   )
