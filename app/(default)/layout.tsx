@@ -1,3 +1,4 @@
+import Footer from '../_modules/components/common/footer'
 import NavBar from '../_modules/components/common/navbar'
 import { Metadata } from 'next'
 
@@ -17,6 +18,7 @@ export default async function RootLayout({
     <>
       <NavBar />
       <div>{children}</div>
+      <Footer />
     </>
   )
 }

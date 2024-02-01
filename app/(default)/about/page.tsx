@@ -1,5 +1,5 @@
 import React from 'react'
 
 export default function Page() {
-  return <div>About Page</div>
+  return <div className="container">About Page</div>
 }

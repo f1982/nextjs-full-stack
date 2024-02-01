@@ -1,12 +1,6 @@
 import prisma from '../../_lib/prisma'
 import { getDateTime } from '../../_lib/utils'
-import Post, { PostProps } from '../../_modules/components/common/Post'
-import Link from 'next/link'
-
-type Props = {
-  feed: PostProps[]
-  updateTime: string
-}
+import Post from '../../_modules/components/common/Post'
 
 const getData = async () => {
   const feed = await prisma.post.findMany({
@@ -27,7 +21,7 @@ export default async function Page() {
   const { feed, updateTime } = await getData()
   return (
     <>
-      <div className="page">
+      <div className="container">
         <h1>Public Feed</h1>
         <main>
           {feed.map((post) => (
@@ -37,7 +31,9 @@ export default async function Page() {
           ))}
         </main>
       </div>
-      <p>{updateTime}</p>
+      <div className="container">
+        <p>{updateTime}</p>
+      </div>
     </>
   )
 }

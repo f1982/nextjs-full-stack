@@ -1,6 +1,7 @@
 // "use server";
 import { auth } from '../../_lib/auth-opt'
 import prisma from '../../_lib/prisma'
+import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
@@ -21,5 +22,6 @@ export async function POST(req: NextRequest) {
       author: { connect: { email: session?.user?.email || '' } }
     }
   })
+  revalidatePath('/drafts')
   return NextResponse.json(result)
 }
