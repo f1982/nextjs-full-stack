@@ -13,6 +13,8 @@ export type PostProps = {
   } | null
   content: string | null
   published: boolean
+  created_at?: Date | null
+  updated_at?: Date | null
 }
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
@@ -25,6 +27,8 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <h2>{post.title}</h2>
       <small>By {authorName}</small>
       <ReactMarkdown>{post.content}</ReactMarkdown>
+      {post.created_at && <div>Created: {post.created_at.toString()}</div>}
+      {post.updated_at && <div>Updated: {post.updated_at.toString()}</div>}
     </div>
   )
 }

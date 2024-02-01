@@ -49,9 +49,9 @@ export default async function RootLayout({
           </div>
         </nav>
         <main
-          className="my-1 pt-2 pb-2 px-10 flex-1 bg-gray-200 dark:bg-black rounded-l-lg
+          className="my-1 pt-2 pb-2 px-10 flex-1 dark:bg-black rounded-l-lg
 		transition duration-500 ease-in-out overflow-y-auto">
-          <div className="flex flex-col capitalize text-3xl">
+          <div className="flex flex-col capitalize text-3xl mb-9">
             <span className="font-semibold">hello,</span>
             <span>tempest!</span>
           </div>

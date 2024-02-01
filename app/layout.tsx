@@ -1,4 +1,5 @@
 import { NextAuthProvider } from './_lib/next-auth-provider'
+import { Toaster } from './_modules/components/ui/toaster'
 import { cn } from '@/app/_modules/components/lib/utils'
 import '@/app/globals.css'
 import { Metadata } from 'next'
@@ -28,6 +29,7 @@ export default async function RootLayout({
             fontSans.variable
           )}>
           {children}
+          <Toaster />
         </body>
       </NextAuthProvider>
     </html>

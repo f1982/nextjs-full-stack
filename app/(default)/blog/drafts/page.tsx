@@ -1,13 +1,12 @@
 import { auth } from '../../../_lib/auth-opt'
 import prisma from '../../../_lib/prisma'
-import Post, { PostProps } from '../../../_modules/components/common/Post'
-import { useSession } from 'next-auth/react'
+import Post from '../../../_modules/components/common/Post'
 import React from 'react'
 
 const getData = async () => {
   const session = await auth()
   if (!session) {
-    return { props: { drafts: [] } }
+    return null
   }
 
   const drafts = await prisma.post.findMany({
@@ -21,9 +20,7 @@ const getData = async () => {
       }
     }
   })
-  return {
-    drafts
-  }
+  return drafts
 }
 
 const Drafts: React.FC = async (props) => {
@@ -38,7 +35,7 @@ const Drafts: React.FC = async (props) => {
     )
   }
 
-  const { drafts } = await getData()
+  const drafts = await getData()
   return (
     <>
       <div className="page">
