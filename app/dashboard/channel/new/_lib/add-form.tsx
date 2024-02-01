@@ -52,7 +52,9 @@ export default function NewChannelForm({ handleSubmit, redirectUrl }: any) {
     const result = await handleSubmit(data)
     console.log('result', result)
 
-    setIsSubmitting(false)
+    //TODO: error handling
+    //Don't have to set it to false, only if error occurs, user can try again
+    // setIsSubmitting(false)
 
     if (redirectUrl) {
       router.push(redirectUrl)

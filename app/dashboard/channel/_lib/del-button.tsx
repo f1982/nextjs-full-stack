@@ -11,6 +11,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/app/_modules/components/ui/alert-dialog'
+import { Loader2 } from 'lucide-react'
 import { useState } from 'react'
 
 export default function DelButton({
@@ -25,7 +26,13 @@ export default function DelButton({
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        {isDeleting ? <span>deleting</span> : <span>Delete</span>}
+        {isDeleting ? (
+          <span>
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          </span>
+        ) : (
+          <span>Delete</span>
+        )}
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -42,7 +49,8 @@ export default function DelButton({
               setIsDeleting(true)
               const res = await actionHandler(postId)
               console.log('res', res)
-              setIsDeleting(false)
+              //TODO: error handling
+              // setIsDeleting(false)
             }}>
             Continue
           </AlertDialogAction>
