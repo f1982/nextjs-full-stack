@@ -2,15 +2,9 @@
 
 import { auth } from '@/app/_lib/auth-opt'
 import prisma from '@/app/_lib/prisma'
-import { sleep } from '@/app/_lib/utils'
+import { APIResponse } from '@/app/_lib/types/types'
 import { Channel } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
-
-export type APIResponse<T> = {
-  status: 'success' | 'failure'
-  message: string
-  data?: T | null
-}
 
 export const retrieveChannels = async (): Promise<APIResponse<Channel[]>> => {
   const session = await auth()

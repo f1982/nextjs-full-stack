@@ -51,6 +51,7 @@ model User {
   created_at DateTime  @default(now())
   posts      Post[]
   channels   Channel[]
+  videos     Video[]
 }
 
 model VerificationToken {
@@ -128,6 +129,9 @@ model Video {
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
   channel    Channel @relation(fields: [channel_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   channel_id String

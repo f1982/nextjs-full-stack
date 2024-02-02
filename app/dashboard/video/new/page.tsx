@@ -1,15 +1,17 @@
+import VideoTopicForm from '../_lib/topic-form'
 import { Separator } from '@/app/_modules/components/ui/separator'
 
 export default function Page() {
   return (
     <>
-      <div className="mb-6">
-        <h3 className="text-lg font-medium">Create new video</h3>
-        <p className="text-sm text-muted-foreground">
-          Start a new video by adding a title and description.
-        </p>
+      <div className="prose prose-md mb-12">
+        <h2>Create new video</h2>
+        <p>Start a new video by adding a topic.</p>
       </div>
+
       <Separator className="mb-6" />
+
+      <VideoTopicForm />
     </>
   )
 }
