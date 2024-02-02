@@ -1,6 +1,6 @@
 import UserInfo from '../_modules/components/server/user-info'
-import { Logo } from '../_modules/dashboard/logo'
-import { Menubar } from '../_modules/dashboard/menu-bar'
+import { Logo } from './_lib/logo'
+import { Menubar } from './_lib/menubar'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

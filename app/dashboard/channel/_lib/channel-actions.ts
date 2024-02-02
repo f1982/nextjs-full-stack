@@ -30,6 +30,9 @@ export const retrieveChannels = async (): Promise<APIResponse<Channel[]>> => {
         user: {
           select: { name: true, email: true }
         }
+      },
+      orderBy: {
+        created_at: 'desc'
       }
     })
     return { status: 'success', message: 'get  successfully', data: list }
