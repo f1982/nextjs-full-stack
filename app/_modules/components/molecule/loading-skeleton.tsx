@@ -1,4 +1,4 @@
-import { Skeleton } from './ui/skeleton'
+import { Skeleton } from '../ui/skeleton'
 import React from 'react'
 
 export default function LoadingSkeleton() {

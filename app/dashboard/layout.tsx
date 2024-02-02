@@ -1,4 +1,4 @@
-import UserInfo from '../_modules/components/server/user-info'
+import UserInfo from '../_modules/components/molecule/user-info'
 import { Logo } from './_lib/logo'
 import { Menubar } from './_lib/menubar'
 import { Newspaper } from 'lucide-react'

@@ -12,15 +12,17 @@ import {
 } from '@/app/_modules/components/ui/form'
 import { Input } from '@/app/_modules/components/ui/input'
 import { Textarea } from '@/app/_modules/components/ui/textarea'
+import { toast } from '@/app/_modules/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { Result } from 'postcss'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const FormSchema = z.object({
-  id: z.string(),
+  id: z.string().optional(),
   topic: z.string().min(2, {
     message: 'topic must be at least 2 characters.'
   })
@@ -40,25 +42,49 @@ export default function VideoTopicForm({
   const router = useRouter()
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  // const [form, setForm] = useState(false)
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: formData || initialState
+    // defaultValues: formData || initialState,
+    values: formData || initialState,
+    mode: 'onTouched'
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     setIsSubmitting(true)
+    console.log('data', data)
 
+    if (!handleSubmit) {
+      return
+    }
     const result = await handleSubmit(data)
     console.log('result', result)
 
     //TODO: error handling
     //Don't have to set it to false, only if error occurs, user can try again
-    // setIsSubmitting(false)
+    setIsSubmitting(false)
 
-    if (redirectUrl) {
-      router.push(redirectUrl)
+    // if (redirectUrl) {
+    //   router.push(redirectUrl)
+    // }
+    if (result.status === 'failure') {
+      toast({
+        description: (
+          <div>
+            <p>Ops, something went wrong. </p>
+            <p>try again later.</p>
+          </div>
+        ),
+        variant: 'destructive'
+      })
+      return
     }
+
+    toast({
+      description: 'Saved successfully.',
+      variant: 'default'
+    })
   }
 
   return (
@@ -77,6 +103,7 @@ export default function VideoTopicForm({
           name="topic"
           render={({ field }) => (
             <FormItem>
+              <p>{JSON.stringify(field)}</p>
               <FormLabel>topic</FormLabel>
               <FormControl>
                 <Textarea

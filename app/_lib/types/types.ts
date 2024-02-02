@@ -1,5 +1,7 @@
+export type ResponseStatus = 'failure' | 'success'
+
 export type APIResponse<T> = {
-  status: 'success' | 'failure'
+  status: ResponseStatus
   message: string
   data?: T | null
 }
