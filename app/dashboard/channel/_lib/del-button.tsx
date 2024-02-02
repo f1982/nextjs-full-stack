@@ -16,10 +16,10 @@ import { useState } from 'react'
 
 export default function DelButton({
   actionHandler,
-  postId
+  itemId
 }: {
-  actionHandler: any
-  postId: string
+  actionHandler: (id: string) => void
+  itemId: string
 }) {
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
 
@@ -28,7 +28,7 @@ export default function DelButton({
       <AlertDialogTrigger>
         {isDeleting ? (
           <span>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            <Loader2 className="mr-2 h-6 w-6 animate-spin" />
           </span>
         ) : (
           <span>Delete</span>
@@ -47,7 +47,7 @@ export default function DelButton({
           <AlertDialogAction
             onClick={async () => {
               setIsDeleting(true)
-              const res = await actionHandler(postId)
+              const res = await actionHandler(itemId)
               console.log('res', res)
               //TODO: error handling
               // setIsDeleting(false)

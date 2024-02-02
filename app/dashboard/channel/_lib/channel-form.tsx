@@ -13,12 +13,14 @@ import {
 import { Input } from '@/app/_modules/components/ui/input'
 import { Textarea } from '@/app/_modules/components/ui/textarea'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const FormSchema = z.object({
+  id: z.string(),
   channel_name: z.string().min(2, {
     message: 'channel_name must be at least 2 characters.'
   }),
@@ -31,19 +33,25 @@ const FormSchema = z.object({
 })
 
 const initialState = {
+  id: '',
   channel_name: '',
   description: '',
   keyword: ''
 }
 
-export default function NewChannelForm({ handleSubmit, redirectUrl }: any) {
+export default function EditChannelForm({
+  handleSubmit,
+  formData = null,
+  redirectUrl,
+  cancelUrl
+}: any) {
   const router = useRouter()
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: initialState
+    defaultValues: formData || initialState
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -64,6 +72,14 @@ export default function NewChannelForm({ handleSubmit, redirectUrl }: any) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+        {formData?.id && (
+          <FormField
+            control={form.control}
+            name="id"
+            render={({ field }) => <input hidden {...field}></input>}
+          />
+        )}
+
         <FormField
           control={form.control}
           name="channel_name"
@@ -77,9 +93,9 @@ export default function NewChannelForm({ handleSubmit, redirectUrl }: any) {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
+              {/* <FormDescription>
                 This is your public display name.
-              </FormDescription>
+              </FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
@@ -97,9 +113,9 @@ export default function NewChannelForm({ handleSubmit, redirectUrl }: any) {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
+              {/* <FormDescription>
                 This is your public display name.
-              </FormDescription>
+              </FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
@@ -117,16 +133,19 @@ export default function NewChannelForm({ handleSubmit, redirectUrl }: any) {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
+              {/* <FormDescription>
                 This is your public display name.
-              </FormDescription>
+              </FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button disabled={isSubmitting} type="submit">
-          Submit
-        </Button>
+        <div className="flex flex-row gap-6 items-center">
+          <Button disabled={isSubmitting} type="submit">
+            Submit
+          </Button>
+          {cancelUrl && <Link href={cancelUrl}>Cancel</Link>}
+        </div>
       </form>
     </Form>
   )

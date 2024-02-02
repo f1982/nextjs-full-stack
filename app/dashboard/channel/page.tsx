@@ -1,7 +1,8 @@
+import { deleteChannel, retrieveChannels } from './_lib/channel-actions'
 import DelButton from './_lib/del-button'
-import { handleChannelDel } from './new/_lib/actions'
 import { auth } from '@/app/_lib/auth-opt'
 import prisma from '@/app/_lib/prisma'
+import ServerError from '@/app/_modules/components/server/server-error'
 import { Button } from '@/app/_modules/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,7 +27,12 @@ const getData = async (): Promise<any[] | null> => {
 }
 
 export default async function Page() {
-  const channels = await getData()
+  const response = await retrieveChannels()
+
+  if (response.status === 'failure') {
+    return <ServerError message={response.message} />
+  }
+  const { data: channels } = response
 
   return (
     <div className="container">
@@ -54,10 +60,8 @@ export default async function Page() {
                 />
                 <p className="font-bold"> {channel.channel_name}</p>
                 <p className="text-sm text-[#636262]">{channel.description}</p>
-                <DelButton
-                  actionHandler={handleChannelDel}
-                  postId={channel.id}
-                />
+                <DelButton actionHandler={deleteChannel} itemId={channel.id} />
+                <Link href={`/dashboard/channel/edit/${channel.id}`}>Edit</Link>
               </div>
             ))}
           </div>
