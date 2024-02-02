@@ -1,18 +1,8 @@
-import {
-  APIResponse,
-  retrieveChannel,
-  updateChannel
-} from '../../_lib/channel-actions'
+import { retrieveChannel, updateChannel } from '../../_lib/channel-actions'
 import EditChannelForm from '../../_lib/channel-form'
 import ServerError from '@/app/_modules/components/server/server-error'
 import { Separator } from '@/app/_modules/components/ui/separator'
 import Link from 'next/link'
-
-export async function checkServerError(response: APIResponse<any>) {
-  if (response.status === 'failure') {
-    return <div>Error:{response.message}</div>
-  }
-}
 
 export default async function Page({ params }: { params: { id: string } }) {
   const response = await retrieveChannel(params.id)

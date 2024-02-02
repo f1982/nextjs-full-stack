@@ -13,14 +13,14 @@ export const createVideoWithTopic = async (
   }
 
   try {
-    await prisma.video.create({
-      data: {
-        topic: data.topic!,
-        channel_id: data.channel_id!,
-        // user_id: session?.user?.id,
-        user: { connect: { email: session?.user?.email || '' } }
-      }
-    })
+    // await prisma.video.create({
+    //   data: {
+    //     topic: data.topic!,
+    //     channel_id: data.channel_id!,
+    //     // user_id: session?.user?.id,
+    //     user: { connect: { email: session?.user?.email || '' } }
+    //   }
+    // })
 
     revalidatePath('/')
     return {

@@ -1,6 +1,5 @@
 import { createChannel } from '../_lib/channel-actions'
 import EditChannelForm from '../_lib/channel-form'
-import NewChannelForm from './_lib/add-form'
 import { Separator } from '@/app/_modules/components/ui/separator'
 
 export default function Page() {
