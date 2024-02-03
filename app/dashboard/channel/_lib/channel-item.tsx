@@ -32,7 +32,7 @@ export default function ChannelItem({
         </div>
       </Link>
       <div className="w-full flex flex-row justify-between gap-3 text-sm">
-        <Link href={`/dashboard/channel/edit/${channel.id}`}>Edit</Link>
+        <Link href={`/dashboard/channel/${channel.id}/settings`}>Edit</Link>
         <DelButton actionHandler={onDelete} itemId={channel.id} />
       </div>
     </div>

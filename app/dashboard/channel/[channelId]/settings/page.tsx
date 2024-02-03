@@ -1,6 +1,6 @@
 import { retrieveChannel, updateChannel } from '../../_lib/channel-actions'
 import EditChannelForm from '../../_lib/channel-form'
-import ServerError from '@/app/_modules/components/molecule/server-error'
+import { ServerError } from '@/app/_modules/components/molecule/server-error'
 import { Separator } from '@/app/_modules/components/ui/separator'
 import Link from 'next/link'
 
