@@ -1,4 +1,5 @@
 import { ServerError } from '@/app/_modules/components/molecule/server-error'
+import { Button } from '@/app/_modules/components/ui/button'
 import { Separator } from '@/app/_modules/components/ui/separator'
 import { getTopics } from '@/app/dashboard/video/_lib/api-request'
 import TopicSelect from '@/app/dashboard/video/_lib/topic-select'
@@ -16,32 +17,19 @@ export default async function Page({
 }) {
   const handleSubmit = async (data: any) => {
     'use server'
-    console.log('video topic:', data)
-
-    // Test return error message
-    // return { status: 'failure', message: 'You need to log in first' }
 
     // Update existing video
     if (!params.videoId) {
       const updatedData = Object.assign(data, {
         channel_id: params.channelId
       })
-      console.log('add new updatedData', updatedData)
       return await createVideoWithTopic(updatedData)
     }
 
     // Create new video
     const updatedData = { ...data, id: params.videoId }
-    console.log('edit video updatedData', updatedData)
-
     return await updateVideo(updatedData)
   }
-
-  const topicOpts = [
-    'How to make pancakes',
-    'Top 10 movies of 2022',
-    'Beginners guide to knitting'
-  ]
 
   const { status, data: videoData } = await retrieveVideo(params.videoId)
 
@@ -51,27 +39,18 @@ export default async function Page({
 
   return (
     <>
-      <div className="prose prose-md mb-12">
+      <div className="prose prose-md">
         {params.videoId ? <h2>Edit video</h2> : <h2>Create new video</h2>}
         <p>Start a new video by adding a topic.</p>
-        <p>channelId: {params.channelId}</p>
-        <Link href={'/dashboard/channel/' + params.channelId}>
-          Back to video list
-        </Link>
       </div>
+
+      <Link href={'/dashboard/channel/' + params.channelId}>
+        <Button variant={'secondary'}>Back to video list</Button>
+      </Link>
+
       <Separator className="mb-6" />
 
-      <TopicSelect
-        value={videoData!}
-        topicOptions={topicOpts}
-        requestToGenerate={async () => {
-          'use server'
-          console.log('second')
-          const t = await getTopics()
-          console.log('new topics: ', t)
-        }}
-        onSubmit={handleSubmit}
-      />
+      <TopicSelect value={videoData!} onSubmit={handleSubmit} />
     </>
   )
 }

@@ -1,6 +1,6 @@
 {
-  "name": "hello-next",
-  "version": "1.0.0",
+  "name": "next-scriptomatic",
+  "version": "0.0.1",
   "description": "",
   "scripts": {
     "dev": "next",
@@ -29,23 +29,31 @@
     "@radix-ui/react-toast": "^1.1.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "file-system-cache": "^2.4.4",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.320.0",
+    "md5": "^2.3.0",
     "next": "^14.1.0",
     "next-auth": "^4.24.5",
     "nodemailer": "^6.9.8",
+    "openai": "^4.20.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.0",
     "react-markdown": "^9.0.0",
+    "usehooks-ts": "^2.9.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/md5": "^2.3.5",
     "@types/node": "^20.11.10",
     "@types/react": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.17",
     "eslint-config-next": "^14.1.0",
+    "happy-dom": "^13.3.8",
     "postcss": "^8.4.33",
     "prettier": "3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
@@ -54,6 +62,7 @@
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.1.6",
+    "vite-tsconfig-paths": "^4.3.1",
     "vitest": "^1.2.2"
   }
 }

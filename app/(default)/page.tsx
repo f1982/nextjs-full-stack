@@ -15,6 +15,7 @@ export default function Page() {
       <Features />
       <CTA />
       <FAQ />
+      <p>{process.env.OPENAI_API_KEY}</p>
     </>
   )
 }

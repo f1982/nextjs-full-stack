@@ -19,9 +19,11 @@ const FormSchema = z.object({
 })
 
 export default function ListSelector({
+  label,
   options,
   callback
 }: {
+  label?: string
   options: string[]
   callback?: (opt: any) => void
 }) {
@@ -43,7 +45,7 @@ export default function ListSelector({
           name="type"
           render={({ field }) => (
             <FormItem className="space-y-3">
-              <FormLabel>Notify me about...</FormLabel>
+              <FormLabel>{label}</FormLabel>
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}

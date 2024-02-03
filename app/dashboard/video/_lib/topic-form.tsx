@@ -47,8 +47,6 @@ export default function VideoTopicForm({
     mode: 'onTouched'
   })
 
-  console.log('form.formState isSubmitting:', form.formState.isSubmitting)
-  console.log('form.formState isDirty:', form.formState.isDirty)
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     if (!handleSubmit) {
       return
@@ -82,8 +80,7 @@ export default function VideoTopicForm({
           name="topic"
           render={({ field }) => (
             <FormItem>
-              <p>{JSON.stringify(field)}</p>
-              <FormLabel>topic</FormLabel>
+              <FormLabel>Selected Topic</FormLabel>
               <FormControl>
                 <Textarea
                   rows={5}
