@@ -1,7 +1,6 @@
 import { ServerError } from '@/app/_modules/components/molecule/server-error'
 import { Button } from '@/app/_modules/components/ui/button'
 import { Separator } from '@/app/_modules/components/ui/separator'
-import { getTopics } from '@/app/dashboard/video/_lib/api-request'
 import TopicSelect from '@/app/dashboard/video/_lib/topic-select'
 import {
   createVideoWithTopic,

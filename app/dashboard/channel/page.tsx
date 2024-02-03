@@ -1,13 +1,10 @@
 import { deleteChannel, retrieveChannels } from './_lib/channel-actions'
 import ChannelItem from './_lib/channel-item'
-import DelButton from './_lib/del-button'
 import { auth } from '@/app/_lib/auth-opt'
 import prisma from '@/app/_lib/prisma'
-import ServerError from '@/app/_modules/components/molecule/server-error'
+import { ServerError } from '@/app/_modules/components/molecule/server-error'
 import { Button } from '@/app/_modules/components/ui/button'
-import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 const getData = async (): Promise<any[] | null> => {
   const session = await auth()
@@ -40,7 +37,7 @@ export default async function Page() {
       <section className="prose prose-xl text-center mb-12">
         <h3>Your Channel List</h3>
         <p>Lorem ipsum dolor sit amet elit ut aliquam</p>
-        <Link href="/dashboard/channel/new">
+        <Link href="/dashboard/channel-new">
           <Button>Create New Channel</Button>
         </Link>
       </section>
