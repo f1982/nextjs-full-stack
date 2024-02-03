@@ -1,5 +1,6 @@
 'use client'
 
+import Spinner from '@/app/_modules/components/molecule/spinner'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,13 +27,7 @@ export default function DelButton({
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        {isDeleting ? (
-          <span>
-            <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-          </span>
-        ) : (
-          <span>Delete</span>
-        )}
+        {isDeleting ? <Spinner /> : <span>Delete</span>}
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

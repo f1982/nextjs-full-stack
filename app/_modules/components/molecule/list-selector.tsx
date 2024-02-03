@@ -48,7 +48,7 @@ export default function ListSelector({
                 <RadioGroup
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  className="flex flex-col space-y-1">
+                  className="flex flex-col space-y-3">
                   {options.map((item: any) => {
                     return (
                       <FormItem

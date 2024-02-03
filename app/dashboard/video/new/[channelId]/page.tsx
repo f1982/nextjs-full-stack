@@ -1,7 +1,5 @@
-import VideoTopicForm from '../../_lib/topic-form'
 import TopicSelect from '../../_lib/topic-select'
-import { createVideoWithTopic, retrieveVideos } from '../../_lib/video-actions'
-import ListSelector from '@/app/_modules/components/molecule/list-selector'
+import { createVideoWithTopic } from '../../_lib/video-actions'
 import { Separator } from '@/app/_modules/components/ui/separator'
 
 export default function Page({ params }: { params: { channelId: string } }) {
@@ -31,7 +29,10 @@ export default function Page({ params }: { params: { channelId: string } }) {
 
       <VideoTopicForm formData={{ topic: 'How to make pancakes' }} /> */}
       <TopicSelect
-        options={topicOpts}
+        topicOptions={topicOpts}
+        requestToGenerate={async () => {
+          console.log('requestToGenerate')
+        }}
         onSubmit={async (data: any) => {
           'use server'
           console.log('video topic:', data)

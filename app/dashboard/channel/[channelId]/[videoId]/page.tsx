@@ -1,5 +1,6 @@
 import { ServerError } from '@/app/_modules/components/molecule/server-error'
 import { Separator } from '@/app/_modules/components/ui/separator'
+import { getTopics } from '@/app/dashboard/video/_lib/api-request'
 import TopicSelect from '@/app/dashboard/video/_lib/topic-select'
 import {
   createVideoWithTopic,
@@ -62,7 +63,13 @@ export default async function Page({
 
       <TopicSelect
         value={videoData!}
-        options={topicOpts}
+        topicOptions={topicOpts}
+        requestToGenerate={async () => {
+          'use server'
+          console.log('second')
+          const t = await getTopics()
+          console.log('new topics: ', t)
+        }}
         onSubmit={handleSubmit}
       />
     </>
