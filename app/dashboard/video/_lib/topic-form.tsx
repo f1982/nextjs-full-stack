@@ -1,5 +1,6 @@
 'use client'
 
+import { toastServerError } from '@/app/_modules/components/molecule/server-error'
 import { Button } from '@/app/_modules/components/ui/button'
 import {
   Form,
@@ -39,11 +40,6 @@ export default function VideoTopicForm({
   redirectUrl,
   cancelUrl
 }: any) {
-  const router = useRouter()
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  // const [form, setForm] = useState(false)
-
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     // defaultValues: formData || initialState,
@@ -51,34 +47,17 @@ export default function VideoTopicForm({
     mode: 'onTouched'
   })
 
+  console.log('form.formState isSubmitting:', form.formState.isSubmitting)
+  console.log('form.formState isDirty:', form.formState.isDirty)
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    setIsSubmitting(true)
-    console.log('data', data)
-
     if (!handleSubmit) {
       return
     }
+
     const result = await handleSubmit(data)
-    console.log('result', result)
 
-    //TODO: error handling
-    //Don't have to set it to false, only if error occurs, user can try again
-    setIsSubmitting(false)
-
-    // if (redirectUrl) {
-    //   router.push(redirectUrl)
-    // }
     if (result.status === 'failure') {
-      toast({
-        description: (
-          <div>
-            <p>Ops, something went wrong. </p>
-            <p>try again later.</p>
-          </div>
-        ),
-        variant: 'destructive'
-      })
-      return
+      return toastServerError()
     }
 
     toast({
@@ -108,7 +87,7 @@ export default function VideoTopicForm({
               <FormControl>
                 <Textarea
                   rows={5}
-                  disabled={isSubmitting}
+                  disabled={form.formState.isSubmitting}
                   placeholder="video topic"
                   {...field}
                 />
@@ -119,7 +98,7 @@ export default function VideoTopicForm({
           )}
         />
         <div className="flex flex-row gap-6 items-center">
-          <Button disabled={isSubmitting} type="submit">
+          <Button disabled={form.formState.isSubmitting} type="submit">
             Submit
           </Button>
           {cancelUrl && <Link href={cancelUrl}>Cancel</Link>}

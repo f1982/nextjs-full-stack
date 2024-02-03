@@ -19,7 +19,6 @@ export default function TopicSelect({
   })
   return (
     <div>
-      <p>{JSON.stringify(selectedTopic)}</p>
       <ListSelector
         options={options}
         callback={(opt: any) => {

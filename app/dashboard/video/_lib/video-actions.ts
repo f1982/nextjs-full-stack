@@ -1,4 +1,5 @@
 import { auth } from '@/app/_lib/auth-opt'
+import { mockServerResponse } from '@/app/_lib/debug-only'
 import prisma from '@/app/_lib/prisma'
 import { APIResponse } from '@/app/_lib/types/types'
 import { Video } from '@prisma/client'
@@ -70,11 +71,12 @@ export const createVideoWithTopic = async (
 export const updateVideo = async (
   data: Partial<Video>
 ): Promise<APIResponse<any>> => {
+  // test mock error message
+  // return await mockServerResponse()
   const session = await auth()
   if (!session) {
     return { status: 'failure', message: 'You need to log in first' }
   }
-
   if (!data.id) {
     return { status: 'failure', message: 'No id provided' }
   }
@@ -86,7 +88,6 @@ export const updateVideo = async (
         topic: data.topic
       }
     })
-
     revalidatePath('/')
     return {
       status: 'success',

@@ -1,4 +1,4 @@
-import ServerError from '@/app/_modules/components/molecule/server-error'
+import { ServerError } from '@/app/_modules/components/molecule/server-error'
 import { Separator } from '@/app/_modules/components/ui/separator'
 import TopicSelect from '@/app/dashboard/video/_lib/topic-select'
 import {
@@ -58,7 +58,6 @@ export default async function Page({
           Back to video list
         </Link>
       </div>
-
       <Separator className="mb-6" />
 
       <TopicSelect
