@@ -12,7 +12,7 @@ export const Menubar = () => (
     <li
       className="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
 rounded-lg">
-      <a href="/dashboard/channel" className=" flex flex-col items-center">
+      <a href="/dashboard/channel-list" className=" flex flex-col items-center">
         <Tv />
         <span className="text-xs mt-2">Channel</span>
       </a>

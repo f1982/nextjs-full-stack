@@ -33,14 +33,12 @@ export default async function Page({
       </div>
       <h2>video list</h2>
       <div>
-        {videos?.map((item: Video) => {
+        {videos?.map((vid: Video) => {
           return (
-            <div key={item.id}>
-              <h1>{item.topic}</h1>
-              <Link
-                href={'/dashboard/channel/' + item.channel_id + '/' + item.id}>
-                {' '}
-                Edit it
+            <div className="prose prose-lg" key={vid.id}>
+              <Link href={'/dashboard/video/' + vid.id}>
+                <h3>{vid.topic}</h3>
+                <Button variant={'secondary'}>Edit it</Button>
               </Link>
             </div>
           )

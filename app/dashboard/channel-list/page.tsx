@@ -1,5 +1,8 @@
-import { deleteChannel, retrieveChannels } from './_lib/channel-actions'
-import ChannelItem from './_lib/channel-item'
+import {
+  deleteChannel,
+  retrieveChannels
+} from '../channel/_lib/channel-actions'
+import ChannelItem from '../channel/_lib/channel-item'
 import { auth } from '@/app/_lib/auth-opt'
 import prisma from '@/app/_lib/prisma'
 import { ServerError } from '@/app/_modules/components/molecule/server-error'

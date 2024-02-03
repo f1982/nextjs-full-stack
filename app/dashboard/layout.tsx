@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Welcome to Next.js'
 }
 
-export default async function RootLayout({
+export default async function DashboardLayout({
   children
 }: {
   children: React.ReactNode

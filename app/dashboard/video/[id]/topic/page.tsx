@@ -9,7 +9,7 @@ import {
 } from '@/app/dashboard/video/_lib/video-actions'
 import Link from 'next/link'
 
-export default async function Page({
+export default async function TopicPage({
   params
 }: {
   params: { channelId: string; videoId: string }
