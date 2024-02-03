@@ -1,4 +1,4 @@
-import { LangOptions } from './gpt'
+import { LangOptions } from '../gpt'
 
 // TODO
 export const promptRequirements = {

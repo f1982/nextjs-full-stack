@@ -8,7 +8,7 @@ export async function GET(request: NextRequest): Promise<any> {
   const session = await auth()
   console.log('session', session)
   if (!session) {
-    return Response.json({
+    return NextResponse.json({
       message: 'You must be logged in.',
       status: 'failure',
       data: null
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest): Promise<any> {
   await sleep(3000) //TODO: remove this
   const titleList = await generateVideoTitles('黑洞内部', 5)
 
-  const result = Response.json({ status: 'success', data: titleList })
+  const result = NextResponse.json({ status: 'success', data: titleList })
   console.log('result', result)
   return result
 }
