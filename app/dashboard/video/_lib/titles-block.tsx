@@ -1,7 +1,5 @@
 import SelectEditForm from './select-edit-form'
 import { generateVideoTitles } from '@/app/_lib/model/video-titles'
-import { getSiteUrl } from '@/app/_lib/settings'
-import { Separator } from '@/app/_modules/components/ui/separator'
 import { updateVideo } from '@/app/dashboard/video/_lib/video-actions'
 import { Video } from '@prisma/client'
 

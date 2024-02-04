@@ -1,4 +1,6 @@
 import DescriptionBlock from '../_lib/description-block'
+import ScriptQuotesBlock from '../_lib/quotes-block'
+import ScriptEndingBlock from '../_lib/script-ending-block'
 import ScriptHookBlock from '../_lib/script-hook-block'
 import TagsBlock from '../_lib/tags-block'
 import TitleBlock from '../_lib/titles-block'
@@ -60,6 +62,8 @@ export default async function Page({ params }: { params: { id: string } }) {
         </TabsContent>
         <TabsContent value="script">
           <ScriptHookBlock videoData={videoData} />
+          <ScriptQuotesBlock videoData={videoData} />
+          <ScriptEndingBlock videoData={videoData} />
         </TabsContent>
         <TabsContent value="posts">Change your password here.</TabsContent>
         <TabsContent value="comments">Change your password here.</TabsContent>

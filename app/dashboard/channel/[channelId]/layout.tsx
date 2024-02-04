@@ -30,14 +30,14 @@ export default async function VideoLayout({
           label="Home"
           href={`/dashboard/channel/${params.channelId}/`}></LinkButton>
         <LinkButton
+          label="Video List"
+          href={`/dashboard/channel/${params.channelId}/video-list`}></LinkButton>
+        <LinkButton
           label="Settings"
           href={`/dashboard/channel/${params.channelId}/settings`}></LinkButton>
         <LinkButton
           label="Prompt"
           href={`/dashboard/channel/${params.channelId}/prompt`}></LinkButton>
-        <LinkButton
-          label="Video List"
-          href={`/dashboard/channel/${params.channelId}/video-list`}></LinkButton>
       </div>
 
       <Separator className="mb-9" />
