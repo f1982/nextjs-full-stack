@@ -1,6 +1,10 @@
 'use client'
 
-import { toastServerError } from '@/app/_modules/components/molecule/server-error'
+import { CopyButton } from '@/app/_modules/components/molecule/copy-button'
+import {
+  toastServerError,
+  toastServerSuccess
+} from '@/app/_modules/components/molecule/server-error'
 import { Button } from '@/app/_modules/components/ui/button'
 import {
   Form,
@@ -12,34 +16,29 @@ import {
   FormMessage
 } from '@/app/_modules/components/ui/form'
 import { Textarea } from '@/app/_modules/components/ui/textarea'
-import { toast } from '@/app/_modules/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const FormSchema = z.object({
   id: z.string().optional(),
-  topic: z.string().min(2, {
+  value: z.string().min(2, {
     message: 'topic must be at least 2 characters.'
   })
 })
 
-const initialState = {
-  id: '',
-  topic: ''
-}
-
-export default function VideoTopicForm({
+export default function UniversalSingleForm({
+  fieldName,
   handleSubmit,
-  formData = null,
-  redirectUrl,
-  cancelUrl
+  defaultData = null,
+  extraButtons = null
 }: any) {
+  const router = useRouter()
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    // defaultValues: formData || initialState,
-    values: formData || initialState,
+    values: { value: defaultData },
     mode: 'onTouched'
   })
 
@@ -50,20 +49,21 @@ export default function VideoTopicForm({
 
     const result = await handleSubmit(data)
 
+    //Update the saved data in the text field
+    router.refresh()
+
     if (result.status === 'failure') {
       return toastServerError()
     }
 
-    toast({
-      description: 'Saved successfully.',
-      variant: 'default'
-    })
+    form.reset(data) // Set isDirty to false
+    return toastServerSuccess()
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-        {formData?.id && (
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        {defaultData?.id && (
           <FormField
             control={form.control}
             name="id"
@@ -73,28 +73,31 @@ export default function VideoTopicForm({
 
         <FormField
           control={form.control}
-          name="topic"
-          render={({ field }) => (
+          name={'value'}
+          render={({ field, fieldState }) => (
             <FormItem>
-              <FormLabel>Selected Topic</FormLabel>
+              <FormLabel>
+                {fieldName} {fieldState.isDirty && '✏︎'}
+              </FormLabel>
               <FormControl>
                 <Textarea
                   rows={5}
                   disabled={form.formState.isSubmitting}
-                  placeholder="video topic"
+                  placeholder="input placeholder"
                   {...field}
                 />
               </FormControl>
-              <FormDescription>This is your video topic.</FormDescription>
+              {/* <FormDescription>This is your video topic.</FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
         />
-        <div className="flex flex-row gap-6 items-center">
+        <div className="flex flex-row gap-3 items-center">
           <Button disabled={form.formState.isSubmitting} type="submit">
-            Submit
+            Save
           </Button>
-          {cancelUrl && <Link href={cancelUrl}>Cancel</Link>}
+          <CopyButton content={form.getValues().value} />
+          {extraButtons}
         </div>
       </form>
     </Form>

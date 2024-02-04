@@ -15,7 +15,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const FormSchema = z.object({
-  type: z.string()
+  value: z.string()
 })
 
 export default function ListSelector({
@@ -33,8 +33,8 @@ export default function ListSelector({
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     if (callback) {
-      console.log('data', data)
-      callback(data)
+      console.log('data', data.value)
+      callback(data.value)
     }
   }
   return (
@@ -42,7 +42,7 @@ export default function ListSelector({
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
         <FormField
           control={form.control}
-          name="type"
+          name="value"
           render={({ field }) => (
             <FormItem className="space-y-3">
               <FormLabel>{label}</FormLabel>

@@ -72,7 +72,9 @@ export const updateVideo = async (
   data: Partial<Video>
 ): Promise<APIResponse<any>> => {
   // test mock error message
-  // return await mockServerResponse()
+  // console.log('update video data:', data)
+  // return mockServerResponse('success')
+
   const session = await auth()
   if (!session) {
     return { status: 'failure', message: 'You need to log in first' }
@@ -84,9 +86,7 @@ export const updateVideo = async (
   try {
     const updatedData = await prisma.video.update({
       where: { id: data.id },
-      data: {
-        topic: data.topic
-      }
+      data: rest
     })
     revalidatePath('/')
     return {

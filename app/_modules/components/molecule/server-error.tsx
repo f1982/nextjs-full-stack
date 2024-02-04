@@ -1,6 +1,6 @@
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert'
 import { toast } from '../ui/use-toast'
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, CheckCircle } from 'lucide-react'
 import React from 'react'
 
 export function ServerError({ message }: { message: string }) {
@@ -24,5 +24,17 @@ export function toastServerError() {
       </div>
     ),
     variant: 'destructive'
+  })
+}
+
+export function toastServerSuccess(message?: string) {
+  toast({
+    description: (
+      <div className="flex flex-row gap-3">
+        <CheckCircle />
+        <span>{message ? message : 'Saved successfully.'}</span>
+      </div>
+    ),
+    variant: 'default'
   })
 }
