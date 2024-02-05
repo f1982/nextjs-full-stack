@@ -8,11 +8,13 @@ import { useState } from 'react'
 
 export default function GenEditForm({
   value,
+  rows = 5,
   fieldName,
   optionsLoader,
   onSubmit
 }: {
   value?: string
+  rows?: number
   fieldName: string
   optionsLoader: any
   onSubmit: any
@@ -34,6 +36,7 @@ export default function GenEditForm({
         fieldName={fieldName}
         defaultData={selectedOption}
         handleSubmit={onSubmit}
+        rows={rows}
         extraButtons={
           <Button
             disabled={isLoading}

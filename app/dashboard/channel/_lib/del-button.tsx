@@ -12,7 +12,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/app/_modules/components/ui/alert-dialog'
-import { Loader2 } from 'lucide-react'
 import { useState } from 'react'
 
 export default function DelButton({

@@ -31,6 +31,7 @@ const FormSchema = z.object({
 export default function UniversalSingleForm({
   fieldName,
   handleSubmit,
+  rows = 5,
   defaultData = null,
   extraButtons = null
 }: any) {
@@ -81,7 +82,7 @@ export default function UniversalSingleForm({
               </FormLabel>
               <FormControl>
                 <Textarea
-                  rows={5}
+                  rows={rows}
                   disabled={form.formState.isSubmitting}
                   placeholder="input placeholder"
                   {...field}

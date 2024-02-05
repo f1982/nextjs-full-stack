@@ -1,15 +1,16 @@
-import SelectEditForm from './select-edit-form'
+import GenEditForm from './gen-edit-form'
 import { cache } from '@/app/_lib/file-cache'
-import { generateScriptQuotes } from '@/app/_lib/model/script-quotes'
+import { generateScriptOutline } from '@/app/_lib/model/script-outline'
 import { Video } from '@prisma/client'
 
-export default async function ScriptQuotesBlock({
+export default async function ScriptOutlineBlock({
   videoData
 }: {
   videoData: Video
 }) {
-  const cacheKey = 'script-quote-' + videoData.id
-  let quote = await cache.get(cacheKey)
+  const name = 'outline'
+  const cacheKey = 'script-' + name + '-' + videoData.id
+  let value = await cache.get(cacheKey)
 
   const handleSubmission = async (data: any) => {
     'use server'
@@ -22,18 +23,19 @@ export default async function ScriptQuotesBlock({
   const handleOptionGeneration = async () => {
     'use server'
 
-    const quotes = await generateScriptQuotes(videoData.topic!)
+    const content = await generateScriptOutline(videoData.topic!)
     // { "author": "", "quote": "", reference: ""}
-    const sentences = quotes.map((quote) => {
-      return quote.author + ' ' + quote.quote
-    })
-    return { data: sentences, status: 'success' }
+    // const sentences = quotes.map((quote) => {
+    //   return quote.author + ' ' + quote.quote
+    // })
+    return { data: content, status: 'success' }
   }
 
   return (
-    <SelectEditForm
-      fieldName="quote"
-      value={quote || ''}
+    <GenEditForm
+      rows={20}
+      fieldName={name}
+      value={value || ''}
       optionsLoader={handleOptionGeneration}
       onSubmit={handleSubmission}
     />

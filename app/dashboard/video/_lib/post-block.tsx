@@ -1,15 +1,16 @@
 import SelectEditForm from './select-edit-form'
 import { cache } from '@/app/_lib/file-cache'
-import { generateScriptQuotes } from '@/app/_lib/model/script-quotes'
+import { generatePostUpdate } from '@/app/_lib/model/post-updates'
 import { Video } from '@prisma/client'
 
-export default async function ScriptQuotesBlock({
+export default async function PostUpdatesBlock({
   videoData
 }: {
   videoData: Video
 }) {
-  const cacheKey = 'script-quote-' + videoData.id
-  let quote = await cache.get(cacheKey)
+  const name = 'post-updates'
+  const cacheKey = 'script-' + name + '-' + videoData.id
+  let value = await cache.get(cacheKey)
 
   const handleSubmission = async (data: any) => {
     'use server'
@@ -22,18 +23,17 @@ export default async function ScriptQuotesBlock({
   const handleOptionGeneration = async () => {
     'use server'
 
-    const quotes = await generateScriptQuotes(videoData.topic!)
-    // { "author": "", "quote": "", reference: ""}
-    const sentences = quotes.map((quote) => {
-      return quote.author + ' ' + quote.quote
+    const posts = await generatePostUpdate(videoData.topic!, 6)
+    const sentences = posts.map((quote) => {
+      return quote.content
     })
     return { data: sentences, status: 'success' }
   }
 
   return (
     <SelectEditForm
-      fieldName="quote"
-      value={quote || ''}
+      fieldName={name}
+      value={value || ''}
       optionsLoader={handleOptionGeneration}
       onSubmit={handleSubmission}
     />
