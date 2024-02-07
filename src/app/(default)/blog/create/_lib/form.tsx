@@ -1,7 +1,7 @@
 'use client'
 
-import { Input } from '@/app/_modules/components/ui/input''
-import { Button } from '@/app/_modules/components/ui/button'
+import { Input } from '@/components/ui/input''
+import { Button } from '@/components/ui/button'
 import { useFormState, useFormStatus } from 'react-dom'
 
 const initialState = {

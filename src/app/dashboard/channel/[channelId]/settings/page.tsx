@@ -1,7 +1,7 @@
 import { retrieveChannel, updateChannel } from '../../_lib/channel-actions'
 import EditChannelForm from '../../_lib/channel-form'
-import { ServerError } from '@/app/_modules/components/molecule/server-error'
-import { Separator } from '@/app/_modules/components/ui/separator'
+import { ServerError } from '@/components/molecule/server-error'
+import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'
 
 export default async function Page({ params }: { params: { id: string } }) {

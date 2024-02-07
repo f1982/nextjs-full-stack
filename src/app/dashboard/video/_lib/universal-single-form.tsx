@@ -1,11 +1,11 @@
 'use client'
 
-import { CopyButton } from '@/app/_modules/components/molecule/copy-button'
+import { CopyButton } from '@/components/molecule/copy-button'
 import {
   toastServerError,
   toastServerSuccess
-} from '@/app/_modules/components/molecule/server-error'
-import { Button } from '@/app/_modules/components/ui/button'
+} from '@/components/molecule/server-error'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -14,8 +14,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage
-} from '@/app/_modules/components/ui/form'
-import { Textarea } from '@/app/_modules/components/ui/textarea'
+} from '@/components/ui/form'
+import { Textarea } from '@/components/ui/textarea'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'

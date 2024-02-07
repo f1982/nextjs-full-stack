@@ -1,6 +1,6 @@
 import { retrieveChannel } from '../../_lib/channel-actions'
-import { Button } from '@/app/_modules/components/ui/button'
 import { retrieveVideos } from '@/app/dashboard/video/_lib/video-actions'
+import { Button } from '@/components/ui/button'
 import { Video } from '@prisma/client'
 import Link from 'next/link'
 import React from 'react'
@@ -18,7 +18,9 @@ export default async function Page({
     <>
       <div>Channel ID: {params.channelId}</div>
       <div>
-        <Link href={'/dashboard/video/test-video-id'}>A vidoe </Link>
+        <Link href={`/dashboard/channel/${params.channelId}/video-new`}>
+          Create new video{' '}
+        </Link>
       </div>
 
       <div>

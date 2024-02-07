@@ -1,6 +1,6 @@
+import Post from '../../../components/page/Post'
 import prisma from '../../../lib/prisma'
 import { getDateTime } from '../../../lib/utils'
-import Post from '../../_modules/components/page/Post'
 
 const getData = async () => {
   const feed = await prisma.post.findMany({

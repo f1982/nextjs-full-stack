@@ -1,4 +1,4 @@
-import LoadingSkeleton from '@/app/_modules/components/molecule/loading-skeleton'
+import LoadingSkeleton from '@/components/molecule/loading-skeleton'
 
 export default function Loading() {
   return (

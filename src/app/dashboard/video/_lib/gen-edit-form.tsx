@@ -1,8 +1,8 @@
 'use client'
 
 import UniversalSingleForm from './universal-single-form'
-import Spinner from '@/app/_modules/components/molecule/spinner'
-import { Button } from '@/app/_modules/components/ui/button'
+import Spinner from '@/components/molecule/spinner'
+import { Button } from '@/components/ui/button'
 import { Wand2 } from 'lucide-react'
 import { useState } from 'react'
 

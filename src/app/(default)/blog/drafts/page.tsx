@@ -1,6 +1,6 @@
+import Post from '../../../../components/page/Post'
 import { auth } from '../../../../lib/auth-opt'
 import prisma from '../../../../lib/prisma'
-import Post from '../../../_modules/components/page/Post'
 import React from 'react'
 
 const getData = async () => {

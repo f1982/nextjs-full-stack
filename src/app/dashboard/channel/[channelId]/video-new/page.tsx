@@ -1,12 +1,7 @@
-import { ServerError } from '@/app/_modules/components/molecule/server-error'
-import { Button } from '@/app/_modules/components/ui/button'
-import { Separator } from '@/app/_modules/components/ui/separator'
 import TopicSelect from '@/app/dashboard/video/_lib/topic-select'
-import {
-  createVideoWithTopic,
-  retrieveVideo,
-  updateVideo
-} from '@/app/dashboard/video/_lib/video-actions'
+import { createVideoWithTopic } from '@/app/dashboard/video/_lib/video-actions'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'
 
 export default async function Page({

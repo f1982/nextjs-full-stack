@@ -8,14 +8,9 @@ import TagsBlock from '../_lib/tags-block'
 import TitleBlock from '../_lib/titles-block'
 import TopicBlock from '../_lib/topic-block'
 import { retrieveVideo } from '../_lib/video-actions'
-import { ServerError } from '@/app/_modules/components/molecule/server-error'
-import { Separator } from '@/app/_modules/components/ui/separator'
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger
-} from '@/app/_modules/components/ui/tabs'
+import { ServerError } from '@/components/molecule/server-error'
+import { Separator } from '@/components/ui/separator'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { status, data: videoData } = await retrieveVideo(params.id)

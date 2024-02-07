@@ -1,7 +1,7 @@
 import { createPost } from './_lib/actions'
 import { AddForm } from './_lib/form'
 import { getDraftData } from './_lib/loader'
-import Post from '@/app/_modules/components/page/Post'
+import Post from '@/components/page/Post'
 import React from 'react'
 
 export default async function Page() {

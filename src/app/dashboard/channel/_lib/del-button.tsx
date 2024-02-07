@@ -1,6 +1,6 @@
 'use client'
 
-import Spinner from '@/app/_modules/components/molecule/spinner'
+import Spinner from '@/components/molecule/spinner'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,7 +11,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@/app/_modules/components/ui/alert-dialog'
+} from '@/components/ui/alert-dialog'
 import { useState } from 'react'
 
 export default function DelButton({

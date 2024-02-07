@@ -1,5 +1,5 @@
 import { retrieveVideo } from '../../_lib/video-actions'
-import { ServerError } from '@/app/_modules/components/molecule/server-error'
+import { ServerError } from '@/components/molecule/server-error'
 import React from 'react'
 
 export default async function Page({ params }: { params: { id: string } }) {

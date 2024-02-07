@@ -1,8 +1,8 @@
-import SecondaryNav, {
-  NavItemData
-} from '@/app/_modules/components/molecule/secondary-nav'
-import { Separator } from '@/app/_modules/components/ui/separator'
+import { retrieveVideo } from '../_lib/video-actions'
+import SecondaryNav, { NavItemData } from '@/components/molecule/secondary-nav'
+import { Separator } from '@/components/ui/separator'
 import { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Video',
@@ -16,6 +16,9 @@ export default async function VideoLayout({
   children: React.ReactNode
   params: { id: string }
 }) {
+  const channelId = 'cls4e75nw0005136auwuhdzsp'
+
+  const { data } = await retrieveVideo(params.id)
   const navConfig: NavItemData[] = [
     {
       href: `/dashboard/video/${params.id}`,
@@ -38,7 +41,10 @@ export default async function VideoLayout({
   return (
     <>
       <div className="w-full">
-        <h3>this is video layout part</h3>
+        <h3>Video Topic: </h3>
+        <Link href={`/dashboard/channel/${data?.channel_id}/video-list`}>
+          Back to list
+        </Link>
         <SecondaryNav items={navConfig}></SecondaryNav>
         <Separator className="mb-9"></Separator>
         <main>

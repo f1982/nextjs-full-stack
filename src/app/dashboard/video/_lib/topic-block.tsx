@@ -1,10 +1,10 @@
-import { ServerError } from '@/app/_modules/components/molecule/server-error'
-import { Separator } from '@/app/_modules/components/ui/separator'
 import TopicSelect from '@/app/dashboard/video/_lib/topic-select'
 import {
   retrieveVideo,
   updateVideo
 } from '@/app/dashboard/video/_lib/video-actions'
+import { ServerError } from '@/components/molecule/server-error'
+import { Separator } from '@/components/ui/separator'
 
 export default async function TopicBlock({ videoId }: { videoId: string }) {
   const handleSubmit = async (data: any) => {

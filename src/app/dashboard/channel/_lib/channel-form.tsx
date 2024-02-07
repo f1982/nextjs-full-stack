@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/app/_modules/components/ui/button'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -9,9 +9,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage
-} from '@/app/_modules/components/ui/form'
-import { Input } from '@/app/_modules/components/ui/input'
-import { Textarea } from '@/app/_modules/components/ui/textarea'
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'

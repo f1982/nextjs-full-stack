@@ -1,5 +1,5 @@
-import About from '@/app/_modules/components/page/about'
-import Team from '@/app/_modules/components/page/team'
+import About from '@/components/page/about'
+import Team from '@/components/page/team'
 import Image from 'next/image'
 import React from 'react'
 

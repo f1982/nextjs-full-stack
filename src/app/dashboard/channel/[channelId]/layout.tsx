@@ -1,6 +1,6 @@
 import { retrieveChannel } from '../_lib/channel-actions'
-import LinkButton from '@/app/_modules/components/molecule/link-button'
-import { Separator } from '@/app/_modules/components/ui/separator'
+import LinkButton from '@/components/molecule/link-button'
+import { Separator } from '@/components/ui/separator'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

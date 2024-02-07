@@ -1,7 +1,7 @@
 'use client'
 
-import { toastServerError } from '@/app/_modules/components/molecule/server-error'
-import { Button } from '@/app/_modules/components/ui/button'
+import { toastServerError } from '@/components/molecule/server-error'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -10,9 +10,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage
-} from '@/app/_modules/components/ui/form'
-import { Textarea } from '@/app/_modules/components/ui/textarea'
-import { toast } from '@/app/_modules/components/ui/use-toast'
+} from '@/components/ui/form'
+import { Textarea } from '@/components/ui/textarea'
+import { toast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'

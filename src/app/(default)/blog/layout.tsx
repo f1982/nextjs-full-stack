@@ -1,4 +1,4 @@
-import Header from '../../_modules/components/page/Header'
+import Header from '../../../components/page/header'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
