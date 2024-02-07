@@ -1,6 +1,6 @@
 import GenEditForm from './gen-edit-form'
-import { cache } from '@/app/_lib/file-cache'
-import { generateScriptHook } from '@/app/_lib/model/script-hook'
+import { cache } from '@/lib/file-cache'
+import { generateScriptHook } from '@/lib/model/script-hook'
 import { Video } from '@prisma/client'
 
 export default async function ScriptHookBlock({

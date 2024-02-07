@@ -1,5 +1,5 @@
-import prisma from '../../_lib/prisma'
-import { getDateTime } from '../../_lib/utils'
+import prisma from '../../../lib/prisma'
+import { getDateTime } from '../../../lib/utils'
 import Post from '../../_modules/components/page/Post'
 
 const getData = async () => {

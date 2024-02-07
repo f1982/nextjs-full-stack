@@ -1,5 +1,5 @@
 // import { cn } from '../lib/utils'
-import { NextAuthProvider } from './_lib/next-auth-provider'
+import { NextAuthProvider } from '../lib/next-auth-provider'
 import { Toaster } from './_modules/components/ui/toaster'
 import './globals.css'
 import clsx from 'clsx'

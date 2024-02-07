@@ -1,7 +1,7 @@
 'use server'
 
-import { auth } from '@/app/_lib/auth-opt'
-import prisma from '@/app/_lib/prisma'
+import { auth } from '@/lib/auth-opt'
+import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
 

@@ -1,6 +1,6 @@
 import GenEditForm from './gen-edit-form'
-import { generateVideoTags } from '@/app/_lib/model/video-tags'
 import { updateVideo } from '@/app/dashboard/video/_lib/video-actions'
+import { generateVideoTags } from '@/lib/model/video-tags'
 import { Video } from '@prisma/client'
 
 export default async function TagsBlock({ videoData }: { videoData: Video }) {

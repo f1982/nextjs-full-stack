@@ -2,7 +2,7 @@
 
 import { Button } from '../ui/button'
 import Spinner from './spinner'
-import { APIResponse } from '@/app/_lib/types/types'
+import { APIResponse } from '@/lib/types/types'
 import React, { useState } from 'react'
 
 export default function SaveButton({

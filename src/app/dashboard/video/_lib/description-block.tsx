@@ -1,6 +1,6 @@
 import GenEditForm from './gen-edit-form'
-import { generateVideoDescription } from '@/app/_lib/model/video-description'
 import { updateVideo } from '@/app/dashboard/video/_lib/video-actions'
+import { generateVideoDescription } from '@/lib/model/video-description'
 import { Video } from '@prisma/client'
 
 export default async function DescriptionBlock({

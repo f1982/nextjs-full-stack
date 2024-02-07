@@ -1,8 +1,8 @@
 'use server'
 
-import { auth } from '@/app/_lib/auth-opt'
-import prisma from '@/app/_lib/prisma'
-import { APIResponse } from '@/app/_lib/types/types'
+import { auth } from '@/lib/auth-opt'
+import prisma from '@/lib/prisma'
+import { APIResponse } from '@/lib/types/types'
 import { Channel } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 

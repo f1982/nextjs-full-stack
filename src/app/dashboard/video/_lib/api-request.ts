@@ -1,4 +1,4 @@
-import { sleep } from '@/app/_lib/utils'
+import { sleep } from '@/lib/utils'
 
 export async function getTopics() {
   sleep(3000)

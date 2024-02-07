@@ -1,5 +1,5 @@
-import { auth } from '../../../_lib/auth-opt'
-import prisma from '../../../_lib/prisma'
+import { auth } from '../../../../lib/auth-opt'
+import prisma from '../../../../lib/prisma'
 import Post from '../../../_modules/components/page/Post'
 import React from 'react'
 

@@ -1,5 +1,5 @@
-import { auth } from '@/app/_lib/auth-opt'
-import prisma from '@/app/_lib/prisma'
+import { auth } from '@/lib/auth-opt'
+import prisma from '@/lib/prisma'
 
 export const getDraftData = async () => {
   const session = await auth()

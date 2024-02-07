@@ -1,5 +1,5 @@
-import { auth } from '../../_lib/auth-opt'
-import prisma from '../../_lib/prisma'
+import { auth } from '../../../lib/auth-opt'
+import prisma from '../../../lib/prisma'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function PUT(req: NextRequest) {

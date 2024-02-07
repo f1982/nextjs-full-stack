@@ -1,6 +1,6 @@
 import SelectEditForm from './select-edit-form'
-import { generateVideoTitles } from '@/app/_lib/model/video-titles'
 import { updateVideo } from '@/app/dashboard/video/_lib/video-actions'
+import { generateVideoTitles } from '@/lib/model/video-titles'
 import { Video } from '@prisma/client'
 
 export default async function TitleBlock({ videoData }: { videoData: Video }) {

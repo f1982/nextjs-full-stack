@@ -1,5 +1,5 @@
-import { auth } from '../../../../_lib/auth-opt'
-import prisma from '../../../../_lib/prisma'
+import { auth } from '../../../../../lib/auth-opt'
+import prisma from '../../../../../lib/prisma'
 import { cn } from '../lib/utils'
 import DraftPublishButton from './_lib/publish-button'
 import ReactMarkdown from 'react-markdown'

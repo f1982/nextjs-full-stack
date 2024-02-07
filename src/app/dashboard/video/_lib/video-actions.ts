@@ -1,7 +1,7 @@
-import { auth } from '@/app/_lib/auth-opt'
-import { mockServerResponse } from '@/app/_lib/debug-only'
-import prisma from '@/app/_lib/prisma'
-import { APIResponse } from '@/app/_lib/types/types'
+import { auth } from '@/lib/auth-opt'
+import { mockServerResponse } from '@/lib/debug-only'
+import prisma from '@/lib/prisma'
+import { APIResponse } from '@/lib/types/types'
 import { Video } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 
