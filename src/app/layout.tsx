@@ -1,7 +1,8 @@
+// import { cn } from '../lib/utils'
 import { NextAuthProvider } from './_lib/next-auth-provider'
 import { Toaster } from './_modules/components/ui/toaster'
-import { cn } from '@/app/_modules/components/lib/utils'
-import '@/app/globals.css'
+import './globals.css'
+import clsx from 'clsx'
 import { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 
@@ -24,7 +25,7 @@ export default async function RootLayout({
     <html lang="en">
       <NextAuthProvider>
         <body
-          className={cn(
+          className={clsx(
             'min-h-screen bg-background flex flex-col font-sans antialiased',
             fontSans.variable
           )}>

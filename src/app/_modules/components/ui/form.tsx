@@ -1,5 +1,5 @@
-import { cn } from '@/app/_modules/components/lib/utils'
-import { Label } from '@/app/_modules/components/ui/label'
+import { cn } from '../lib/utils'
+import { Label } from './label'
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
