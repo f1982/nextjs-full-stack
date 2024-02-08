@@ -1,6 +1,6 @@
+import clsx from 'clsx'
 import { auth } from '../../../../../lib/auth-opt'
 import prisma from '../../../../../lib/prisma'
-import { cn } from '../lib/utils'
 import DraftPublishButton from './_lib/publish-button'
 import ReactMarkdown from 'react-markdown'
 
@@ -32,7 +32,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div
-      className={cn(
+      className={clsx(
         'p-4 rounded-lg flex flex-col gap-3 border-2 border-gray-300  hover:border-gray-400 cursor-pointer'
       )}>
       <h2 className="text-xl">{title}</h2>
