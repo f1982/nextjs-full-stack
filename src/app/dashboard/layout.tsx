@@ -31,7 +31,7 @@ export default async function DashboardLayout({
         <main
           className="my-1 pt-2 pb-2 px-10 flex-1 dark:bg-black rounded-l-lg
 		transition duration-500 ease-in-out overflow-y-auto">
-          <UserInfo />
+          <UserInfo showEmail={true} />
           <div>{children}</div>
         </main>
       </div>
