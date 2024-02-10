@@ -22,7 +22,7 @@ const PostItem: React.FC<{ post: PostProps }> = ({ post }) => {
   const router = useRouter()
   return (
     <div
-      className="border-2 border-gray-300 p-4 rounded-lg hover:border-gray-400 cursor-pointer"
+      className="cursor-pointer rounded-lg border-2 border-gray-300 p-4 hover:border-gray-400"
       onClick={() => router.push(`/blog/post/${post.id}`)}>
       <h2>{post.title}</h2>
       <small>By {authorName}</small>

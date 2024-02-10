@@ -90,7 +90,7 @@ export default function VideoTopicForm({
             </FormItem>
           )}
         />
-        <div className="flex flex-row gap-6 items-center">
+        <div className="flex flex-row items-center gap-6">
           <Button disabled={form.formState.isSubmitting} type="submit">
             Submit
           </Button>

@@ -20,7 +20,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
   return (
     <>
-      <div className="prose prose-md mb-12">
+      <div className="prose-md prose mb-12">
         <h2>Video Page</h2>
         <p>Topic: {videoData?.topic}</p>
       </div>
@@ -46,7 +46,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
         <TabsContent value="metadata">
           <div className="flex flex-col gap-6">
-            <div className="prose prose-md">
+            <div className="prose-md prose">
               <h2>Create new video</h2>
               <p>Start a new video by adding a topic.</p>
               <Separator className="mb-6" />

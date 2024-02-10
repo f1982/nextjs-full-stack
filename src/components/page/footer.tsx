@@ -5,7 +5,7 @@ import React from 'react'
 export default function Footer() {
   return (
     <footer
-      className="bg-black text-white bg-cover bg-center "
+      className="bg-black bg-cover bg-center text-white "
       style={{ backgroundImage: '' }}>
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <div className="flex flex-col items-center">

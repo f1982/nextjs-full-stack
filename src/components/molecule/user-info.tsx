@@ -20,7 +20,7 @@ export default function UserInfo({
     )
 
   return (
-    <div className="flex flex-row justify-between items-center gap-2">
+    <div className="flex flex-row items-center justify-between gap-2">
       <div>
         <span className="font-semibold">hello,</span>
         <span>{session?.user?.name}</span>

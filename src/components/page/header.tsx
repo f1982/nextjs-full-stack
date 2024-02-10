@@ -78,7 +78,7 @@ export default function Header() {
   }
 
   return (
-    <nav className="flex flex-row justify-between items-center border-b-2 h-9 border-gray-300">
+    <nav className="flex h-9 flex-row items-center justify-between border-b-2 border-gray-300">
       {left}
       {right}
     </nav>

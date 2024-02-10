@@ -37,7 +37,7 @@ export default async function Page() {
 
   return (
     <div className="container">
-      <section className="prose prose-xl text-center mb-12">
+      <section className="prose prose-xl mb-12 text-center">
         <h3>Your Channel List</h3>
         <p>Lorem ipsum dolor sit amet elit ut aliquam</p>
         <Link href="/dashboard/channel-new">

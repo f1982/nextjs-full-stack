@@ -24,14 +24,14 @@ export default function ChannelItem({
           height={100}
           src="https://i.pravatar.cc/300"
           alt=""
-          className="max-[479px]:max-w-[208px] mb-4 inline-block h-56 w-full object-cover lg:h-42"
+          className="lg:h-42 mb-4 inline-block h-56 w-full object-cover max-[479px]:max-w-[208px]"
         />
         <div className="prose prose-xl">
           <h5>{channel.channel_name}</h5>
           <p className="text-sm text-[#636262]">{channel.description}</p>
         </div>
       </Link>
-      <div className="w-full flex flex-row justify-between gap-3 text-sm">
+      <div className="flex w-full flex-row justify-between gap-3 text-sm">
         <Link href={`/dashboard/channel/${channel.id}/settings`}>Edit</Link>
         <DelButton actionHandler={onDelete} itemId={channel.id} />
       </div>

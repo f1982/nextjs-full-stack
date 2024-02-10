@@ -17,21 +17,21 @@ export default async function DashboardLayout({
 }) {
   return (
     <>
-      <div className="h-screen w-full flex overflow-hidden select-none">
-        <nav className="w-24 flex flex-col items-center bg-white dark:bg-gray-800 py-4">
+      <div className="flex h-screen w-full select-none overflow-hidden">
+        <nav className="flex w-24 flex-col items-center bg-white py-4  dark:bg-gray-800">
           <Logo />
           <Menubar />
           <div
-            className="mt-auto flex items-center p-2 text-blue-700 bg-purple-200
-			dark:text-blue-500 rounded-full">
+            className="mt-auto flex items-center rounded-full bg-purple-200
+			p-2 text-blue-700 dark:text-blue-500">
             <a href="#">
               <Newspaper />
             </a>
           </div>
         </nav>
         <main
-          className="my-1 pt-2 pb-2 px-10 flex-1 dark:bg-black rounded-l-lg
-		transition duration-500 ease-in-out overflow-y-auto">
+          className="my-1 flex-1 overflow-y-auto rounded-l-lg px-10 pb-2 pt-2
+		transition duration-500 ease-in-out dark:bg-black">
           <UserInfo showEmail={true} />
           <div>{children}</div>
         </main>

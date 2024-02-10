@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div
       className={clsx(
-        'p-4 rounded-lg flex flex-col gap-3 border-2 border-gray-300  hover:border-gray-400 cursor-pointer',
+        'flex cursor-pointer flex-col gap-3 rounded-lg border-2 border-gray-300  p-4 hover:border-gray-400',
       )}>
       <h2 className="text-xl">{title}</h2>
       <p>By {post?.author?.name || 'Unknown author'}</p>

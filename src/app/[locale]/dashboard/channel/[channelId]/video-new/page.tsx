@@ -21,7 +21,7 @@ export default async function Page({
 
   return (
     <>
-      <div className="prose prose-md">
+      <div className="prose-md prose">
         <h2>Create new video</h2>
         <p>Start a new video by adding a topic.</p>
       </div>

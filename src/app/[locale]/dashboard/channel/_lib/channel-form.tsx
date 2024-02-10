@@ -140,7 +140,7 @@ export default function EditChannelForm({
             </FormItem>
           )}
         />
-        <div className="flex flex-row gap-6 items-center">
+        <div className="flex flex-row items-center gap-6">
           <Button disabled={isSubmitting} type="submit">
             Submit
           </Button>
