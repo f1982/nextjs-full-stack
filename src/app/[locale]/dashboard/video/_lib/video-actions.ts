@@ -74,6 +74,7 @@ export const updateVideo = async (
   // test mock error message
   // console.log('update video data:', data)
   // return mockServerResponse('success')
+  // console.log('data', data)
 
   const session = await auth()
   if (!session) {
@@ -95,7 +96,7 @@ export const updateVideo = async (
       data: updatedData
     }
   } catch (e) {
-    return { status: 'failure', message: 'Operation failed' }
+    return { status: 'failure', message: 'Operation failed,' + e?.message }
   }
 }
 

@@ -1,7 +1,7 @@
-import CTA from '../../../components/page/cta'
-import FAQ from '../../../components/page/faq'
-import Features from '../../../components/page/features'
-import Hero from '../../../components/page/hero'
+import CTA from '@/components/page/cta'
+import FAQ from '@/components/page/faq'
+import Features from '@/components/page/features'
+import Hero from '@/components/page/hero'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -11,11 +11,12 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <Hero />
-      <Features />
+      <div className="container">
+        <Hero />
+        <Features />
+      </div>
       <CTA />
       <FAQ />
-      <p>{process.env.OPENAI_API_KEY}</p>
     </>
   )
 }

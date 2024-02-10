@@ -1,10 +1,8 @@
-// import { cn } from '../lib/utils'
-import { Toaster } from '../../components/ui/toaster'
-import { NextAuthProvider } from '../../lib/next-auth-provider'
-import '../../globals.css'
 import clsx from 'clsx'
 import { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
+import '../../globals.css'
+import { NextAuthProvider } from '../../lib/next-auth-provider'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -17,12 +15,14 @@ const fontSans = FontSans({
 })
 
 export default async function RootLayout({
-  children
+  children,
+  params: { locale }
 }: {
   children: React.ReactNode
+  params: { locale: string }
 }) {
   return (
-    <html lang="en">
+    <html lang={locale} className="dark" suppressHydrationWarning>
       <NextAuthProvider>
         <body
           className={clsx(
@@ -30,7 +30,6 @@ export default async function RootLayout({
             fontSans.variable
           )}>
           {children}
-          <Toaster />
         </body>
       </NextAuthProvider>
     </html>

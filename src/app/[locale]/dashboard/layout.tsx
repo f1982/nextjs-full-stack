@@ -1,8 +1,9 @@
-import UserInfo from '../../../components/molecule/user-info'
-import { Logo } from './_lib/logo'
-import { Menubar } from './_lib/menubar'
+import UserInfo from '@/components/molecule/user-info'
+import { Toaster } from '@/components/ui/toaster'
 import { Newspaper } from 'lucide-react'
 import { Metadata } from 'next'
+import { Logo } from './_lib/logo'
+import { Menubar } from './_lib/menubar'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -34,6 +35,7 @@ export default async function DashboardLayout({
           <UserInfo showEmail={true} />
           <div>{children}</div>
         </main>
+        <Toaster />
       </div>
     </>
   )
