@@ -1,3 +1,4 @@
+import LocaleSwitcher from '@/i18n/locale-switcher'
 import Image from 'next/image'
 import React from 'react'
 
@@ -94,6 +95,7 @@ export default function Footer() {
           <p className="max-[479px]:text-sm">
             © Copyright 2021. All rights reserved.
           </p>
+          <LocaleSwitcher />
         </div>
       </div>
     </footer>

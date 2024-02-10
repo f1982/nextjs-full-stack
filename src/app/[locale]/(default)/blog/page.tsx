@@ -1,4 +1,4 @@
-import Post from '../../../../components/page/Post'
+import Post from '../../../../components/page/post-item'
 import prisma from '../../../../lib/prisma'
 import { getDateTime } from '../../../../lib/utils'
 

@@ -1,7 +1,9 @@
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import React from 'react'
 
-export default function Hero() {
+export default async function Hero() {
+  const t = await getTranslations('homepage')
   return (
     <section>
       {/* <!-- Container --> */}
@@ -23,7 +25,7 @@ export default function Hero() {
             <a
               href="#"
               className="inline-block rounded-xl bg-black px-8 py-4 text-center font-semibold text-white [box-shadow:rgb(19,_83,_254)_6px_6px]">
-              Get Started
+              {t('hi')}
             </a>
           </div>
           {/* <!-- Image Div --> */}

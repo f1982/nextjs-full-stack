@@ -1,9 +1,12 @@
 {
   "homepage": {
-    "hi": "你好"
+    "hi": "Hello"
   },
-  "LocaleSwitcher": {
-    "label": "预言",
-    "locale": "{locale, select, cn {🇨🇳 中文} en {🇺🇸 English} other {Unbekannt}}"
+  "dashboard": {
+    "dashboard": "Dashboard"
+  },
+  "localeSwitcher": {
+    "label": "Language",
+    "locale": "{locale, select, cn {🇨🇳 中文} en {🇺🇸 English} other {*}}"
   }
 }

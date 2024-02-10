@@ -17,7 +17,7 @@ export type PostProps = {
   updated_at?: Date | null
 }
 
-const Post: React.FC<{ post: PostProps }> = ({ post }) => {
+const PostItem: React.FC<{ post: PostProps }> = ({ post }) => {
   const authorName = post.author ? post.author.name : 'Unknown author'
   const router = useRouter()
   return (
@@ -33,4 +33,4 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   )
 }
 
-export default Post
+export default PostItem

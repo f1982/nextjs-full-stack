@@ -1,4 +1,4 @@
-import Post from '../../../../../components/page/Post'
+import Post from '../../../../../components/page/post-item'
 import { auth } from '../../../../../lib/auth-opt'
 import prisma from '../../../../../lib/prisma'
 import React from 'react'
