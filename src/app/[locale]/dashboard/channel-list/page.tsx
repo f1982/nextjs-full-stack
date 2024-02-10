@@ -5,7 +5,7 @@ import {
 import ChannelItem from '../channel/_lib/channel-item'
 import { ServerError } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
-import { auth } from '@/lib/auth-opt'
+import { auth } from '@/config/auth-settings'
 import prisma from '@/lib/prisma'
 import Link from 'next/link'
 

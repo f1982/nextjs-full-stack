@@ -1,6 +1,6 @@
 'use server'
 
-import { auth } from '@/lib/auth-opt'
+import { auth } from '@/config/auth-settings'
 import prisma from '@/lib/prisma'
 import { APIResponse } from '@/lib/types/types'
 import { Channel } from '@prisma/client'

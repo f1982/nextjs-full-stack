@@ -1,4 +1,4 @@
-import { auth } from '@/lib/auth-opt'
+import { auth } from '@/config/auth-settings'
 import { generateVideoTitles } from '@/lib/model/video-titles'
 import { sleep } from '@/lib/utils'
 import { NextRequest, NextResponse } from 'next/server'

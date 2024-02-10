@@ -1,7 +1,7 @@
 'use client'
 
-import { Link } from '../../navigation'
-import { AppPathnames } from '../../i18n/i18n-config'
+import { Link } from '@/i18n/navigation'
+import { AppPathnames } from '@/i18n/i18n-config'
 import clsx from 'clsx'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import { ComponentProps } from 'react'

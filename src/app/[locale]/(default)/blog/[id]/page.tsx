@@ -1,4 +1,4 @@
-import { auth } from '../../../../../lib/auth-opt'
+import { auth } from '../../../../../config/auth-settings'
 import prisma from '../../../../../lib/prisma'
 import DraftPublishButton from './_lib/publish-button'
 import ReactMarkdown from 'react-markdown'

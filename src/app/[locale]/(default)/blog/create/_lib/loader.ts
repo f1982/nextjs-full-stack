@@ -1,4 +1,4 @@
-import { auth } from '@/lib/auth-opt'
+import { auth } from '@/config/auth-settings'
 import prisma from '@/lib/prisma'
 
 export const getDraftData = async () => {

@@ -1,5 +1,5 @@
 import Post from '../../../../../components/page/post-item'
-import { auth } from '../../../../../lib/auth-opt'
+import { auth } from '../../../../../config/auth-settings'
 import prisma from '../../../../../lib/prisma'
 import React from 'react'
 

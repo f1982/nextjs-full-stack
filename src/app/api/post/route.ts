@@ -1,6 +1,6 @@
 // "use server";
-import { auth } from '../../../lib/auth-opt'
-import prisma from '../../../lib/prisma'
+import { auth } from '@/config/auth-settings'
+import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { NextRequest, NextResponse } from 'next/server'
 

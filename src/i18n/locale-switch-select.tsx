@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname, useRouter } from '../navigation'
+import { usePathname, useRouter } from './navigation'
 import clsx from 'clsx'
 import { ChangeEvent, ReactNode, useTransition } from 'react'
 

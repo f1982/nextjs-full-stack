@@ -36,8 +36,8 @@ export default function middleware(req: NextRequest) {
       .join('|')})/?$`,
     'i'
   )
-  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
 
+  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
   if (isPublicPage) {
     return intlMiddleware(req)
   } else {
