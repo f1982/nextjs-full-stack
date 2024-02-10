@@ -1,5 +1,5 @@
-import '../../globals.css'
-import { NextAuthProvider } from '../../lib/next-auth-provider'
+import '@/globals.css'
+import { NextAuthProvider } from '@/lib/next-auth-provider'
 import clsx from 'clsx'
 import { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
@@ -22,7 +22,8 @@ export default async function RootLayout({
   params: { locale: string }
 }) {
   return (
-    <html lang={locale} className="dark" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
+      {/* className="dark" */}
       <NextAuthProvider>
         <body
           className={clsx(
