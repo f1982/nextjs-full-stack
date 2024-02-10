@@ -16,14 +16,14 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next"
-      }
+        "name": "next",
+      },
     ],
     "types": ["vitest/globals"],
     "strictNullChecks": true,
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+    },
   },
   // "baseUrl": "./src", // setting a value for baseUrl is required
   // "moduleResolution": "node", // was not set before, but is the default
@@ -33,6 +33,6 @@
     "next-env.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
-    ".next/types/**/*.ts"
-  ]
+    ".next/types/**/*.ts",
+  ],
 }

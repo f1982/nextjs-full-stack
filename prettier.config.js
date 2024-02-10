@@ -2,14 +2,14 @@
 module.exports = {
   singleQuote: true,
   semi: false,
-  trailingComma: 'none',
+  trailingComma: 'all',
   bracketSameLine: true,
   plugins: [
     'prettier-plugin-tailwindcss',
-    '@trivago/prettier-plugin-sort-imports'
+    '@trivago/prettier-plugin-sort-imports',
   ],
   //prettier-plugin-tailwindcss
   tailwindFunctions: ['cn'],
   importOrderSeparation: true,
-  importOrderSortSpecifiers: true
+  importOrderSortSpecifiers: true,
 }

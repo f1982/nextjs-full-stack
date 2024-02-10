@@ -8,7 +8,7 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     testTimeout: 5 * 60 * 1000, // 5 mins
-    include: ['app/**/*.test.ts']
+    include: ['app/**/*.test.ts'],
     // setupFiles: ['dotenv/config']
-  }
+  },
 })

@@ -5,7 +5,7 @@ import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'
 
 export default async function Page({
-  params
+  params,
 }: {
   params: { channelId: string }
 }) {
@@ -14,7 +14,7 @@ export default async function Page({
 
     // Update existing video
     const updatedData = Object.assign(data, {
-      channel_id: params.channelId
+      channel_id: params.channelId,
     })
     return await createVideoWithTopic(updatedData)
   }

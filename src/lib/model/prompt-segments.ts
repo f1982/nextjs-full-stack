@@ -35,5 +35,5 @@ It is required to write concise, practical and credible content.
     return `
 There is no need to explain the core concepts, phenomena, and characters of "${topic}" because these are already included elsewhere in the article.
     `
-  }
+  },
 }

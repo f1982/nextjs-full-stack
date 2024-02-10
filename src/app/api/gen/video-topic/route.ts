@@ -9,7 +9,7 @@ export async function GET(request: NextRequest): Promise<any> {
     return NextResponse.json({
       message: 'You must be logged in.',
       status: 'failure',
-      data: null
+      data: null,
     })
   }
 

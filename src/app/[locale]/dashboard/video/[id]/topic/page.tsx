@@ -2,7 +2,7 @@ import TopicSelect from '@/app/[locale]/dashboard/video/_lib/topic-select'
 import {
   createVideoWithTopic,
   retrieveVideo,
-  updateVideo
+  updateVideo,
 } from '@/app/[locale]/dashboard/video/_lib/video-actions'
 import { ServerError } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'
 
 export default async function TopicPage({
-  params
+  params,
 }: {
   params: { channelId: string; videoId: string }
 }) {
@@ -20,7 +20,7 @@ export default async function TopicPage({
     // Update existing video
     if (!params.videoId) {
       const updatedData = Object.assign(data, {
-        channel_id: params.channelId
+        channel_id: params.channelId,
       })
       return await createVideoWithTopic(updatedData)
     }

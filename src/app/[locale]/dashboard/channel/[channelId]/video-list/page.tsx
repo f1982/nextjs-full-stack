@@ -6,7 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 
 export default async function Page({
-  params
+  params,
 }: {
   params: { channelId: string }
 }) {

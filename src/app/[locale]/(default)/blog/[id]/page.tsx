@@ -6,13 +6,13 @@ import ReactMarkdown from 'react-markdown'
 const getData = async (params: any): Promise<{ post: any }> => {
   const post = await prisma.post.findUnique({
     where: {
-      id: String(params?.id)
+      id: String(params?.id),
     },
     include: {
       author: {
-        select: { name: true, email: true }
-      }
-    }
+        select: { name: true, email: true },
+      },
+    },
   })
   return { post }
 }

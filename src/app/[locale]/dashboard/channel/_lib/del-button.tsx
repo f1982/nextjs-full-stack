@@ -10,13 +10,13 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger
+  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { useState } from 'react'
 
 export default function DelButton({
   actionHandler,
-  itemId
+  itemId,
 }: {
   actionHandler: (id: string) => void
   itemId: string

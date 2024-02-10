@@ -4,7 +4,7 @@ import { generateExtend } from '@/lib/model/script-extend'
 import { Video } from '@prisma/client'
 
 export default async function ScriptMainBlock({
-  videoData
+  videoData,
 }: {
   videoData: Video
 }) {

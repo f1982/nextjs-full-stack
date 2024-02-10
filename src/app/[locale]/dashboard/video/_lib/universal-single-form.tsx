@@ -3,7 +3,7 @@
 import { CopyButton } from '@/components/molecule/copy-button'
 import {
   toastServerError,
-  toastServerSuccess
+  toastServerSuccess,
 } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
 import {
@@ -13,7 +13,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -24,8 +24,8 @@ import { z } from 'zod'
 const FormSchema = z.object({
   id: z.string().optional(),
   value: z.string().min(2, {
-    message: 'topic must be at least 2 characters.'
-  })
+    message: 'topic must be at least 2 characters.',
+  }),
 })
 
 export default function UniversalSingleForm({
@@ -33,14 +33,14 @@ export default function UniversalSingleForm({
   handleSubmit,
   rows = 5,
   defaultData = null,
-  extraButtons = null
+  extraButtons = null,
 }: any) {
   const router = useRouter()
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     values: { value: defaultData },
-    mode: 'onTouched'
+    mode: 'onTouched',
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {

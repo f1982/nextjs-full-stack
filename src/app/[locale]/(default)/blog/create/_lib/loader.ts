@@ -10,13 +10,13 @@ export const getDraftData = async () => {
   const drafts = await prisma.post.findMany({
     where: {
       author: { email: session?.user?.email },
-      published: false
+      published: false,
     },
     include: {
       author: {
-        select: { name: true, email: true }
-      }
-    }
+        select: { name: true, email: true },
+      },
+    },
   })
   return drafts
 }

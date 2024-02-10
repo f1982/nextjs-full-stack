@@ -3,13 +3,13 @@ import { promptRequirements } from './prompt-segments'
 import { z } from 'zod'
 
 export const validator = z.object({
-  titles: z.array(z.string().min(3).max(200)).min(2)
+  titles: z.array(z.string().min(3).max(200)).min(2),
 })
 
 export function getPrompt(
   topic: string,
   count: number = 10,
-  lang: LangOptions = 'zh'
+  lang: LangOptions = 'zh',
 ): string {
   const zh = `
 为一个YouTube 视频生成 ${count} 个猫腻的标题。
@@ -50,7 +50,7 @@ ${promptRequirements.outputFormat(lang)}
 export async function generateVideoTitles(
   topic: string,
   count: number = 10,
-  lang: LangOptions = 'zh'
+  lang: LangOptions = 'zh',
 ) {
   const prompt = getPrompt(topic, count, lang)
   // console.log('prompt', prompt)

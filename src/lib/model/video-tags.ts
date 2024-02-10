@@ -6,14 +6,14 @@ const keywordsValidator = z.array(z.string().min(2)).min(3)
 export const validator = z.object({
   data: z.object({
     twTags: keywordsValidator,
-    enTags: keywordsValidator
-  })
+    enTags: keywordsValidator,
+  }),
 })
 
 function generatePrompt(
   topic: string,
   count: number,
-  lang: LangOptions
+  lang: LangOptions,
 ): string {
   const en = `
 Please generate ${count} Traditional Chinese SEO keywords and ${count} SEO English keywords for the video.
@@ -44,7 +44,7 @@ ${promptRequirements.outputFormat(lang)}
 export async function generateVideoTags(
   topic: string,
   count: number = 10,
-  lang: LangOptions = 'zh'
+  lang: LangOptions = 'zh',
 ) {
   const prompt = generatePrompt(topic, count, lang)
   const result = await askGptWithCache({ prompt, validator })

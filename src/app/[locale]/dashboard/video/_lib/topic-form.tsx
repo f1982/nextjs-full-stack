@@ -9,7 +9,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from '@/components/ui/use-toast'
@@ -21,26 +21,26 @@ import { z } from 'zod'
 const FormSchema = z.object({
   id: z.string().optional(),
   topic: z.string().min(2, {
-    message: 'topic must be at least 2 characters.'
-  })
+    message: 'topic must be at least 2 characters.',
+  }),
 })
 
 const initialState = {
   id: '',
-  topic: ''
+  topic: '',
 }
 
 export default function VideoTopicForm({
   handleSubmit,
   formData = null,
   redirectUrl,
-  cancelUrl
+  cancelUrl,
 }: any) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     // defaultValues: formData || initialState,
     values: formData || initialState,
-    mode: 'onTouched'
+    mode: 'onTouched',
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -56,7 +56,7 @@ export default function VideoTopicForm({
 
     toast({
       description: 'Saved successfully.',
-      variant: 'default'
+      variant: 'default',
     })
   }
 

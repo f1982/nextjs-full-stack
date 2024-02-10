@@ -7,7 +7,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from '../ui/form'
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -15,20 +15,20 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const FormSchema = z.object({
-  value: z.string()
+  value: z.string(),
 })
 
 export default function ListSelector({
   label,
   options,
-  callback
+  callback,
 }: {
   label?: string
   options: string[]
   callback?: (opt: any) => void
 }) {
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema)
+    resolver: zodResolver(FormSchema),
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {

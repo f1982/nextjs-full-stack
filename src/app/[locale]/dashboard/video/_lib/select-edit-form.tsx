@@ -11,7 +11,7 @@ export default function SelectEditForm({
   value,
   fieldName,
   optionsLoader,
-  onSubmit
+  onSubmit,
 }: {
   value?: string
   fieldName: string

@@ -12,6 +12,6 @@ export async function getTopics() {
     'Forrest Gump (Forrest Gump)',
     'Marty McFly (Back to the Future)',
     'Jack Sparrow (Pirates of the Caribbean)',
-    'Neo (The Matrix)'
+    'Neo (The Matrix)',
   ]
 }

@@ -6,7 +6,7 @@ import md5 from 'md5'
 import OpenAI from 'openai'
 import {
   ChatCompletionCreateParamsNonStreaming,
-  ChatCompletionMessageParam
+  ChatCompletionMessageParam,
 } from 'openai/resources'
 import { z } from 'zod'
 
@@ -18,7 +18,7 @@ const gptModel = process.env.OPENAI_MODEL || process.env.VITE_OPENAI_MODEL
 const openai = new OpenAI({
   apiKey: gptApiKey,
   timeout: 10 * 60 * 1000,
-  dangerouslyAllowBrowser: true
+  dangerouslyAllowBrowser: true,
 })
 
 export async function askGpt(prompt: string) {
@@ -31,9 +31,9 @@ export async function askGpt(prompt: string) {
       {
         messages,
         model: gptModel!,
-        temperature: 0.9
+        temperature: 0.9,
       },
-      { maxRetries: 3 }
+      { maxRetries: 3 },
     )
     .catch((error) => {
       if (error instanceof OpenAI.APIError) {
@@ -53,7 +53,7 @@ export async function askGpt(prompt: string) {
 export async function getGptJson({
   prompt,
   system,
-  jsonFormat = true
+  jsonFormat = true,
 }: {
   prompt: string
   system: string
@@ -71,7 +71,7 @@ export async function getGptJson({
     messages,
     model: gptModel!,
     temperature: 0.8, //lower, more consistent
-    max_tokens: 4096
+    max_tokens: 4096,
   }
   if (jsonFormat) {
     Object.assign(parameters, { response_format: { type: 'json_object' } })
@@ -95,7 +95,7 @@ export async function getGptJson({
     if (jsonFormat) {
       console.log(
         'chatCompletion?.choices[0]?.message?',
-        chatCompletion?.choices[0]?.message
+        chatCompletion?.choices[0]?.message,
       )
       return JSON.parse(chatCompletion?.choices[0]?.message?.content!)
     } else {
@@ -113,7 +113,7 @@ export async function askGptWithValidator({
   prompt,
   validator,
   system,
-  jsonFormat = true
+  jsonFormat = true,
 }: {
   prompt: string
   validator: z.ZodObject<any>
@@ -138,7 +138,7 @@ export async function askGptWithValidator({
       await askGptWithValidator({ prompt, validator, system, jsonFormat })
     } else {
       throw new Error(
-        'can not get validated data from gpt, you may need to update the prompt'
+        'can not get validated data from gpt, you may need to update the prompt',
       )
     }
   }
@@ -149,7 +149,7 @@ export async function askGptWithCache({
   validator,
   ttl = 60 * 60,
   system = '',
-  jsonFormat = true
+  jsonFormat = true,
 }: {
   prompt: string
   validator?: z.ZodObject<any> | null
@@ -183,7 +183,7 @@ export async function youtubeScriptWriter({
   validator = null,
   ttl = 60 * 60,
   lang = 'zh',
-  jsonFormat = true
+  jsonFormat = true,
 }: {
   prompt: string
   validator?: z.ZodObject<any> | null

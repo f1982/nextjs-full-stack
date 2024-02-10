@@ -6,13 +6,13 @@ import { Video } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 
 export const retrieveVideos = async (
-  channelId: string
+  channelId: string,
 ): Promise<APIResponse<Video[]>> => {
   const session = await auth()
   if (!session) {
     return {
       status: 'failure',
-      message: 'You need to log in first'
+      message: 'You need to log in first',
     }
   }
 
@@ -20,16 +20,16 @@ export const retrieveVideos = async (
     const list = await prisma.video.findMany({
       where: {
         channel_id: channelId,
-        user: { email: session?.user?.email }
+        user: { email: session?.user?.email },
       },
       include: {
         user: {
-          select: { name: true, email: true }
-        }
+          select: { name: true, email: true },
+        },
       },
       orderBy: {
-        created_at: 'desc'
-      }
+        created_at: 'desc',
+      },
     })
     return { status: 'success', message: 'get  successfully', data: list }
   } catch (e) {
@@ -38,7 +38,7 @@ export const retrieveVideos = async (
 }
 
 export const createVideoWithTopic = async (
-  data: Partial<Video>
+  data: Partial<Video>,
 ): Promise<APIResponse<null>> => {
   const session = await auth()
   if (!session) {
@@ -55,13 +55,13 @@ export const createVideoWithTopic = async (
       data: {
         topic: data.topic!,
         channel: { connect: { id: data.channel_id } },
-        user: { connect: { email: session?.user?.email! } }
-      }
+        user: { connect: { email: session?.user?.email! } },
+      },
     })
     revalidatePath('/')
     return {
       status: 'success',
-      message: `Added  successfully`
+      message: `Added  successfully`,
     }
   } catch (e) {
     return { status: 'failure', message: 'failure to create ' }
@@ -69,7 +69,7 @@ export const createVideoWithTopic = async (
 }
 
 export const updateVideo = async (
-  data: Partial<Video>
+  data: Partial<Video>,
 ): Promise<APIResponse<any>> => {
   // test mock error message
   // console.log('update video data:', data)
@@ -87,13 +87,13 @@ export const updateVideo = async (
   try {
     const updatedData = await prisma.video.update({
       where: { id: data.id },
-      data: rest
+      data: rest,
     })
     revalidatePath('/')
     return {
       status: 'success',
       message: `Operation successfully`,
-      data: updatedData
+      data: updatedData,
     }
   } catch (e) {
     return { status: 'failure', message: 'Operation failed,' + e?.message }
@@ -109,13 +109,13 @@ export async function retrieveVideo(id: string): Promise<APIResponse<Video>> {
   try {
     const data = await prisma.video.findFirst({
       where: {
-        id
-      }
+        id,
+      },
     })
     return {
       status: 'success',
       message: `get  successfully`,
-      data
+      data,
     }
   } catch (e) {
     return { status: 'failure', message: 'failure to create ' }

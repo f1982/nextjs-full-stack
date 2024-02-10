@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function UserInfo({
   dashboardLabel = 'dashboard',
-  showEmail = true
+  showEmail = true,
 }: {
   showEmail?: boolean
   dashboardLabel?: string

@@ -1,7 +1,6 @@
+import { siteSettings, siteUrl } from './site-settings'
 import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types'
 import { Twitter } from 'next/dist/lib/metadata/types/twitter-types'
-
-import { siteSettings, siteUrl } from "./site-settings"
 
 export const openGraph: OpenGraph = {
   type: 'website',
@@ -11,9 +10,9 @@ export const openGraph: OpenGraph = {
   siteName: siteSettings.name,
   images: [
     {
-      url: '/og-image.png'
-    }
-  ]
+      url: '/og-image.png',
+    },
+  ],
 }
 
 export const twitter: Twitter = {
@@ -22,5 +21,5 @@ export const twitter: Twitter = {
   creator: siteSettings.creator,
   title: siteSettings.title,
   description: siteSettings.description,
-  images: ['/og-image.png']
+  images: ['/og-image.png'],
 }

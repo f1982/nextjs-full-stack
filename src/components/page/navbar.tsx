@@ -1,9 +1,9 @@
 'use client'
 
+import UserInfo from '../molecule/user-info'
 import { MenuSquareIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import UserInfo from '../molecule/user-info'
 
 export default function NavBar() {
   return (

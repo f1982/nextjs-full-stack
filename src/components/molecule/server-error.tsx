@@ -23,7 +23,7 @@ export function toastServerError() {
         <p>try again later.</p>
       </div>
     ),
-    variant: 'destructive'
+    variant: 'destructive',
   })
 }
 
@@ -35,6 +35,6 @@ export function toastServerSuccess(message?: string) {
         <span>{message ? message : 'Saved successfully.'}</span>
       </div>
     ),
-    variant: 'default'
+    variant: 'default',
   })
 }

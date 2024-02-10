@@ -1,7 +1,7 @@
 import TopicSelect from '@/app/[locale]/dashboard/video/_lib/topic-select'
 import {
   retrieveVideo,
-  updateVideo
+  updateVideo,
 } from '@/app/[locale]/dashboard/video/_lib/video-actions'
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'

@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client'
 import type {
   GetServerSidePropsContext,
   NextApiRequest,
-  NextApiResponse
+  NextApiResponse,
 } from 'next'
 import { NextAuthOptions, getServerSession } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -29,10 +29,10 @@ const emailProvider = EmailProvider({
     port: process.env.EMAIL_SERVER_PORT,
     auth: {
       user: process.env.EMAIL_SERVER_USER,
-      pass: process.env.EMAIL_SERVER_PASSWORD
-    }
+      pass: process.env.EMAIL_SERVER_PASSWORD,
+    },
   },
-  from: process.env.EMAIL_FROM
+  from: process.env.EMAIL_FROM,
 })
 
 // Use user email & pwd to sign in
@@ -45,7 +45,7 @@ const credentialsProvider = CredentialsProvider({
   // You can pass any HTML attribute to the <input> tag through the object.
   credentials: {
     username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
-    password: { label: 'Password', type: 'password' }
+    password: { label: 'Password', type: 'password' },
   },
   async authorize(credentials, req) {
     console.log('credentials', credentials)
@@ -58,23 +58,23 @@ const credentialsProvider = CredentialsProvider({
       const user = {
         id: '1',
         name: 'Cindy',
-        email: 'cindyfang311@gmail.com'
+        email: 'cindyfang311@gmail.com',
       }
       return user
     } else {
       return null
     }
-  }
+  },
 })
 
 const googleProvider = GoogleProvider({
   clientId: process.env.GOOGLE_CLIENT_ID!,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
 })
 
 const githubProvider = GitHubProvider({
   clientId: process.env.GITHUB_ID!,
-  clientSecret: process.env.GITHUB_SECRET!
+  clientSecret: process.env.GITHUB_SECRET!,
 })
 
 export const authOptions: NextAuthOptions = {
@@ -87,6 +87,6 @@ export const authOptions: NextAuthOptions = {
     // You can still force a JWT session by explicitly defining `"jwt"`.
     // When using `"database"`, the session cookie will only contain a `sessionToken` value,
     // which is used to look up the session in the database.
-    strategy: 'jwt'
-  }
+    strategy: 'jwt',
+  },
 }

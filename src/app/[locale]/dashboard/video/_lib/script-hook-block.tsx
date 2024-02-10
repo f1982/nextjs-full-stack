@@ -4,7 +4,7 @@ import { generateScriptHook } from '@/lib/model/script-hook'
 import { Video } from '@prisma/client'
 
 export default async function ScriptHookBlock({
-  videoData
+  videoData,
 }: {
   videoData: Video
 }) {

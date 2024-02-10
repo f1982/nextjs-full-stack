@@ -4,7 +4,7 @@ import { generateScriptOutline } from '@/lib/model/script-outline'
 import { Video } from '@prisma/client'
 
 export default async function ScriptOutlineBlock({
-  videoData
+  videoData,
 }: {
   videoData: Video
 }) {

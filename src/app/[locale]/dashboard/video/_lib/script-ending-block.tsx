@@ -4,7 +4,7 @@ import { generateScriptEnding } from '@/lib/model/script-ending'
 import { Video } from '@prisma/client'
 
 export default async function ScriptHookBlock({
-  videoData
+  videoData,
 }: {
   videoData: Video
 }) {

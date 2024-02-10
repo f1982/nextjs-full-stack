@@ -6,7 +6,7 @@ import { APIResponse } from '@/lib/types/types'
 import React, { useState } from 'react'
 
 export default function SaveButton({
-  callback
+  callback,
 }: {
   callback: () => Promise<APIResponse<any>>
 }) {

@@ -1,22 +1,22 @@
+import '../../globals.css'
+import { NextAuthProvider } from '../../lib/next-auth-provider'
 import clsx from 'clsx'
 import { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
-import '../../globals.css'
-import { NextAuthProvider } from '../../lib/next-auth-provider'
 
 export const metadata: Metadata = {
   title: 'Home',
-  description: 'Welcome to Next.js'
+  description: 'Welcome to Next.js',
 }
 
 const fontSans = FontSans({
   subsets: ['latin'],
-  variable: '--font-sans'
+  variable: '--font-sans',
 })
 
 export default async function RootLayout({
   children,
-  params: { locale }
+  params: { locale },
 }: {
   children: React.ReactNode
   params: { locale: string }
@@ -27,7 +27,7 @@ export default async function RootLayout({
         <body
           className={clsx(
             'min-h-screen bg-background flex flex-col font-sans antialiased',
-            fontSans.variable
+            fontSans.variable,
           )}>
           {children}
         </body>

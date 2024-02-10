@@ -11,23 +11,23 @@ export const retrieveChannels = async (): Promise<APIResponse<Channel[]>> => {
   if (!session) {
     return {
       status: 'failure',
-      message: 'You need to log in first'
+      message: 'You need to log in first',
     }
   }
 
   try {
     const list = await prisma.channel.findMany({
       where: {
-        user: { email: session?.user?.email }
+        user: { email: session?.user?.email },
       },
       include: {
         user: {
-          select: { name: true, email: true }
-        }
+          select: { name: true, email: true },
+        },
       },
       orderBy: {
-        created_at: 'desc'
-      }
+        created_at: 'desc',
+      },
     })
     return { status: 'success', message: 'get  successfully', data: list }
   } catch (e) {
@@ -36,7 +36,7 @@ export const retrieveChannels = async (): Promise<APIResponse<Channel[]>> => {
 }
 
 export async function retrieveChannel(
-  id: string
+  id: string,
 ): Promise<APIResponse<Channel>> {
   const session = await auth()
   if (!session) {
@@ -46,13 +46,13 @@ export async function retrieveChannel(
   try {
     const data = await prisma.channel.findFirst({
       where: {
-        id
-      }
+        id,
+      },
     })
     return {
       status: 'success',
       message: `get  successfully`,
-      data
+      data,
     }
   } catch (e) {
     return { status: 'failure', message: 'failure to create ' }
@@ -71,15 +71,15 @@ export const createChannel = async (data: Partial<Channel>) => {
         channel_name: data.channel_name!,
         description: data.description,
         keyword: data.keyword,
-        user: { connect: { email: session?.user?.email || '' } }
-      }
+        user: { connect: { email: session?.user?.email || '' } },
+      },
     })
 
     revalidatePath('/')
     return {
       status: 'success',
       error: null,
-      message: `Added  successfully`
+      message: `Added  successfully`,
     }
   } catch (e) {
     return { status: 'failure', message: 'failure to create ' }
@@ -87,7 +87,7 @@ export const createChannel = async (data: Partial<Channel>) => {
 }
 
 export const updateChannel = async (
-  data: Partial<Channel>
+  data: Partial<Channel>,
 ): Promise<APIResponse<any>> => {
   const session = await auth()
   if (!session) {
@@ -100,14 +100,14 @@ export const updateChannel = async (
       data: {
         channel_name: data.channel_name,
         description: data.description,
-        keyword: data.keyword
-      }
+        keyword: data.keyword,
+      },
     })
 
     revalidatePath('/')
     return {
       status: 'success',
-      message: `Added  successfully`
+      message: `Added  successfully`,
     }
   } catch (e) {
     return { status: 'failure', message: 'failure to create ' }
@@ -125,15 +125,15 @@ export async function deleteChannel(id: string) {
   try {
     await prisma.channel.delete({
       where: {
-        id
-      }
+        id,
+      },
     })
 
     revalidatePath('/')
     return {
       status: 'success',
       error: null,
-      message: `delete  successfully`
+      message: `delete  successfully`,
     }
   } catch (e) {
     return { status: 'failure', message: 'failure to create ' }

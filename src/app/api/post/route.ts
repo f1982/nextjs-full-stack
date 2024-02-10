@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   if (!session) {
     return NextResponse.json({
       message: 'You must be logged in.',
-      status: 401
+      status: 401,
     })
   }
 
@@ -19,8 +19,8 @@ export async function POST(req: NextRequest) {
     data: {
       title: title,
       content: content,
-      author: { connect: { email: session?.user?.email || '' } }
-    }
+      author: { connect: { email: session?.user?.email || '' } },
+    },
   })
   revalidatePath('/drafts')
   return NextResponse.json(result)

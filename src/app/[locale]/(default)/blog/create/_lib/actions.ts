@@ -13,7 +13,7 @@ type FormResponseState = {
 
 export async function createPost(
   prevState: FormResponseState,
-  formData: FormData
+  formData: FormData,
 ): Promise<FormResponseState> {
   const session = await auth()
   if (!session) {
@@ -22,12 +22,12 @@ export async function createPost(
 
   const schema = z.object({
     title: z.string().min(1),
-    content: z.string().min(1)
+    content: z.string().min(1),
   })
 
   const parse = schema.safeParse({
     title: formData.get('title'),
-    content: formData.get('content')
+    content: formData.get('content'),
   })
 
   if (!parse.success) {
@@ -40,15 +40,15 @@ export async function createPost(
       data: {
         title: data.title,
         content: data.content,
-        author: { connect: { email: session?.user?.email || '' } }
-      }
+        author: { connect: { email: session?.user?.email || '' } },
+      },
     })
 
     revalidatePath('/')
     return {
       status: 'success',
       error: null,
-      message: `Added data successfully`
+      message: `Added data successfully`,
     }
   } catch (e) {
     return { status: 'failure', message: 'failure to create data' }

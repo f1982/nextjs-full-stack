@@ -12,13 +12,13 @@ export async function PUT(req: NextRequest) {
   if (!session) {
     return NextResponse.json({
       message: 'You must be logged in.',
-      status: 401
+      status: 401,
     })
   }
 
   const post = await prisma.post.update({
     where: { id },
-    data: { published: true }
+    data: { published: true },
   })
   return NextResponse.json(post)
 }

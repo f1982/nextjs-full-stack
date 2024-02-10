@@ -4,7 +4,7 @@ import { generateScriptQuotes } from '@/lib/model/script-quotes'
 import { Video } from '@prisma/client'
 
 export default async function ScriptQuotesBlock({
-  videoData
+  videoData,
 }: {
   videoData: Video
 }) {

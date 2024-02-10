@@ -4,9 +4,9 @@ import { z } from 'zod'
 const validator = z.object({
   data: z.array(
     z.object({
-      content: z.string().min(10)
-    })
-  )
+      content: z.string().min(10),
+    }),
+  ),
 })
 
 export function getPrompts(topic: string, count: number = 5): string {

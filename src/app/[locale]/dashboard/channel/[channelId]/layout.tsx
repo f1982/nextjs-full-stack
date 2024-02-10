@@ -5,12 +5,12 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Video',
-  description: 'Video detail page'
+  description: 'Video detail page',
 }
 
 export default async function VideoLayout({
   params,
-  children
+  children,
 }: {
   params: { channelId: string }
   children: React.ReactNode

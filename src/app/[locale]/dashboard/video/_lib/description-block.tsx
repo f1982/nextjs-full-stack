@@ -4,7 +4,7 @@ import { generateVideoDescription } from '@/lib/model/video-description'
 import { Video } from '@prisma/client'
 
 export default async function DescriptionBlock({
-  videoData
+  videoData,
 }: {
   videoData: Video
 }) {

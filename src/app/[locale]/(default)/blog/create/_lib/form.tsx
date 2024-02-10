@@ -1,11 +1,11 @@
 'use client'
 
-import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { useFormState, useFormStatus } from 'react-dom'
 
 const initialState = {
-  message: ''
+  message: '',
 }
 
 function SubmitButton() {

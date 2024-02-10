@@ -10,7 +10,7 @@ import React, { useState } from 'react'
 
 export default function TopicSelect({
   value,
-  onSubmit
+  onSubmit,
 }: {
   value?: Video
   onSubmit: any
@@ -18,14 +18,14 @@ export default function TopicSelect({
   const [topicOpts, setTopicOpts] = useState([])
 
   const [selectedTopic, setSelectedTopic] = useState<any>({
-    topic: value?.topic
+    topic: value?.topic,
   })
   const [isLoading, setIsLoading] = useState(false)
 
   async function loadTopicOpts() {
     setIsLoading(true)
     const response = await fetch(`/api/gen/video-topic`, {
-      method: 'GET'
+      method: 'GET',
     })
 
     const result = await response.json()

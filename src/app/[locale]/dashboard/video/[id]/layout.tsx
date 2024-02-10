@@ -6,12 +6,12 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Video',
-  description: 'Video detail page'
+  description: 'Video detail page',
 }
 
 export default async function VideoLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode
   params: { id: string }
@@ -22,20 +22,20 @@ export default async function VideoLayout({
   const navConfig: NavItemData[] = [
     {
       href: `/dashboard/video/${params.id}`,
-      label: 'Home'
+      label: 'Home',
     },
     {
       href: `/dashboard/video/${params.id}/topic`,
-      label: 'Topic'
+      label: 'Topic',
     },
     {
       href: `/dashboard/video/${params.id}/metadata`,
-      label: 'Metadata'
+      label: 'Metadata',
     },
     {
       href: `/dashboard/video/${params.id}/script`,
-      label: 'Script'
-    }
+      label: 'Script',
+    },
   ]
 
   return (

@@ -8,7 +8,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -22,28 +22,28 @@ import { z } from 'zod'
 const FormSchema = z.object({
   id: z.string(),
   channel_name: z.string().min(2, {
-    message: 'channel_name must be at least 2 characters.'
+    message: 'channel_name must be at least 2 characters.',
   }),
   description: z.string().min(2, {
-    message: 'description must be at least 2 characters.'
+    message: 'description must be at least 2 characters.',
   }),
   keyword: z.string().min(2, {
-    message: 'keyword must be at least 2 characters.'
-  })
+    message: 'keyword must be at least 2 characters.',
+  }),
 })
 
 const initialState = {
   id: '',
   channel_name: '',
   description: '',
-  keyword: ''
+  keyword: '',
 }
 
 export default function EditChannelForm({
   handleSubmit,
   formData = null,
   redirectUrl,
-  cancelUrl
+  cancelUrl,
 }: any) {
   const router = useRouter()
 
@@ -51,7 +51,7 @@ export default function EditChannelForm({
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: formData || initialState
+    defaultValues: formData || initialState,
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {

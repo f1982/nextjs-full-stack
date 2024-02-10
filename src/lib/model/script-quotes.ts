@@ -7,9 +7,9 @@ const validator = z.object({
     z.object({
       author: z.string().min(2),
       quote: z.string().min(3),
-      reference: z.string().min(2)
-    })
-  )
+      reference: z.string().min(2),
+    }),
+  ),
 })
 
 export const getQuoteItemDesc = (d: any) => {

@@ -7,12 +7,12 @@ const getData = async () => {
     where: { published: true },
     include: {
       author: {
-        select: { name: true }
-      }
+        select: { name: true },
+      },
     },
     orderBy: {
-      title: 'asc'
-    }
+      title: 'asc',
+    },
   })
   return { feed, updateTime: getDateTime() }
 }

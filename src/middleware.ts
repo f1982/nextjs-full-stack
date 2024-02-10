@@ -9,7 +9,7 @@ const publicPages = ['/', '/api/auth/signin', '/about', '/doc', '/blog']
 const intlMiddleware = createIntlMiddleware({
   locales,
   localePrefix: 'as-needed',
-  defaultLocale: 'en'
+  defaultLocale: 'en',
 })
 
 const authMiddleware = withAuth(
@@ -21,12 +21,12 @@ const authMiddleware = withAuth(
   },
   {
     callbacks: {
-      authorized: ({ token }) => token != null
+      authorized: ({ token }) => token != null,
     },
     pages: {
-      signIn: '/api/auth/signin'
-    }
-  }
+      signIn: '/api/auth/signin',
+    },
+  },
 )
 
 export default function middleware(req: NextRequest) {
@@ -34,7 +34,7 @@ export default function middleware(req: NextRequest) {
     `^(/(${locales.join('|')}))?(${publicPages
       .flatMap((p) => (p === '/' ? ['', '/'] : p))
       .join('|')})/?$`,
-    'i'
+    'i',
   )
 
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
@@ -46,5 +46,5 @@ export default function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next|.*\\..*).*)']
+  matcher: ['/((?!api|_next|.*\\..*).*)'],
 }

@@ -6,7 +6,7 @@ import React from 'react'
 
 export default function LinkButton({
   href,
-  label
+  label,
 }: {
   href: string
   label: string

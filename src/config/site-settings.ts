@@ -1,7 +1,7 @@
-import { Metadata } from 'next'
-import { Robots } from 'next/dist/lib/metadata/types/metadata-types'
 import { bingWebmaster } from './services'
 import { openGraph, twitter } from './social'
+import { Metadata } from 'next'
+import { Robots } from 'next/dist/lib/metadata/types/metadata-types'
 
 export const siteHostname = 'emojiu.cc'
 export const siteUrl = `https://${siteHostname}`
@@ -21,14 +21,14 @@ export const siteSettings = {
   description:
     'Search for emojis with just one click! Explore a variety of emojis, including heart, laughing, skull, nerd, sad, iPhone, eyes, star, thumbs up, kiss, and heart hand emojis. Enhance your online communication and express yourself effortlessly.',
   author: 'emoji you',
-  creator: '@emojiucc'
+  creator: '@emojiucc',
 }
 
 // Add icon image in public folder
 const icons = {
   icon: '/icon.png',
   shortcut: '/icon.png',
-  apple: '/apple-icon.png'
+  apple: '/apple-icon.png',
 }
 
 //TODO: add bing bot
@@ -40,8 +40,8 @@ const robots: Robots = {
     follow: true,
     noimageindex: false,
     'max-video-preview': -1,
-    'max-image-preview': 'large'
-  }
+    'max-image-preview': 'large',
+  },
 }
 
 export const siteMetadata: Metadata = {
@@ -49,7 +49,7 @@ export const siteMetadata: Metadata = {
   viewport: {
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 3
+    maximumScale: 3,
   },
   category: 'technology',
   title: siteSettings.title,
@@ -59,18 +59,18 @@ export const siteMetadata: Metadata = {
   publisher: siteSettings.creator,
   metadataBase: new URL(siteUrl),
   alternates: {
-    canonical: '/'
+    canonical: '/',
   },
   icons,
   robots,
   openGraph,
   twitter,
   verification: {
-    other: bingWebmaster 
-  }
+    other: bingWebmaster,
+  },
 }
 
 export const socialMediaUrls = {
   youtube: 'https://youtube.com/@emojiyou?si=HzrJOJg8FyI51bjj',
-  twitter: 'https://twitter.com/emojiucc'
+  twitter: 'https://twitter.com/emojiucc',
 }

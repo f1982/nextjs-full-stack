@@ -8,7 +8,7 @@ import Link from 'next/link'
 export default function ChannelItem({
   channel,
   onDelete,
-  onEdit
+  onEdit,
 }: {
   channel: Channel
   onDelete: any

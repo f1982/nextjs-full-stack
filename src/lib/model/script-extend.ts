@@ -4,7 +4,7 @@ import { promptRequirements } from './prompt-segments'
 export function getPrompt(
   content: string,
   topic: string,
-  count: number = 500
+  count: number = 500,
 ): string {
   let prompt =
     '请提供以下事件发生时的更多细节 （具體時間，地點，關鍵人物名字，物品的細節）和事件详细过程（衝突，重要的階段，不尋常的細節）。' +
@@ -27,7 +27,7 @@ ${content}
 export async function generateExtend(
   content: string,
   topic: string,
-  count: number = 500
+  count: number = 500,
 ) {
   const prompt = getPrompt(content, topic, count)
   console.log('prompt', prompt)

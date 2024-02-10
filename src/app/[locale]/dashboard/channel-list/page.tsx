@@ -1,6 +1,6 @@
 import {
   deleteChannel,
-  retrieveChannels
+  retrieveChannels,
 } from '../channel/_lib/channel-actions'
 import ChannelItem from '../channel/_lib/channel-item'
 import { ServerError } from '@/components/molecule/server-error'
@@ -17,13 +17,13 @@ const getData = async (): Promise<any[] | null> => {
 
   return await prisma.channel.findMany({
     where: {
-      user: { email: session?.user?.email }
+      user: { email: session?.user?.email },
     },
     include: {
       user: {
-        select: { name: true, email: true }
-      }
-    }
+        select: { name: true, email: true },
+      },
+    },
   })
 }
 

@@ -7,7 +7,7 @@ export default function DraftPublishButton({ postId }) {
 
   async function publishPost(id: string): Promise<void> {
     await fetch(`/api/publish/?id=${id}`, {
-      method: 'PUT'
+      method: 'PUT',
     })
     router.push('/blog')
   }

@@ -11,7 +11,7 @@ export default function GenEditForm({
   rows = 5,
   fieldName,
   optionsLoader,
-  onSubmit
+  onSubmit,
 }: {
   value?: string
   rows?: number

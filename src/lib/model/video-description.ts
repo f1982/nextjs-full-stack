@@ -3,7 +3,7 @@ import { promptRequirements } from './prompt-segments'
 import { z } from 'zod'
 
 export const validator = z.object({
-  data: z.array(z.string().min(20).max(2000)).min(3)
+  data: z.array(z.string().min(20).max(2000)).min(3),
 })
 
 export function getPrompt(topic: string): string {

@@ -4,7 +4,7 @@ import { generatePostUpdate } from '@/lib/model/post-updates'
 import { Video } from '@prisma/client'
 
 export default async function PostUpdatesBlock({
-  videoData
+  videoData,
 }: {
   videoData: Video
 }) {
