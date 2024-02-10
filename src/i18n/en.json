@@ -1,0 +1,9 @@
+{
+  "homepage": {
+    "hi": "你好"
+  },
+  "LocaleSwitcher": {
+    "label": "预言",
+    "locale": "{locale, select, cn {🇨🇳 中文} en {🇺🇸 English} other {Unbekannt}}"
+  }
+}

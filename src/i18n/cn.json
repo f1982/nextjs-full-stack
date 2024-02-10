@@ -1,0 +1,9 @@
+{
+  "homepage": {
+    "hi": "hello"
+  },
+  "LocaleSwitcher": {
+    "label": "Sprache ändern",
+    "locale": "{locale, select, cn {🇨🇳 中文} en {🇺🇸 English} other {Unbekannt}}"
+  }
+}
