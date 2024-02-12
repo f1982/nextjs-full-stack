@@ -1,5 +1,5 @@
 import { retrieveChannel } from '../_lib/channel-actions'
-import LinkButton from '@/components/molecule/link-button'
+import NavigationBar, { NavBarItem } from '@/components/molecule/nav-bar'
 import { Separator } from '@/components/ui/separator'
 import { Metadata } from 'next'
 
@@ -8,39 +8,46 @@ export const metadata: Metadata = {
   description: 'Video detail page',
 }
 
+function generateNavList(id: string): NavBarItem[] {
+  const baseUrl = `/dashboard/channel/${id}`
+  return [
+    {
+      label: 'Info',
+      link: baseUrl,
+    },
+    {
+      label: 'Video list',
+      link: `${baseUrl}/video-list`,
+    },
+    {
+      label: 'Setting',
+      link: `${baseUrl}/settings`,
+    },
+    {
+      label: 'Prompt',
+      link: `${baseUrl}/prompt`,
+    },
+  ]
+}
+
 export default async function VideoLayout({
-  params,
+  params: { channelId },
   children,
 }: {
   params: { channelId: string }
   children: React.ReactNode
 }) {
-  const channelInf = await retrieveChannel(params.channelId)
-  console.log('channelInf', channelInf)
+  const channelInf = await retrieveChannel(channelId)
 
   return (
     <>
-      <div className="prose prose-lg">
-        <h3>{channelInf.data?.channel_name}</h3>
-        <p>{channelInf.data?.description}</p>
+      <div className="prose prose-sm">
+        <p>
+          <p>{JSON.stringify(channelInf)}</p>
+        </p>
       </div>
-
-      <div className="flex flex-row gap-3">
-        <LinkButton
-          label="Home"
-          href={`/dashboard/channel/${params.channelId}/`}></LinkButton>
-        <LinkButton
-          label="Video List"
-          href={`/dashboard/channel/${params.channelId}/video-list`}></LinkButton>
-        <LinkButton
-          label="Settings"
-          href={`/dashboard/channel/${params.channelId}/settings`}></LinkButton>
-        <LinkButton
-          label="Prompt"
-          href={`/dashboard/channel/${params.channelId}/prompt`}></LinkButton>
-      </div>
-
-      <Separator className="mb-9" />
+      <NavigationBar items={generateNavList(channelId)} />
+      <Separator className="my-2" />
 
       <main>
         <div>{children}</div>

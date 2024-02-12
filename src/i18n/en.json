@@ -5,8 +5,8 @@
   "dashboard": {
     "dashboard": "Dashboard"
   },
-  "localeSwitcher": {
-    "label": "Language",
-    "locale": "{locale, select, cn {🇨🇳 中文} en {🇺🇸 English} other {*}}"
+  "LocaleSwitcher": {
+    "label": "Select language",
+    "locale": "{locale, select, cn {🇨🇳 Chinese} en {🇺🇸 English} other {Unknown}}"
   }
 }

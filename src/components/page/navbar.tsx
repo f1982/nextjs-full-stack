@@ -1,5 +1,6 @@
 'use client'
 
+import DarkModeToggle from '../molecule/darkmode-switcher'
 import UserInfo from '../molecule/user-info'
 import { MenuSquareIcon } from 'lucide-react'
 import Image from 'next/image'
@@ -30,6 +31,7 @@ export default function NavBar() {
             </button>
           </Link> */}
           <UserInfo showEmail={false} />
+          <DarkModeToggle />
           <button
             data-te-collapse-init
             data-te-collapse-target="#navbar-cta"
