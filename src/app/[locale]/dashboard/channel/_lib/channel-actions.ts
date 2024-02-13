@@ -123,6 +123,12 @@ export async function deleteChannel(id: string) {
   }
 
   try {
+    await prisma.video.deleteMany({
+      where: {
+        channel_id: id,
+      },
+    })
+
     await prisma.channel.delete({
       where: {
         id,

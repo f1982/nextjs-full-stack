@@ -1,3 +1,5 @@
+import NavigationLink from '@/components/molecule/navigation-link'
+import NavigationLinkNormal from '@/components/molecule/navigation-link-normal'
 import { FileVideo2, Gauge, Tv } from 'lucide-react'
 
 export const Menubar = () => (
@@ -16,6 +18,9 @@ hover:text-blue-600">
         <Tv />
         <span className="mt-2 text-xs">Channel</span>
       </a>
+      <NavigationLinkNormal href="/dashboard/channel-list">
+        Channel
+      </NavigationLinkNormal>
     </li>
 
     <li
