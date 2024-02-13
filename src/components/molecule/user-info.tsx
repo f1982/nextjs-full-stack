@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '../ui/button'
-import { signOut, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 
 export default function UserInfo({
@@ -15,7 +15,7 @@ export default function UserInfo({
   if (!session)
     return (
       <div>
-        <Button onClick={() => signOut()}>Log out</Button>
+        <Button onClick={() => signIn()}>Log In</Button>
       </div>
     )
 
