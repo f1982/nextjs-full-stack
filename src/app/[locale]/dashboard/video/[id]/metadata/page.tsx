@@ -1,5 +1,9 @@
+import DescriptionBlock from '../../_lib/description-block'
+import TagsBlock from '../../_lib/tags-block'
+import TitleBlock from '../../_lib/titles-block'
 import { retrieveVideo } from '../../_lib/video-actions'
 import { ServerError } from '@/components/molecule/server-error'
+import { Separator } from '@radix-ui/react-separator'
 import React from 'react'
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -10,12 +14,16 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div>
-      <h1>Hello world</h1>
-      <p>video Metadata</p>
-      <div>
-        <p>{JSON.stringify(videoData)}</p>
+    <div className="flex flex-col gap-6">
+      <div className="prose-md prose">
+        <h2>Create new video</h2>
+        <p>Start a new video by adding a topic.</p>
+        <Separator className="mb-6" />
       </div>
+
+      {/* <TitleBlock videoData={videoData} /> */}
+      {/* <DescriptionBlock videoData={videoData} /> */}
+      {/* <TagsBlock videoData={videoData} /> */}
     </div>
   )
 }

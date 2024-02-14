@@ -22,10 +22,10 @@ export default async function Page({ params }: { params: { id: string } }) {
     <>
       <div className="prose-md prose mb-12">
         <h2>Video Page</h2>
-        <p>Topic: {videoData?.topic}</p>
+        <p>{JSON.stringify(videoData)}</p>
       </div>
 
-      <Tabs defaultValue="topic">
+      {/* <Tabs defaultValue="topic">
         <TabsList>
           <TabsTrigger value="overall">Overall</TabsTrigger>
           <TabsTrigger value="topic">Topic</TabsTrigger>
@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <PostUpdatesBlock videoData={videoData} />.
         </TabsContent>
         <TabsContent value="comments">Change your password here.</TabsContent>
-      </Tabs>
+      </Tabs> */}
     </>
   )
 }

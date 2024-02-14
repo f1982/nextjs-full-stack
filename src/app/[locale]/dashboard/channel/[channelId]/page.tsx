@@ -1,10 +1,6 @@
 import { retrieveVideos } from '../../video/_lib/video-actions'
 import { retrieveChannel } from '../_lib/channel-actions'
-import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { Video } from '@prisma/client'
-import Link from 'next/link'
-import React from 'react'
 
 export default async function Page({
   params,
