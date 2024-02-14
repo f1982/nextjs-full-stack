@@ -88,7 +88,9 @@ export const createChannel = async (data: Partial<Channel>) => {
 
 export const updateChannel = async (
   data: Partial<Channel>,
+  channelId: string,
 ): Promise<APIResponse<any>> => {
+  console.log('data', data)
   const session = await auth()
   if (!session) {
     return { status: 'failure', message: 'You need to log in first' }
@@ -96,7 +98,7 @@ export const updateChannel = async (
 
   try {
     await prisma.channel.update({
-      where: { id: data.id },
+      where: { id: channelId },
       data: {
         channel_name: data.channel_name,
         description: data.description,

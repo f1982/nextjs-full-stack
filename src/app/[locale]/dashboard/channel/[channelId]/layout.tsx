@@ -42,9 +42,7 @@ export default async function VideoLayout({
   return (
     <>
       <div className="prose prose-sm">
-        <p>
-          <p>{JSON.stringify(channelInf)}</p>
-        </p>
+        <p>{JSON.stringify(channelInf)}</p>
       </div>
       <NavigationBar items={generateNavList(channelId)} />
       <Separator className="my-2" />

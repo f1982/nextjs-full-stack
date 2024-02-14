@@ -1,5 +1,6 @@
 'use client'
 
+import { toastServerError } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -12,6 +13,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { toast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -56,6 +58,7 @@ export default function EditChannelForm({
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     setIsSubmitting(true)
+    console.log('submit data:', data)
 
     const result = await handleSubmit(data)
     console.log('result', result)
@@ -64,9 +67,19 @@ export default function EditChannelForm({
     //Don't have to set it to false, only if error occurs, user can try again
     // setIsSubmitting(false)
 
-    if (redirectUrl) {
-      router.push(redirectUrl)
+    // if (redirectUrl) {
+    //   router.push(redirectUrl)
+    // }
+    if (result.status === 'failure') {
+      return toastServerError()
     }
+
+    toast({
+      description: 'Saved successfully.',
+      variant: 'default',
+    })
+
+    setIsSubmitting(false)
   }
 
   return (
