@@ -34,7 +34,7 @@ export default async function ScriptHookBlock({
     <GenEditForm
       fieldName="scriptEnding"
       value={content || ''}
-      optionsLoader={handleOptionGeneration}
+      generator={handleOptionGeneration}
       onSubmit={handleSubmission}
     />
   )

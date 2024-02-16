@@ -16,8 +16,6 @@ export default async function VideoLayout({
   children: React.ReactNode
   params: { id: string }
 }) {
-  const channelId = 'cls4e75nw0005136auwuhdzsp'
-
   const { data } = await retrieveVideo(params.id)
   const navConfig: NavItemData[] = [
     {
@@ -41,7 +39,7 @@ export default async function VideoLayout({
   return (
     <>
       <div className="w-full">
-        <h3>Video Topic: </h3>
+        <h3>Video Topic: {data?.topic}</h3>
         <Link href={`/dashboard/channel/${data?.channel_id}/video-list`}>
           Back to list
         </Link>

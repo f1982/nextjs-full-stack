@@ -15,6 +15,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { toast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -42,6 +43,10 @@ export default function VideoTopicForm({
     values: formData || initialState,
     mode: 'onTouched',
   })
+
+  useEffect(() => {
+    console.log('formData changed: ', formData)
+  }, [formData])
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     if (!handleSubmit) {

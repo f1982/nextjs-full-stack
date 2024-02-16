@@ -34,7 +34,7 @@ export default async function PostUpdatesBlock({
     <SelectEditForm
       fieldName={name}
       value={value || ''}
-      optionsLoader={handleOptionGeneration}
+      generator={handleOptionGeneration}
       onSubmit={handleSubmission}
     />
   )

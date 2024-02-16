@@ -3,15 +3,21 @@ import { toast } from '../ui/use-toast'
 import { AlertCircle, CheckCircle } from 'lucide-react'
 import React from 'react'
 
-export function ServerError({ message }: { message: string }) {
+export function ServerError({
+  message = 'server error occurs',
+}: {
+  message: string
+}) {
   return (
-    <Alert variant="destructive">
-      <AlertCircle className="h-4 w-4" />
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>
-        {message ? message : 'An error has occurred. Please try again later.'}
-      </AlertDescription>
-    </Alert>
+    <div className="flex h-screen w-full items-center justify-center">
+      <Alert variant="destructive" className="max-w-96">
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>
+          {message ? message : 'An error has occurred. Please try again later.'}
+        </AlertDescription>
+      </Alert>
+    </div>
   )
 }
 

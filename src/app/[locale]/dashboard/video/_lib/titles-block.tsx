@@ -21,7 +21,7 @@ export default async function TitleBlock({ videoData }: { videoData: Video }) {
     <SelectEditForm
       fieldName="title"
       value={videoData.title || ''}
-      optionsLoader={handleOptionGeneration}
+      generator={handleOptionGeneration}
       onSubmit={handleSubmission}
     />
   )

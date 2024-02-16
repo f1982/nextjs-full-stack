@@ -11,7 +11,10 @@ export default async function ScriptMainBlock({
   const getOutlines = async () => {
     const name = 'outline'
     const cacheKey = 'script-' + name + '-' + videoData.id
-    const result = await cache.get(cacheKey)
+    const result = (await cache.get(cacheKey)) as string
+    if (!result || !result.includes('---')) {
+      return ''
+    }
     return result.split('---').map((outline: string) => outline.trim())
   }
 
@@ -44,7 +47,7 @@ export default async function ScriptMainBlock({
       rows={20}
       fieldName={name}
       value={''}
-      optionsLoader={handleOptionGeneration}
+      generator={handleOptionGeneration}
       onSubmit={handleSubmission}
     />
   )

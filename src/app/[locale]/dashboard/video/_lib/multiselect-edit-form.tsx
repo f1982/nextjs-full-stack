@@ -1,25 +1,26 @@
 'use client'
 
 import UniversalSingleForm from './universal-single-form'
+import ListMultipleSelect from '@/components/molecule/list-multiple-select'
+import ListSelector from '@/components/molecule/list-select'
 import Spinner from '@/components/molecule/spinner'
 import { Button } from '@/components/ui/button'
-import { APIResponse } from '@/lib/types/types'
 import { Wand2 } from 'lucide-react'
 import { useState } from 'react'
 
-export default function GenEditForm({
+export default function SelectEditForm({
   value,
-  rows = 5,
   fieldName,
   generator,
-  submission,
+  onSubmit,
 }: {
   value?: string
-  rows?: number
   fieldName: string
-  generator: () => Promise<APIResponse<string | null>>
-  submission: (data: { value: string }) => Promise<APIResponse<any>>
+  generator: any
+  onSubmit: any
 }) {
+  const [selectOptions, setSelectOptions] = useState<string[] | null>(null)
+
   const [selectedOption, setSelectedOption] = useState<any>(value)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -27,24 +28,34 @@ export default function GenEditForm({
     setIsLoading(true)
     const { data } = await generator()
 
-    setSelectedOption(data)
+    setSelectOptions(data)
     setIsLoading(false)
   }
 
   return (
     <div className="flex flex-col gap-6">
+      <div></div>
+
+      {selectOptions && (
+        <ListMultipleSelect
+          label={fieldName}
+          options={selectOptions}
+          select={(opt: any) => {
+            setSelectedOption(opt)
+          }}
+        />
+      )}
       <UniversalSingleForm
         fieldName={fieldName}
         defaultData={selectedOption}
-        handleSubmit={submission}
-        rows={rows}
+        handleSubmit={onSubmit}
         extraButtons={
           <Button
             disabled={isLoading}
             className="flex flex-row gap-3"
             onClick={requestOptions}>
             {isLoading ? <Spinner /> : <Wand2 />}
-            <span>Generate {fieldName}</span>
+            <span>Generate {fieldName} By AI</span>
           </Button>
         }></UniversalSingleForm>
     </div>

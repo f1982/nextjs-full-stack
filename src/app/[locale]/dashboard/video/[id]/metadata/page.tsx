@@ -3,7 +3,7 @@ import TagsBlock from '../../_lib/tags-block'
 import TitleBlock from '../../_lib/titles-block'
 import { retrieveVideo } from '../../_lib/video-actions'
 import { ServerError } from '@/components/molecule/server-error'
-import { Separator } from '@radix-ui/react-separator'
+import { Separator } from '@/components/ui/separator'
 import React from 'react'
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -21,9 +21,9 @@ export default async function Page({ params }: { params: { id: string } }) {
         <Separator className="mb-6" />
       </div>
 
-      {/* <TitleBlock videoData={videoData} /> */}
-      {/* <DescriptionBlock videoData={videoData} /> */}
-      {/* <TagsBlock videoData={videoData} /> */}
+      <TitleBlock videoData={videoData} />
+      <DescriptionBlock videoData={videoData} />
+      <TagsBlock videoData={videoData} />
     </div>
   )
 }

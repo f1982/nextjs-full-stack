@@ -1,3 +1,4 @@
+import NewVideoButton from '../../_lib/new-video-button'
 import { retrieveVideos } from '../../video/_lib/video-actions'
 import { retrieveChannel } from '../_lib/channel-actions'
 import { Separator } from '@/components/ui/separator'
@@ -26,6 +27,7 @@ export default async function Page({
 
         <Separator></Separator>
 
+        <NewVideoButton channelId={params.channelId}></NewVideoButton>
         <div className="prose prose-lg">
           <h2>video details</h2>
           <p>Video count: {videos?.length}</p>

@@ -11,7 +11,7 @@ import EmailProvider from 'next-auth/providers/email'
 import GitHubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 
-// Use it to get session in server contexts
+// Use it to get session in server contexts getServerSession wrapper
 export function auth(
   ...args:
     | [GetServerSidePropsContext['req'], GetServerSidePropsContext['res']]
@@ -45,7 +45,7 @@ const credentialsProvider = CredentialsProvider({
   // You can pass any HTML attribute to the <input> tag through the object.
   credentials: {
     username: { label: 'Username', type: 'text', placeholder: 'cindy' },
-    password: { label: 'Password', type: 'password' }
+    password: { label: 'Password', type: 'password' },
   },
   async authorize(credentials, req) {
     console.log('credentials', credentials)

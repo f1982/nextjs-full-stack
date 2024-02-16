@@ -1,5 +1,6 @@
 import { retrieveChannel } from '../_lib/channel-actions'
 import NavigationBar, { NavBarItem } from '@/components/molecule/nav-bar'
+import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
 import { Metadata } from 'next'
 
@@ -30,7 +31,7 @@ function generateNavList(id: string): NavBarItem[] {
   ]
 }
 
-export default async function VideoLayout({
+export default async function ChannelLayout({
   params: { channelId },
   children,
 }: {
@@ -38,6 +39,10 @@ export default async function VideoLayout({
   children: React.ReactNode
 }) {
   const channelInf = await retrieveChannel(channelId)
+  console.log('channelInf', channelInf)
+  if (!channelInf.data) {
+    return <ServerError message="can get channel info"></ServerError>
+  }
 
   return (
     <>

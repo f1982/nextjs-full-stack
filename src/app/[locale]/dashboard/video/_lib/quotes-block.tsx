@@ -34,7 +34,7 @@ export default async function ScriptQuotesBlock({
     <SelectEditForm
       fieldName="quote"
       value={quote || ''}
-      optionsLoader={handleOptionGeneration}
+      generator={handleOptionGeneration}
       onSubmit={handleSubmission}
     />
   )

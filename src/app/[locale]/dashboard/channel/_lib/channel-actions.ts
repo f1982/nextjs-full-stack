@@ -61,7 +61,7 @@ export async function retrieveChannel(
 
 export const createChannel = async (data: Partial<Channel>) => {
   const session = await auth()
-  if (!session) {
+  if (!session?.user?.email) {
     return { status: 'failure', message: 'You need to log in first' }
   }
 
@@ -82,7 +82,11 @@ export const createChannel = async (data: Partial<Channel>) => {
       message: `Added  successfully`,
     }
   } catch (e) {
-    return { status: 'failure', message: 'failure to create ' }
+    return {
+      status: 'failure',
+      message: 'failure to create ',
+      data: e?.message,
+    }
   }
 }
 

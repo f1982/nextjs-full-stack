@@ -74,7 +74,7 @@ export default function UniversalSingleForm({
 
         <FormField
           control={form.control}
-          name={'value'}
+          name="value"
           render={({ field, fieldState }) => (
             <FormItem>
               <FormLabel>

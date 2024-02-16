@@ -113,7 +113,7 @@ model Prompt {
 }
 
 model Video {
-  id          String  @id @default(cuid())
+  id          String      @id @default(cuid())
   topic       String?
   title       String?
   short       String? // Short text show on the image
@@ -126,6 +126,7 @@ model Video {
   url         String?
   comment     String?
   post        String?
+  status      VideoStatus @default(NoStarted)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -135,4 +136,11 @@ model Video {
 
   channel    Channel @relation(fields: [channel_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   channel_id String
+}
+
+enum VideoStatus {
+  NoStarted
+  Draft
+  Ready
+  Published
 }

@@ -1,3 +1,4 @@
+import NewVideoButton from '../../../_lib/new-video-button'
 import { retrieveChannel } from '../../_lib/channel-actions'
 import { retrieveVideos } from '@/app/[locale]/dashboard/video/_lib/video-actions'
 import { Button } from '@/components/ui/button'
@@ -18,9 +19,7 @@ export default async function Page({
     <>
       <div>Channel ID: {params.channelId}</div>
       <div>
-        <Link href={`/dashboard/channel/${params.channelId}/video-new`}>
-          Create new video{' '}
-        </Link>
+        <NewVideoButton channelId={params.channelId}></NewVideoButton>
       </div>
 
       <div>

@@ -24,6 +24,7 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
 
   return (
     <Button
+      type="button"
       title={`Copy ${content} to your clipboard`}
       className={` ${copied ? 'animate-pulse' : ''}`}
       onClick={copyToClipboard}

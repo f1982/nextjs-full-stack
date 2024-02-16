@@ -1,7 +1,7 @@
 'use client'
 
 import VideoTopicForm from './topic-form'
-import ListSelector from '@/components/molecule/list-selector'
+import ListSelector from '@/components/molecule/list-select'
 import Spinner from '@/components/molecule/spinner'
 import { Button } from '@/components/ui/button'
 import { Video } from '@prisma/client'
@@ -51,7 +51,7 @@ export default function TopicSelect({
         options={topicOpts}
         callback={(opt: any) => {
           console.log('opt', opt)
-          setSelectedTopic({ topic: opt.type })
+          setSelectedTopic({ topic: opt })
         }}
       />
 
