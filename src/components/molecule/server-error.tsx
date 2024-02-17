@@ -6,7 +6,7 @@ import React from 'react'
 export function ServerError({
   message = 'server error occurs',
 }: {
-  message: string
+  message?: string
 }) {
   return (
     <div className="flex h-screen w-full items-center justify-center">

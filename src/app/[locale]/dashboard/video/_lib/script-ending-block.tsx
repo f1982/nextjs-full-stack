@@ -1,6 +1,7 @@
 import GenEditForm from './gen-edit-form'
 import { cache } from '@/lib/file-cache'
 import { generateScriptEnding } from '@/lib/model/script-ending'
+import { APIResponse } from '@/lib/types/types'
 import { Video } from '@prisma/client'
 
 export default async function ScriptHookBlock({
@@ -13,14 +14,18 @@ export default async function ScriptHookBlock({
 
   let content = await cache.get(cacheKey)
 
-  const handleSubmission = async (data: any) => {
+  const handleSubmission = async (
+    data: any,
+  ): Promise<APIResponse<string | null>> => {
     'use server'
 
     await cache.set(cacheKey, data.value)
     return { status: 'success', message: '', data: data.value }
   }
 
-  const handleOptionGeneration = async () => {
+  const handleOptionGeneration = async (): Promise<
+    APIResponse<string | null>
+  > => {
     'use server'
 
     const content = await generateScriptEnding(videoData.topic!, '无责任猜想')
@@ -35,7 +40,7 @@ export default async function ScriptHookBlock({
       fieldName="scriptEnding"
       value={content || ''}
       generator={handleOptionGeneration}
-      onSubmit={handleSubmission}
+      submission={handleSubmission}
     />
   )
 }

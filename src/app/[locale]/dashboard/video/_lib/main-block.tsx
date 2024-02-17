@@ -1,6 +1,7 @@
 import GenEditForm from './gen-edit-form'
 import { cache } from '@/lib/file-cache'
 import { generateExtend } from '@/lib/model/script-extend'
+import { APIResponse } from '@/lib/types/types'
 import { Video } from '@prisma/client'
 
 export default async function ScriptMainBlock({
@@ -23,7 +24,9 @@ export default async function ScriptMainBlock({
 
   const outlines = await getOutlines()
 
-  const handleSubmission = async (data: any) => {
+  const handleSubmission = async (
+    data: any,
+  ): Promise<APIResponse<string | null>> => {
     'use server'
 
     // return await updateVideo({ title: data.value, id: videoData.id })
@@ -31,7 +34,9 @@ export default async function ScriptMainBlock({
     return { status: 'success', message: '', data: data.value }
   }
 
-  const handleOptionGeneration = async () => {
+  const handleOptionGeneration = async (): Promise<
+    APIResponse<string | null>
+  > => {
     'use server'
 
     let main: string = ''
@@ -39,7 +44,7 @@ export default async function ScriptMainBlock({
       main += await generateExtend(outline, videoData.topic!)
     }
 
-    return { data: main, status: 'success' }
+    return { data: main, status: 'success', message: '' }
   }
 
   return (
@@ -48,7 +53,7 @@ export default async function ScriptMainBlock({
       fieldName={name}
       value={''}
       generator={handleOptionGeneration}
-      onSubmit={handleSubmission}
+      submission={handleSubmission}
     />
   )
 }

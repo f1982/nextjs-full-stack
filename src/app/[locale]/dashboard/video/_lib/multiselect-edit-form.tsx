@@ -1,7 +1,7 @@
 'use client'
 
 import UniversalSingleForm from './universal-single-form'
-import ListMultipleSelect from '@/components/molecule/list-multiple-select'
+import ListMultipleSelect, { OptionItemData } from '@/components/molecule/list-multiple-select'
 import ListSelector from '@/components/molecule/list-select'
 import Spinner from '@/components/molecule/spinner'
 import { Button } from '@/components/ui/button'
@@ -19,7 +19,7 @@ export default function SelectEditForm({
   generator: any
   onSubmit: any
 }) {
-  const [selectOptions, setSelectOptions] = useState<string[] | null>(null)
+  const [selectOptions, setSelectOptions] = useState<OptionItemData[] | null>(null)
 
   const [selectedOption, setSelectedOption] = useState<any>(value)
   const [isLoading, setIsLoading] = useState(false)

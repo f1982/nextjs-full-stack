@@ -1,6 +1,7 @@
 import GenEditForm from './gen-edit-form'
 import { cache } from '@/lib/file-cache'
 import { generateScriptOutline } from '@/lib/model/script-outline'
+import { APIResponse } from '@/lib/types/types'
 import { Video } from '@prisma/client'
 
 export default async function ScriptOutlineBlock({
@@ -12,7 +13,9 @@ export default async function ScriptOutlineBlock({
   const cacheKey = 'script-' + name + '-' + videoData.id
   let value = await cache.get(cacheKey)
 
-  const handleSubmission = async (data: any) => {
+  const handleSubmission = async (
+    data: any,
+  ): Promise<APIResponse<string | null>> => {
     'use server'
 
     // return await updateVideo({ title: data.value, id: videoData.id })
@@ -20,7 +23,9 @@ export default async function ScriptOutlineBlock({
     return { status: 'success', message: '', data: data.value }
   }
 
-  const handleOptionGeneration = async () => {
+  const handleOptionGeneration = async (): Promise<
+    APIResponse<string | null>
+  > => {
     'use server'
 
     const content = await generateScriptOutline(videoData.topic!)
@@ -37,7 +42,7 @@ export default async function ScriptOutlineBlock({
       fieldName={name}
       value={value || ''}
       generator={handleOptionGeneration}
-      onSubmit={handleSubmission}
+      submission={handleSubmission}
     />
   )
 }
