@@ -31,6 +31,6 @@ export async function generateExtend(
 ) {
   const prompt = getPrompt(content, topic, count)
   console.log('prompt', prompt)
-  let result = await askGptWithCache({ prompt, jsonFormat: false })
+  let result = await askGptWithCache({ prompt, jsonFormat: false ,ttl:0})
   return result
 }

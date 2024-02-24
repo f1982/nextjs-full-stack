@@ -16,13 +16,18 @@ export default async function ScriptMainBlock({
     if (!result || !result.includes('---')) {
       return ''
     }
-    return result.split('---').map((outline: string) => outline.trim())
+    return result
+      .split('---')
+      .map((outline: string) => outline && outline.trim())
   }
 
   const name = 'main'
   const cacheKey = 'script-' + name + '-' + videoData.id
 
+  let value = await cache.get(cacheKey)
+
   const outlines = await getOutlines()
+  console.log('outlines', outlines)
 
   const handleSubmission = async (
     data: any,
@@ -41,7 +46,9 @@ export default async function ScriptMainBlock({
 
     let main: string = ''
     for (const outline of outlines) {
-      main += await generateExtend(outline, videoData.topic!)
+      if (outline.length > 10) {
+        main += await generateExtend(outline, videoData.topic!)
+      }
     }
 
     return { data: main, status: 'success', message: '' }
@@ -51,7 +58,7 @@ export default async function ScriptMainBlock({
     <GenEditForm
       rows={20}
       fieldName={name}
-      value={''}
+      value={value || ''}
       generator={handleOptionGeneration}
       submission={handleSubmission}
     />

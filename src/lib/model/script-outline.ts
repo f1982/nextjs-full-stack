@@ -31,7 +31,18 @@ export function getPrompt(topic: string): string {
 ${topic}
 """
 
-輸出邏輯段落间用 “---” 分割。
+輸出邏輯段落间用 “---” 分割。 輸出內容的開頭和結尾不需要添加 “---”
+例子如下：
+
+"""
+
+段落內容1
+---
+段落內容2
+---
+段落內容3
+
+"""
 
 
 `
@@ -39,6 +50,6 @@ ${topic}
 
 export async function generateScriptOutline(topic: string) {
   const prompt = getPrompt(topic)
-  let result = await askGptWithCache({ prompt, jsonFormat: false })
+  let result = await askGptWithCache({ prompt, jsonFormat: false,ttl:0 })
   return result
 }
