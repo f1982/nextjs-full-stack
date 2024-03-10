@@ -1,5 +1,5 @@
-import { LangOptions, askGptWithCache } from '../gpt'
-import { promptRequirements } from './prompt-segments'
+import { LangOptions, askGptWithCache } from '../../../lib/gpt'
+import { promptRequirements } from '../../../lib/prompt-segments'
 import { z } from 'zod'
 
 export const validator = z.object({

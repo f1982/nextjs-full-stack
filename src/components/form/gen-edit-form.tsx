@@ -3,7 +3,7 @@
 import UniversalSingleForm from './universal-single-form'
 import Spinner from '@/components/molecule/spinner'
 import { Button } from '@/components/ui/button'
-import { APIResponse } from '@/lib/types/types'
+import { APIResponse } from '@/types/types'
 import { Wand2 } from 'lucide-react'
 import { useState } from 'react'
 

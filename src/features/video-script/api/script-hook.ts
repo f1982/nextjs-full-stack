@@ -1,4 +1,4 @@
-import { askGptWithCache } from '../gpt'
+import { askGptWithCache } from '../../../lib/gpt'
 
 function getPrompt(topic: string, count: number): string {
   return `

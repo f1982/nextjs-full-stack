@@ -1,5 +1,5 @@
-import { APIResponse, ResponseStatus } from './types/types'
-import { sleep } from './utils'
+import { APIResponse, ResponseStatus } from '../types/types'
+import { sleep } from '../utils/utils'
 
 export async function mockServerResponse(
   s: ResponseStatus = 'failure',

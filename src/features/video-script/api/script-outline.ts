@@ -1,4 +1,4 @@
-import { askGptWithCache } from '../gpt'
+import { askGptWithCache } from '../../../lib/gpt'
 
 export function getPrompt(topic: string): string {
   const outlinePoints = `

@@ -1,5 +1,5 @@
-import { askGptWithCache } from '../gpt'
-import { promptRequirements } from './prompt-segments'
+import { askGptWithCache } from '../../../lib/gpt'
+import { promptRequirements } from '../../../lib/prompt-segments'
 
 export function getPrompt(
   content: string,

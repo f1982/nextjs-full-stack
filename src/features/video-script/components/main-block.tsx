@@ -1,7 +1,7 @@
 import GenEditForm from '../../../components/form/gen-edit-form'
 import { cache } from '@/lib/file-cache'
-import { generateExtend } from '@/lib/model/script-extend'
-import { APIResponse } from '@/lib/types/types'
+import { generateExtend } from '@/features/video-script/api/script-extend'
+import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
 
 export default async function ScriptMainBlock({

@@ -1,4 +1,4 @@
-import TopicSelect from '@/features/dashboard/components/components/topic-select'
+import TopicSelect from '@/features/video/components/topic-select'
 import { createVideoWithTopic } from '@/features/video/api/video-actions'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'

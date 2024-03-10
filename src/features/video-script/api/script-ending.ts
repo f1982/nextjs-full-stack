@@ -1,4 +1,4 @@
-import { askGptWithCache } from '../gpt'
+import { askGptWithCache } from '../../../lib/gpt'
 
 function getPrompt(topic: string, channel: string = '無責任猜想'): string {
   return `

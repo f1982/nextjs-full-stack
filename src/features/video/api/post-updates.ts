@@ -1,4 +1,4 @@
-import { askGptWithCache } from '../gpt'
+import { askGptWithCache } from '../../../lib/gpt'
 import { z } from 'zod'
 
 const validator = z.object({

@@ -1,6 +1,6 @@
 import { auth } from '@/config/auth-settings'
-import { generateVideoTitles } from '@/lib/model/video-titles'
-import { sleep } from '@/lib/utils'
+import { generateVideoTitles } from '@/features/video/api/video-titles'
+import { sleep } from '@/utils/utils'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest): Promise<any> {

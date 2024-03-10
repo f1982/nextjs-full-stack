@@ -1,7 +1,7 @@
 'use server'
 
 import { cache } from './file-cache'
-import { sleep } from './utils'
+import { sleep } from '../utils/utils'
 import md5 from 'md5'
 import OpenAI from 'openai'
 import {

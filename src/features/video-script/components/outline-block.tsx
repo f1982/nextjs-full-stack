@@ -1,7 +1,7 @@
 import GenEditForm from '../../../components/form/gen-edit-form'
 import { cache } from '@/lib/file-cache'
-import { generateScriptOutline } from '@/lib/model/script-outline'
-import { APIResponse } from '@/lib/types/types'
+import { generateScriptOutline } from '@/features/video-script/api/script-outline'
+import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
 
 export default async function ScriptOutlineBlock({

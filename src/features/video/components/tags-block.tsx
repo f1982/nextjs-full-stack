@@ -1,7 +1,7 @@
-import GenEditForm from '../../../../components/form/gen-edit-form'
+import GenEditForm from '../../../components/form/gen-edit-form'
 import { updateVideo } from '@/features/video/api/video-actions'
-import { generateVideoTags } from '@/lib/model/video-tags'
-import { APIResponse } from '@/lib/types/types'
+import { generateVideoTags } from '@/features/video/api/video-tags'
+import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
 
 export default async function TagsBlock({

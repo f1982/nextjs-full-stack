@@ -2,7 +2,7 @@
 
 import { auth } from '@/config/auth-settings'
 import prisma from '@/lib/prisma'
-import { APIResponse } from '@/lib/types/types'
+import { APIResponse } from '@/types/types'
 import { Channel } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 

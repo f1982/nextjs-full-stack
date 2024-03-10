@@ -1,7 +1,7 @@
-import GenEditForm from '../../../../components/form/gen-edit-form'
+import GenEditForm from '../../../components/form/gen-edit-form'
 import { updateVideo } from '@/features/video/api/video-actions'
-import { generateVideoDescription } from '@/lib/model/video-description'
-import { APIResponse } from '@/lib/types/types'
+import { generateVideoDescription } from '@/features/video/api/video-description'
+import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
 
 //Design

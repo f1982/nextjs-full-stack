@@ -1,4 +1,4 @@
-import { countWords } from '../utils'
+import { countWords } from '../../../utils/utils'
 import { generateExtend } from './script-extend'
 import { expect, test } from 'vitest'
 

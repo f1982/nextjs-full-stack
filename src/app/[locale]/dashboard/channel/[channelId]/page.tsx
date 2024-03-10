@@ -1,4 +1,4 @@
-import NewVideoButton from '../../../../../features/dashboard/components/components/new-video-button'
+import NewVideoButton from '../../../../../features/video/components/new-video-button'
 import { retrieveVideos } from '../../../../../features/video/api/video-actions'
 import { retrieveChannel } from '../../../../../features/channel/api/channel-actions'
 import { Separator } from '@/components/ui/separator'
