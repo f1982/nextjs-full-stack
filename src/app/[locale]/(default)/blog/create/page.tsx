@@ -1,6 +1,6 @@
-import { createPost } from './_lib/actions'
-import { AddForm } from './_lib/form'
-import { getDraftData } from './_lib/loader'
+import { createPost } from '../../../../../features/blog/api/create-actions'
+import { AddForm } from '../../../../../features/blog/components/form'
+import { getDraftData } from '../../../../../features/blog/api/loader'
 import Post from '@/components/page/post-item'
 import React from 'react'
 

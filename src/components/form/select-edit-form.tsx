@@ -1,14 +1,13 @@
 'use client'
 
-import UniversalSingleForm from './universal-single-form'
 import ListMultipleSelect, {
   OptionItemData,
 } from '@/components/molecule/list-multiple-select'
-import ListSelector from '@/components/molecule/list-select'
 import Spinner from '@/components/molecule/spinner'
 import { Button } from '@/components/ui/button'
 import { Wand2 } from 'lucide-react'
 import { useState } from 'react'
+import UniversalSingleForm from './universal-single-form'
 
 function convertStringArrayToObjectArray(stringArray) {
   return stringArray.map((item, index) => ({

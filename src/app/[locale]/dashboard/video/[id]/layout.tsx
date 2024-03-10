@@ -1,4 +1,4 @@
-import { retrieveVideo } from '../_lib/video-actions'
+import { retrieveVideo } from '../../../../../features/video/api/video-actions'
 import SecondaryNav, { NavItemData } from '@/components/molecule/secondary-nav'
 import { Separator } from '@/components/ui/separator'
 import { Metadata } from 'next'

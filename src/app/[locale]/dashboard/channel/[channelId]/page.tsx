@@ -1,6 +1,6 @@
-import NewVideoButton from '../../_lib/new-video-button'
-import { retrieveVideos } from '../../video/_lib/video-actions'
-import { retrieveChannel } from '../_lib/channel-actions'
+import NewVideoButton from '../../../../../features/dashboard/components/components/new-video-button'
+import { retrieveVideos } from '../../../../../features/video/api/video-actions'
+import { retrieveChannel } from '../../../../../features/channel/api/channel-actions'
 import { Separator } from '@/components/ui/separator'
 
 export default async function Page({

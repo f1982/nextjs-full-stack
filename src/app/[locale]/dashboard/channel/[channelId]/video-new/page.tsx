@@ -1,5 +1,5 @@
-import TopicSelect from '@/app/[locale]/dashboard/video/_lib/topic-select'
-import { createVideoWithTopic } from '@/app/[locale]/dashboard/video/_lib/video-actions'
+import TopicSelect from '@/features/dashboard/components/components/topic-select'
+import { createVideoWithTopic } from '@/features/video/api/video-actions'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'

@@ -1,4 +1,4 @@
-import { retrieveChannel } from '../_lib/channel-actions'
+import { retrieveChannel } from '../../../../../features/channel/api/channel-actions'
 import NavigationBar, { NavBarItem } from '@/components/molecule/nav-bar'
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'

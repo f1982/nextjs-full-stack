@@ -1,5 +1,5 @@
-import SelectEditForm from './select-edit-form'
-import { updateVideo } from '@/app/[locale]/dashboard/video/_lib/video-actions'
+import SelectEditForm from '../../../../components/form/select-edit-form'
+import { updateVideo } from '@/features/video/api/video-actions'
 import { generateVideoTitles } from '@/lib/model/video-titles'
 import { Video } from '@prisma/client'
 

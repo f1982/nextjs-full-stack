@@ -1,5 +1,5 @@
-import { retrieveChannel, updateChannel } from '../../_lib/channel-actions'
-import EditChannelForm from '../../_lib/channel-form'
+import { retrieveChannel, updateChannel } from '../../../../../../features/channel/api/channel-actions'
+import EditChannelForm from '../../../../../../features/channel/components/channel-form'
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'

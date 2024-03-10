@@ -1,9 +1,9 @@
-import TopicSelect from '@/app/[locale]/dashboard/video/_lib/topic-select'
+import TopicSelect from '@/features/dashboard/components/components/topic-select'
 import {
   createVideoWithTopic,
   retrieveVideo,
   updateVideo,
-} from '@/app/[locale]/dashboard/video/_lib/video-actions'
+} from '@/features/video/api/video-actions'
 import { ServerError } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'

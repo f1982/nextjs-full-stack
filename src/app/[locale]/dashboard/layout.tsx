@@ -1,5 +1,5 @@
-import { Logo } from './_lib/logo'
-import { Menubar } from './_lib/menubar'
+import { Logo } from '../../../features/dashboard/components/logo'
+import { Menubar } from '../../../features/dashboard/components/menubar'
 import UserInfo from '@/components/molecule/user-info'
 import { Toaster } from '@/components/ui/toaster'
 import { Newspaper } from 'lucide-react'

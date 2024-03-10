@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle
-} from '@/src/components/ui/card';
+} from '@/components/ui/card';
 import { Button } from '../ui/button';
 
 export type OptionItemData = { label: string; value: string }

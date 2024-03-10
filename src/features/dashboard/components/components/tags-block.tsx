@@ -1,5 +1,5 @@
-import GenEditForm from './gen-edit-form'
-import { updateVideo } from '@/app/[locale]/dashboard/video/_lib/video-actions'
+import GenEditForm from '../../../../components/form/gen-edit-form'
+import { updateVideo } from '@/features/video/api/video-actions'
 import { generateVideoTags } from '@/lib/model/video-tags'
 import { APIResponse } from '@/lib/types/types'
 import { Video } from '@prisma/client'

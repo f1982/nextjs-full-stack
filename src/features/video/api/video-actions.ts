@@ -1,5 +1,4 @@
 import { auth } from '@/config/auth-settings'
-import { mockServerResponse } from '@/lib/debug-only'
 import prisma from '@/lib/prisma'
 import { APIResponse } from '@/lib/types/types'
 import { Video } from '@prisma/client'

@@ -1,22 +1,24 @@
-import GenEditForm from './gen-edit-form'
+import GenEditForm from '../../../components/form/gen-edit-form'
 import { cache } from '@/lib/file-cache'
-import { generateScriptHook } from '@/lib/model/script-hook'
+import { generateScriptOutline } from '@/lib/model/script-outline'
 import { APIResponse } from '@/lib/types/types'
 import { Video } from '@prisma/client'
 
-export default async function ScriptHookBlock({
+export default async function ScriptOutlineBlock({
   videoData,
 }: {
   videoData: Video
 }) {
-  const cacheKey = 'script-hook-' + videoData.id
-  let hook = await cache.get(cacheKey)
+  const name = 'outline'
+  const cacheKey = 'script-' + name + '-' + videoData.id
+  let value = await cache.get(cacheKey)
 
   const handleSubmission = async (
     data: any,
   ): Promise<APIResponse<string | null>> => {
     'use server'
 
+    // return await updateVideo({ title: data.value, id: videoData.id })
     await cache.set(cacheKey, data.value)
     return { status: 'success', message: '', data: data.value }
   }
@@ -26,17 +28,19 @@ export default async function ScriptHookBlock({
   > => {
     'use server'
 
-    const content = await generateScriptHook(videoData.topic!)
-    //auto save
-    await cache.set(cacheKey, content)
-
+    const content = await generateScriptOutline(videoData.topic!)
+    // { "author": "", "quote": "", reference: ""}
+    // const sentences = quotes.map((quote) => {
+    //   return quote.author + ' ' + quote.quote
+    // })
     return { data: content, status: 'success' }
   }
 
   return (
     <GenEditForm
-      fieldName="scriptHook"
-      value={hook || ''}
+      rows={20}
+      fieldName={name}
+      value={value || ''}
       generator={handleOptionGeneration}
       submission={handleSubmission}
     />
