@@ -2,7 +2,7 @@
 // Import necessary libraries
 import React, { useRef, useEffect } from 'react';
 import { Leva, useControls } from 'leva';
-import useDrawCanvas, { DrawFunctionType } from '@/lib/canvas/use-draw-canvas';
+import useDrawCanvas, { DrawFunctionType } from '@/utils/canvas/use-draw-canvas';
 import { useEffectOnce } from 'usehooks-ts';
 
 export default function BubbleCanvas() {

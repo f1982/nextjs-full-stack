@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { mockServerResponse } from '@/lib/debug-only'
+import { mockServerResponse } from '@/utils/debug-only'
 import { cache } from '@/lib/file-cache'
 import React from 'react'
 
