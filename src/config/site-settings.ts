@@ -1,5 +1,5 @@
 import { bingWebmaster } from './services'
-import { openGraph, twitter } from './social'
+import { openGraph, twitter } from './open-graph'
 import { Metadata } from 'next'
 import { Robots } from 'next/dist/lib/metadata/types/metadata-types'
 
@@ -68,9 +68,4 @@ export const siteMetadata: Metadata = {
   verification: {
     other: bingWebmaster,
   },
-}
-
-export const socialMediaUrls = {
-  youtube: 'https://youtube.com/@emojiyou?si=HzrJOJg8FyI51bjj',
-  twitter: 'https://twitter.com/emojiucc',
 }
