@@ -26,32 +26,23 @@ export default function BeatsGenerator({
   const oscLeft = useRef<Oscillator>(
     new Oscillator(frequencyLeft, 'sine').toDestination(),
   )
-  // const gainLeft = useRef<Gain>(new Gain(volumeLeft).toDestination())
-  const panLeft = useRef<PanVol>(new PanVol(-1, 100).toDestination())
+  const gainLeft = useRef<Gain>(new Gain(volumeLeft).toDestination())
+  const panLeft = useRef<PanVol>(new PanVol(-1, 0).toDestination())
 
   const oscRight = useRef<Oscillator>(
     new Oscillator(frequencyRight, 'sine').toDestination(),
   )
-  // const gainRight = useRef<Gain>(new Gain(volumeLeft).toDestination())
-  const panRight = useRef<PanVol>(new PanVol(1, 100).toDestination())
+  const gainRight = useRef<Gain>(new Gain(volumeLeft).toDestination())
+  const panRight = useRef<PanVol>(new PanVol(1, 0).toDestination())
 
   const oscConnect = () => {
-    oscLeft.current.connect(panLeft.current)
-    // oscLeft.current.connect(gainLeft.current).connect(panLeft.current)
-    // oscLeft.current.connect(panLeft.current)
-
-    oscRight.current.connect(panRight.current)
-    // oscRight.current.connect(gainRight.current).connect(panRight.current)
-    // oscRight.current.connect(panRight.current)
+    oscLeft.current.connect(panLeft.current).connect(gainLeft.current)
+    oscRight.current.connect(panRight.current).connect(gainRight.current)
   }
 
   const oscDisconnect = () => {
-    oscLeft.current.disconnect(panLeft.current)
-    // oscLeft.current.disconnect(gainLeft.current)
-    // oscLeft.current.disconnect(panLeft.current)
-
-    // oscRight.current.disconnect(gainRight.current)
-    oscRight.current.disconnect(panRight.current)
+    oscLeft.current.disconnect(panLeft.current).disconnect(gainLeft.current)
+    oscRight.current.disconnect(panRight.current).disconnect(gainRight.current)
   }
 
   useEffect(() => {
@@ -65,11 +56,14 @@ export default function BeatsGenerator({
     oscLeft.current.frequency.value = frequencyLeft
     oscRight.current.frequency.value = frequencyRight
 
-    panLeft.current.volume.value = volumeLeft
-    panRight.current.volume.value = volumeRight
+    // panLeft.current.volume.value = volumeLeft
+    // panRight.current.volume.value = volumeRight
     // gainLeft.current.gain.value = volumeLeft
     // gainRight.current.gain.value = volumeRight
-    // oscLeft.current.connect(gainLeft.current)
+
+    oscLeft.current.volume.value = volumeLeft
+    oscRight.current.volume.value = volumeRight
+
     oscConnect()
   }, [frequencyLeft, frequencyRight, volumeLeft, volumeRight])
 
