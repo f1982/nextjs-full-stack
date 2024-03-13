@@ -1,5 +1,6 @@
 import Footer from '@/components/page/footer'
 import NavBar from '@/components/page/navbar'
+import clsx from 'clsx'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -17,7 +18,13 @@ export default async function RootLayout({
   return (
     <>
       <NavBar />
-      <div className="flex-1">{children}</div>
+      <main
+        className={clsx(
+          'flex-1',
+          'flex w-full flex-col'
+        )}>
+        {children}
+      </main>
       <Footer />
     </>
   )

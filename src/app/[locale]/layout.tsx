@@ -27,7 +27,9 @@ export default async function RootLayout({
       <NextAuthProvider>
         <body
           className={clsx(
-            'flex min-h-screen flex-col bg-background font-sans antialiased',
+            'flex min-h-screen flex-col',
+            'bg-background dark:bg-slate-950',
+            'font-sans antialiased',
             fontSans.variable,
           )}>
           {children}

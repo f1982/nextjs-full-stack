@@ -2,12 +2,12 @@ import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
 import clsx from 'clsx'
 import { Minus, Plus, PlusIcon } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { useDebounceCallback } from 'usehooks-ts'
 
 const debounceTime = 500
 
-interface SliderButtonsProps {
+interface SliderButtonsProps extends PropsWithChildren {
   label: string
   unit: string
   defaultValue: number
@@ -26,6 +26,7 @@ export default function SliderButtons({
   max,
   step,
   className,
+  children,
   handleValueChange,
 }: SliderButtonsProps) {
   const [value, setValue] = useState(defaultValue)
@@ -43,6 +44,7 @@ export default function SliderButtons({
       </label>
       <div className="flex flex-row gap-3">
         <Button
+          className="px-1"
           variant={'ghost'}
           onClick={() => {
             setValue(value - step)
@@ -59,12 +61,14 @@ export default function SliderButtons({
           }}
         />
         <Button
+          className="px-1"
           variant={'ghost'}
           onClick={() => {
             setValue(value + step)
           }}>
           <Plus />
         </Button>
+        {children}
       </div>
     </div>
   )

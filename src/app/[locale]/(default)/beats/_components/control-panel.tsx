@@ -38,34 +38,22 @@ interface ControlPanelProps {
 
 export default function ControlPanel(props: ControlPanelProps) {
   const [frequencyLeft, setFrequencyLeft] = useState(200)
-  const debounceFL = useDebounceCallback(setFrequencyLeft, debounceTime)
 
   const [frequencyRight, setFrequencyRight] = useState(210)
-  const debounceFR = useDebounceCallback(setFrequencyRight, debounceTime)
 
   const [frequency, setFrequency] = useState(210)
-  const debounceF = useDebounceCallback((value) => {
-    setFrequency(value)
-    setFrequencyLeft(value)
-    setFrequencyRight(value + frequencyDiff)
-  }, debounceTime)
 
   const [frequencyDiff, setFrequencyDiff] = useState(5)
-  const debounceFD = useDebounceCallback((diffValue) => {
-    setFrequencyDiff(diffValue)
-    setFrequencyLeft(frequency)
-    setFrequencyRight(frequency + diffValue)
-  }, debounceTime)
 
   const [volumeLeft, setVolumeLeft] = useState(0.6)
-  const debounceVL = useDebounceCallback(setVolumeLeft, debounceTime)
 
   const [volumeRight, setVolumeRight] = useState(0.6)
-  const debounceVR = useDebounceCallback(setVolumeRight, debounceTime)
 
   const [isPlaying, setIsPlaying] = useState(false)
 
   const [showFrequencyDetails, setShowFrequencyDetails] = useState(false)
+  const [showVolumeDetails, setShowVolumeDetails] = useState(false)
+
   const debouncedChanges = useDebounceCallback(
     props.handleChanges,
     debounceTime,
@@ -87,69 +75,60 @@ export default function ControlPanel(props: ControlPanelProps) {
 
   return (
     <>
-      <div className="p-4">
-        <h1 className="mb-4 text-2xl font-bold">Binaural Beats Generator</h1>
-
-        <div className="flex flex-row items-center justify-center">
-          <SliderButtons
-            className="flex-1"
-            unit="Hz"
-            defaultValue={200}
-            label="Frequency"
-            min={1}
-            max={1500}
-            step={1}
-            handleValueChange={(v) => {
-              console.log('v', v)
-              setFrequency(v)
-              setFrequencyLeft(v)
-              setFrequencyRight(v + frequencyDiff)
-            }}
-          />
-          <Button
-            variant={'ghost'}
-            onClick={() => setShowFrequencyDetails((v) => !v)}>
-            {showFrequencyDetails ? <ChevronUp /> : <ChevronDown />}
-          </Button>
-        </div>
-
-        {showFrequencyDetails && (
-          <>
-            <div className="flex flex-col gap-3 p-6">
-              <div className="mb-4">
-                <label className="mb-1 block text-sm font-medium text-gray-700">
-                  Left Frequency ({frequencyLeft}Hz)
-                </label>
-                <Slider
-                  min={1}
-                  max={1500}
-                  step={1}
-                  value={[frequencyLeft]}
-                  // defaultValue={[frequencyLeft]}
-                  onValueChange={(value) => {
-                    setFrequencyLeft(value[0])
-                  }}
-                />
-              </div>
-              <div className="mb-4">
-                <label className="mb-1 block text-sm font-medium text-gray-700">
-                  Right Frequency ({frequencyRight}Hz)
-                </label>
-                <Slider
-                  min={1}
-                  max={1500}
-                  step={1}
-                  value={[frequencyRight]}
-                  onValueChange={(value) => {
-                    setFrequencyRight(value[0])
-                  }}
-                />
-              </div>
-            </div>
-          </>
-        )}
-
+      <div className="flex flex-row items-center justify-center">
         <SliderButtons
+          className="flex-1"
+          unit="Hz"
+          defaultValue={200}
+          label="Frequency"
+          min={1}
+          max={1500}
+          step={1}
+          handleValueChange={(v) => {
+            console.log('v', v)
+            setFrequency(v)
+            setFrequencyLeft(v)
+            setFrequencyRight(v + frequencyDiff)
+          }}
+        ><Button className='px-1'
+        variant={'ghost'}
+        onClick={() => setShowFrequencyDetails((v) => !v)}>
+        {showFrequencyDetails ? <ChevronUp /> : <ChevronDown />}
+      </Button></SliderButtons>
+        
+      </div>
+
+      {showFrequencyDetails && (
+        <>
+          <div className="mb-9 flex flex-col gap-6">
+            <label className="mb-1 block text-sm font-medium text-gray-700">
+              Left Frequency ({frequencyLeft}Hz)
+            </label>
+            <Slider
+              min={1}
+              max={1500}
+              step={1}
+              value={[frequencyLeft]}
+              onValueChange={(value) => setFrequencyLeft(value[0])}
+            />
+
+            <label className="mb-1 block text-sm font-medium text-gray-700">
+              Right Frequency ({frequencyRight}Hz)
+            </label>
+            <Slider
+              min={1}
+              max={1500}
+              step={1}
+              value={[frequencyRight]}
+              onValueChange={(value) => setFrequencyRight(value[0])}
+            />
+          </div>
+        </>
+      )}
+
+      <div className="flex flex-row items-center justify-center">
+        <SliderButtons
+          className="flex-1"
           unit="Hz"
           defaultValue={7}
           label="Frequency Differences"
@@ -157,29 +136,37 @@ export default function ControlPanel(props: ControlPanelProps) {
           max={500}
           step={1}
           handleValueChange={(diffValue) => {
-            console.log('diffValue', diffValue)
             setFrequencyDiff(diffValue)
             setFrequencyLeft(frequency)
             setFrequencyRight(frequency + diffValue)
+          }}>
+          
+        </SliderButtons>
+      </div>
+
+      <div className="flex flex-row items-center justify-center">
+        <SliderButtons
+          className="flex-1"
+          unit="dB"
+          defaultValue={7}
+          label="Volume"
+          min={-100}
+          max={100}
+          step={1}
+          handleValueChange={(v) => {
+            setVolumeLeft(v)
+            setVolumeRight(v)
           }}
-        />
+        ><Button className='px-1'
+        variant={'ghost'}
+        onClick={() => setShowVolumeDetails((v) => !v)}>
+        {showVolumeDetails ? <ChevronUp /> : <ChevronDown />}
+      </Button></SliderButtons>
+        
+      </div>
 
-        <div className="mb-4">
-          <SliderButtons
-            unit="dB"
-            defaultValue={7}
-            label="Volume"
-            min={-100}
-            max={100}
-            step={1}
-            handleValueChange={(v) => {
-              setVolumeLeft(v)
-              setVolumeRight(v)
-            }}
-          />
-        </div>
-
-        <div className="mb-4">
+      {showVolumeDetails && (
+        <div className="flex flex-col gap-3">
           <label className="mb-1 block text-sm font-medium text-gray-700">
             Volume ({volumeLeft} L)
           </label>
@@ -190,8 +177,7 @@ export default function ControlPanel(props: ControlPanelProps) {
             defaultValue={[volumeLeft]}
             onValueChange={(value) => setVolumeLeft(value[0])}
           />
-        </div>
-        <div className="mb-4">
+
           <label className="mb-1 block text-sm font-medium text-gray-700">
             Volume ({volumeRight} R)
           </label>
@@ -203,8 +189,14 @@ export default function ControlPanel(props: ControlPanelProps) {
             onValueChange={(value) => setVolumeRight(value[0])}
           />
         </div>
+      )}
 
-        <Button variant={'outline'} size={'lg'} onClick={handleTogglePlay}>
+      <div className="mt-9 text-center">
+        <Button
+          className="mx-auto"
+          variant={'default'}
+          size={'lg'}
+          onClick={handleTogglePlay}>
           {isPlaying ? <Pause /> : <Play />}
         </Button>
       </div>

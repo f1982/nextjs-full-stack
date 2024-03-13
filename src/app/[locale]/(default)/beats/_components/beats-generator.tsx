@@ -1,8 +1,10 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
+import { context } from 'tone'
 import { PanVol } from 'tone/build/esm/component'
-import { Gain } from 'tone/build/esm/core'
+import { Context, Gain } from 'tone/build/esm/core'
+import { Tone } from 'tone/build/esm/core/Tone'
 import { Oscillator } from 'tone/build/esm/source'
 
 interface BeatsPlayerProps {
@@ -26,6 +28,7 @@ export default function BeatsGenerator({
   const oscLeft = useRef<Oscillator>(
     new Oscillator(frequencyLeft, 'sine').toDestination(),
   )
+
   const gainLeft = useRef<Gain>(new Gain(volumeLeft).toDestination())
   const panLeft = useRef<PanVol>(new PanVol(-1, 0).toDestination())
 
@@ -34,6 +37,8 @@ export default function BeatsGenerator({
   )
   const gainRight = useRef<Gain>(new Gain(volumeLeft).toDestination())
   const panRight = useRef<PanVol>(new PanVol(1, 0).toDestination())
+
+  const contextRef = useRef<Context>(new Context())
 
   const oscConnect = () => {
     oscLeft.current.connect(panLeft.current).connect(gainLeft.current)
@@ -47,7 +52,41 @@ export default function BeatsGenerator({
 
   useEffect(() => {
     oscConnect()
-    return () => oscDisconnect()
+
+    // contextRef.current.resume()
+    console.log('contextRef.current', contextRef.current)
+    // Check the state of the AudioContext and resume if necessary
+    const handleStateCheck = () => {
+      // const context = contextRef.current
+      const context = oscLeft.current.context
+      console.log('context.state', context.state);
+      if (context.state === 'suspended' || context.state === 'closed') {
+        context
+          .resume()
+          .then(() => {
+            console.log('AudioContext resumed')
+          })
+          .catch((error) => {
+            console.error('Failed to resume AudioContext:', error)
+          })
+      }
+    }
+
+    // Check the AudioContext state periodically
+    const intervalId = setInterval(handleStateCheck, 1000)
+
+    return () => {
+      clearInterval(intervalId)
+      // const context = oscLeft.current.context.
+      // context.close()
+      //   .then(() => {
+      //     console.log('AudioContext closed')
+      //   })
+      //   .catch((error) => {
+      //     console.error('Failed to close AudioContext:', error)
+      //   })
+      oscDisconnect()
+    }
   }, [])
 
   useEffect(() => {
@@ -77,5 +116,5 @@ export default function BeatsGenerator({
     }
   }, [isPlaying])
 
-  return <div>BeatsPlayer</div>
+  return <div></div>
 }
