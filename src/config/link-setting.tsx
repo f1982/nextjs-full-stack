@@ -19,8 +19,8 @@ export const navMenuData: NavItemData[] = [
     link: '/about',
   },
   {
-    title: 'Dashboard',
-    link: '/dashboard',
+    title: 'Beats',
+    link: '/beats',
   },
 ]
 

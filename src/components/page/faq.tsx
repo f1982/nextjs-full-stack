@@ -21,7 +21,7 @@ export default function FAQ() {
         {/* <!-- FAQ Div --> */}
         <div className="mb-8 md:mb-12 lg:mb-16">
           {/* <!-- FAQ Item --> */}
-          <div className="mb-6 rounded-sm border-b-[1px] border-[#c4c4c4] p-8">
+          <div className="mb-6 rounded-sm border-b-[1px] border-[#c4c4c4] ">
             <div className="flex cursor-pointer items-start justify-between">
               <p className="text-xl font-semibold">
                 How this theme is different from others in market?
@@ -41,7 +41,7 @@ export default function FAQ() {
             </p>
           </div>
           {/* <!-- FAQ Item --> */}
-          <div className="mb-6 rounded-sm border-b-[1px] border-[#c4c4c4] p-8">
+          <div className="mb-6 rounded-sm border-b-[1px] border-[#c4c4c4] ">
             <div className="flex cursor-pointer items-start justify-between">
               <p className="text-xl font-semibold">
                 What is your policy on distributon of Flowspark assets?
@@ -61,7 +61,7 @@ export default function FAQ() {
             </p>
           </div>
           {/* <!-- FAQ Item --> */}
-          <div className="mb-6 rounded-sm border-b-[1px] border-[#c4c4c4] p-8">
+          <div className="mb-6 rounded-sm border-b-[1px] border-[#c4c4c4] ">
             <div className="flex cursor-pointer items-start justify-between">
               <p className="text-xl font-semibold">
                 How can I contribute to Flowspark?
@@ -81,7 +81,7 @@ export default function FAQ() {
             </p>
           </div>
           {/* <!-- FAQ Item --> */}
-          <div className="mb-6 rounded-sm border-b-[1px] border-[#c4c4c4] p-8">
+          <div className="mb-6 rounded-sm border-b-[1px] border-[#c4c4c4] ">
             <div className="flex cursor-pointer items-start justify-between">
               <p className="text-xl font-semibold">
                 What other themes do you have?

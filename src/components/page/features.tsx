@@ -4,7 +4,7 @@ import React from 'react'
 export default function Features() {
   return (
     <section>
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+      <div className="container mx-auto py-16 md:py-24 lg:py-32">
         <div className="text-center">
           <h2 className="text-3xl font-bold md:text-5xl">
             Make every step user-centric
