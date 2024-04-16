@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -78,7 +79,7 @@ export default function Header() {
   }
 
   return (
-    <nav className="flex h-9 flex-row items-center justify-between border-b-2 border-gray-300">
+    <nav className={clsx("flex h-9 flex-row items-center justify-between border-b-2 border-gray-300")}>
       {left}
       {right}
     </nav>
