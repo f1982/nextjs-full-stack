@@ -14,7 +14,7 @@ export default async function Hero() {
           <div className="max-w-[720px]">
             <h2 className="mb-4 text-3xl font-semibold md:text-5xl">
               Make Every Step{' '}
-              <span className="bg-[url('https://assets.website-files.com/63904f663019b0d8edf8d57c/639156ce1c70c97aeb755c8a_Rectangle%2010%20(1).svg')] bg-cover bg-center px-4 text-white">
+              <span className="bg-primary bg-cover bg-center px-4 text-primary-foreground">
                 User - Centric
               </span>
             </h2>
@@ -24,7 +24,7 @@ export default async function Hero() {
             </p>
             <a
               href="#"
-              className="inline-block rounded-xl bg-black px-8 py-4 text-center font-semibold text-white [box-shadow:rgb(19,_83,_254)_6px_6px]">
+              className="inline-block rounded-xl bg-primary px-8 py-4 text-center font-semibold text-primary-foreground shadow-xl">
               {t('hi')}
             </a>
           </div>
@@ -37,7 +37,7 @@ export default async function Hero() {
               alt=""
               className="relative mx-auto block h-full w-full max-w-[800px] -rotate-[3.5deg] rounded-2xl object-cover"
             />
-            <div className="absolute bottom-0 left-4 right-0 top-4 -z-10 h-full w-full rounded-2xl bg-black"></div>
+            <div className="absolute bottom-0 left-4 right-0 top-4 -z-10 h-full w-full rounded-2xl bg-primary"></div>
           </div>
         </div>
       </div>

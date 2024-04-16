@@ -1,51 +1,44 @@
+import SiteLogo from '../molecule/site-logo'
 import LocaleSwitcher from '@/i18n/locale-switcher'
 import Image from 'next/image'
 import React from 'react'
 
 export default function Footer() {
   return (
-    <footer
-      className="bg-muted"
-      style={{ backgroundImage: '' }}>
+    <footer>
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <div className="flex flex-col items-center">
           <a href="#" className="mb-8 inline-block max-w-full">
-            <Image
-              width={100}
-              height={30}
-              src="https://assets.website-files.com/63904f663019b0d8edf8d57c/6399728d302d2471f18b229f_Group%2047874%20(2).svg"
-              alt=""
-              className="inline-block max-h-10"
-            />
+            <SiteLogo />
           </a>
           <div className="text-center font-semibold max-[991px]:ml-0 max-[991px]:mr-0 max-[991px]:py-1">
             <a
               href="#"
-              className="inline-block px-6 py-2 font-normal transition hover:text-[#d6a701]">
+              className="inline-block px-6 py-2 font-normal transition hover:text-primary">
               About
             </a>
             <a
               href="#"
-              className="inline-block px-6 py-2 font-normal transition hover:text-[#d6a701]">
+              className="inline-block px-6 py-2 font-normal transition hover:text-primary">
               Features
             </a>
             <a
               href="#"
-              className="inline-block px-6 py-2 font-normal transition hover:text-[#d6a701]">
+              className="inline-block px-6 py-2 font-normal transition hover:text-primary">
               Works
             </a>
             <a
               href="#"
-              className="inline-block px-6 py-2 font-normal transition hover:text-[#d6a701]">
+              className="inline-block px-6 py-2 font-normal transition hover:text-primary">
               Support
             </a>
             <a
               href="#"
-              className="inline-block px-6 py-2 font-normal transition hover:text-[#d6a701]">
+              className="inline-block px-6 py-2 font-normal transition hover:text-primary">
               Help
             </a>
           </div>
-          <div className="mb-8 mt-8 w-48 border-b border-solid border-b-white"></div>
+          <div className="mb-8 mt-8 w-48 border-b border-solid border-b-border"></div>
           <div className="mb-12 grid w-full max-w-[208px] grid-flow-col grid-cols-4 gap-3">
             <a
               href="#"
@@ -92,7 +85,7 @@ export default function Footer() {
               />
             </a>
           </div>
-          <p className="max-[479px]:text-sm">
+          <p className="text-sm text-muted-foreground">
             © Copyright 2021. All rights reserved.
           </p>
           <LocaleSwitcher />
