@@ -7,7 +7,7 @@ export const navMenuData: NavItemData[] = [
     link: '/',
   },
   {
-    title: 'Doc',
+    title: 'Aggregation',
     link: '/doc',
   },
   {

@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/ui/avatar'
 import clsx from 'clsx'
 import { truncate } from 'lodash'
 import capitalize from 'lodash/capitalize'
@@ -8,35 +9,36 @@ import Link from 'next/link'
 export function ProductItem({ item }: { item: any }) {
   return (
     <>
-      <div className="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
-        <a href="#">
+      <div>
+        <Link href={`#`}>
           <Image
-            className="h-48 w-full rounded-t-lg object-cover"
+            className="aspect-video w-full rounded-md object-cover ring-1 ring-muted"
             width={300}
-            height={200}
+            height={180}
             src={item.image!}
             alt=""
           />
-        </a>
-        <div className="p-5">
-          <a href="#">
+        </Link>
+        <div className="mt-3 flex flex-row gap-3">
+          <Avatar className="h-9 w-9">
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col gap-1">
             <h5
               className={clsx(
-                `mb-2 text-xl font-bold tracking-tight dark:text-white`,
+                `text-sm font-semibold tracking-tight dark:text-white`,
               )}>
               {truncate(capitalize(item.title), {
                 length: 30,
                 omission: '...',
               })}
             </h5>
-          </a>
-          <p className="text-md mb-3 h-32 font-normal text-gray-700 dark:text-gray-400">
-            {item.description}
-          </p>
-
-          <Link href={`/category/${item.slug}`}>
+            <p className="text-xs text-muted-foreground">{item.description}</p>
+            {/* <Link href={`/category/${item.slug}`}>
             <Button variant="default">Play</Button>
-          </Link>
+          </Link> */}
+          </div>
         </div>
       </div>
     </>
