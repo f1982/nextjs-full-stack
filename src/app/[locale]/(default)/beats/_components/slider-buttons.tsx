@@ -39,7 +39,7 @@ export default function SliderButtons({
 
   return (
     <div className={clsx('mb-4', className)}>
-      <label className="mb-1 block text-sm font-medium text-gray-700">
+      <label className="mb-1 block text-sm font-medium">
         {label} ({value} {unit})
       </label>
       <div className="flex flex-row gap-3">

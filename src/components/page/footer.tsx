@@ -1,17 +1,20 @@
+import { ExtraLinks } from '../molecule/footer/link-matrix'
 import SiteLogo from '../molecule/site-logo'
-import LocaleSwitcher from '@/i18n/locale-switcher'
+import { footerLinks } from '@/config/menu-setting'
 import Image from 'next/image'
-import React from 'react'
 
 export default function Footer() {
   return (
     <footer>
-      <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+      <div className="container mx-auto px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <div className="flex flex-col items-center">
           <a href="#" className="mb-8 inline-block max-w-full">
             <SiteLogo />
           </a>
-          <div className="text-center font-semibold max-[991px]:ml-0 max-[991px]:mr-0 max-[991px]:py-1">
+          <div className="text-sm text-muted-foreground">
+            This is a website that is awesome
+          </div>
+          {/* <div className="text-center font-semibold max-[991px]:ml-0 max-[991px]:mr-0 max-[991px]:py-1">
             <a
               href="#"
               className="inline-block px-6 py-2 font-normal transition hover:text-primary">
@@ -37,9 +40,12 @@ export default function Footer() {
               className="inline-block px-6 py-2 font-normal transition hover:text-primary">
               Help
             </a>
-          </div>
+          </div> */}
           <div className="mb-8 mt-8 w-48 border-b border-solid border-b-border"></div>
-          <div className="mb-12 grid w-full max-w-[208px] grid-flow-col grid-cols-4 gap-3">
+
+          <ExtraLinks data={footerLinks} className="mb-8 w-full md:w-2/3" />
+
+          {/* <div className="mb-12 grid w-full max-w-[208px] grid-flow-col grid-cols-4 gap-3">
             <a
               href="#"
               className="ifont-bold mx-auto flex max-w-[24px] flex-col">
@@ -84,11 +90,10 @@ export default function Footer() {
                 className="inline-block"
               />
             </a>
-          </div>
-          <p className="text-sm text-muted-foreground">
+          </div> */}
+          <p className="text-xs text-muted-foreground">
             © Copyright 2021. All rights reserved.
           </p>
-          <LocaleSwitcher />
         </div>
       </div>
     </footer>

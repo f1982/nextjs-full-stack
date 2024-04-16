@@ -27,7 +27,10 @@ export default function LocaleSwitcherSelect({
   }
 
   return (
-    <div className="flex flex-row items-center">
+    <div
+      className={clsx(
+        'flex flex-row items-center rounded-xl bg-primary p-2 text-primary-foreground',
+      )}>
       <label
         className={clsx(
           isPending && 'transition-opacity [&:disabled]:opacity-30',

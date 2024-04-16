@@ -7,6 +7,6 @@
   },
   "LocaleSwitcher": {
     "label": "Select language",
-    "locale": "{locale, select, cn {🇨🇳 Chinese} en {🇺🇸 English} other {Unknown}}"
+    "locale": "{locale, select, cn {🇨🇳} en {🇺🇸} other {Unknown}}"
   }
 }

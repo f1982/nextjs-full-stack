@@ -9,7 +9,7 @@ export default function Features() {
           <h2 className="text-3xl font-bold md:text-5xl">
             Make every step user-centric
           </h2>
-          <p className="mx-auto mb-8 mt-4 max-w-lg text-[#647084] md:mb-12 lg:mb-16">
+          <p className="mx-auto mb-8 mt-4 max-w-lg md:mb-12 lg:mb-16">
             Lorem ipsum dolor sit amet consectetur adipiscing elit ut
             aliquam,purus sit amet luctus magna fringilla urna
           </p>
@@ -24,7 +24,7 @@ export default function Features() {
               className="inline-block h-8"
             />
             <p className="text-xl font-semibold">Support</p>
-            <p className="text-sm text-[#636262]">
+            <p className="text-sm  ">
               Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam,
               purus sit.
             </p>
@@ -38,7 +38,7 @@ export default function Features() {
               className="inline-block h-8"
             />
             <p className="text-xl font-semibold">Organise</p>
-            <p className="text-sm text-[#636262]">
+            <p className="text-sm  ">
               Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam,
               purus sit.
             </p>
@@ -52,7 +52,7 @@ export default function Features() {
               className="inline-block h-8"
             />
             <p className="text-xl font-semibold">Flexibility</p>
-            <p className="text-sm text-[#636262]">
+            <p className="text-sm  ">
               Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam,
               purus sit.
             </p>

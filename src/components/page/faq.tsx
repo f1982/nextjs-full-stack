@@ -13,7 +13,7 @@ export default function FAQ() {
               Questions
             </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-[528px] text-[#636262]">
+          <p className="mx-auto mt-4 max-w-[528px] ">
             Lorem ipsum dolor sit amet consectetur adipiscing elit ut
             aliquam,purus sit amet luctus magna fringilla urna
           </p>
@@ -31,7 +31,7 @@ export default function FAQ() {
                 <div className="h-0.5 w-4 bg-[#0b0b1f]"></div>
               </div>
             </div>
-            <p className="mb-4 text-[#636262]">
+            <p className="mb-4 ">
               Pellentesque in nisi aliquet, pellentesque purus eget, imperdiet
               turpis. Fusce at enim quis neque viverra convallis. Vivamus ut
               elementum leo, eget tempus nisl. Sed viverra enim ac turpis
@@ -51,7 +51,7 @@ export default function FAQ() {
                 <div className="h-0.5 w-4 bg-[#0b0b1f]"></div>
               </div>
             </div>
-            <p className="mb-4 text-[#636262]">
+            <p className="mb-4 ">
               Pellentesque in nisi aliquet, pellentesque purus eget, imperdiet
               turpis. Fusce at enim quis neque viverra convallis. Vivamus ut
               elementum leo, eget tempus nisl. Sed viverra enim ac turpis
@@ -71,7 +71,7 @@ export default function FAQ() {
                 <div className="h-0.5 w-4 bg-[#0b0b1f]"></div>
               </div>
             </div>
-            <p className="mb-4 text-[#636262]">
+            <p className="mb-4 ">
               Pellentesque in nisi aliquet, pellentesque purus eget, imperdiet
               turpis. Fusce at enim quis neque viverra convallis. Vivamus ut
               elementum leo, eget tempus nisl. Sed viverra enim ac turpis
@@ -91,7 +91,7 @@ export default function FAQ() {
                 <div className="h-0.5 w-4 bg-[#0b0b1f]"></div>
               </div>
             </div>
-            <p className="mb-4 text-[#636262]">
+            <p className="mb-4 ">
               Pellentesque in nisi aliquet, pellentesque purus eget, imperdiet
               turpis. Fusce at enim quis neque viverra convallis. Vivamus ut
               elementum leo, eget tempus nisl. Sed viverra enim ac turpis

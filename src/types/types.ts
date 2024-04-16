@@ -5,3 +5,7 @@ export type APIResponse<T> = {
   message?: string
   data?: T | null
 }
+
+export type WithCN = {
+  className?: string
+}

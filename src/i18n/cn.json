@@ -7,6 +7,6 @@
   },
   "LocaleSwitcher": {
     "label": "选择语言",
-    "locale": "{locale, select, cn {🇨🇳 中文} en {🇺🇸 英文} other {Unknown}}"
+    "locale": "{locale, select, cn {🇨🇳} en {🇺🇸} other {Unknown}}"
   }
 }

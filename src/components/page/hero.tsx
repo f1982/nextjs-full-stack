@@ -18,7 +18,7 @@ export default async function Hero() {
                 User - Centric
               </span>
             </h2>
-            <p className="mb-6 max-w-[480px] text-[#636262] md:mb-10 lg:mb-12">
+            <p className="mb-6 max-w-[480px] md:mb-10 lg:mb-12">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
               aliquam, purus sit amet luctus venenatis, lectus
             </p>
