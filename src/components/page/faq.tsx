@@ -4,7 +4,7 @@ export default function FAQ() {
   return (
     <section>
       {/* <!-- Container --> */}
-      <div className="mx-auto w-full max-w-5xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+      <div className="container mx-auto py-16 md:py-24 lg:py-32">
         {/* <!-- Heading Div --> */}
         <div className="mb-8 text-center md:mb-12 lg:mb-16">
           <h2 className="text-3xl font-semibold md:text-5xl">

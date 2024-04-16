@@ -4,10 +4,9 @@ import React from 'react'
 export default function CTA() {
   return (
     <section>
-      <div className="mx-auto w-full px-5 py-16 md:px-10 md:py-24">
-        <div className="flex w-full flex-col items-center bg-secondary px-6 py-16 text-center text-secondary-foreground md:py-24">
+      <div className="mx-auto w-full py-16 md:py-24">
+        <div className="flex w-full flex-col items-center bg-secondary  py-16 text-center text-secondary-foreground md:py-24">
           <h2 className="mb-6 max-w-[600px] flex-col text-3xl font-bold md:mb-10 md:text-5xl lg:mb-12">
-            {' '}
             Lightning Fast Webflow Dev Made Easy{' '}
           </h2>
           <div className="mx-auto">
