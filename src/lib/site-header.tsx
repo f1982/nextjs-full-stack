@@ -1,8 +1,8 @@
 import DarkModeToggle from '@/components/molecule/dark-mode-toggle'
 import Header from '@/components/molecule/header/header'
-import SiteLogo from '@/components/molecule/site-logo'
 import { navMenuData } from '@/config/link-setting'
 import LocaleSwitcher from '@/i18n/locale-switcher'
+import SiteLogo from '@/lib/site-logo'
 import Link from 'next/link'
 import React from 'react'
 

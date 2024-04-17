@@ -1,18 +1,20 @@
-import { NavItemData } from '../header/nav-menu-data'
-import { FooterLinkItems } from './footer-links'
-import { WithCN } from '@/types/types'
+import { MenuItemData } from '../header/menu-data'
+import { FooterLinkItem } from './footer-link-item'
 import clsx from 'clsx'
 
-export const ExtraLinks = ({
-  data,
-  className,
-}: WithCN & { data: NavItemData[][] }) => {
+export const ExtraLinks = ({ data }: { data: MenuItemData[][] }) => {
   return (
     <>
-      <div className={clsx('flex flex-row gap-3', className)}>
+      <div className={clsx('flex flex-row gap-3')}>
         {data.map((list) => (
           <div className="flex w-full flex-col gap-3">
-            <FooterLinkItems itemData={list} />
+            {list.map((item) => (
+              <FooterLinkItem
+                key={item.link}
+                label={item.label}
+                link={item.link}
+              />
+            ))}
           </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 'use client'
 
-import { NavItems } from './nav-menu'
-import { NavItemData } from './nav-menu-data'
+import { MenuItemData } from './menu-data'
+import { NavItems, NavMenuItem } from './nav-menu'
 import { MobileNavPopover } from './nav-mobile-popover'
 import clsx from 'clsx'
 import React from 'react'
@@ -9,7 +9,7 @@ import React from 'react'
 type HeaderProps = {
   left?: React.ReactNode
   right?: React.ReactNode
-  data: NavItemData[]
+  data: MenuItemData[]
   className?: string
 }
 
@@ -20,11 +20,17 @@ const Header = ({ left, right, data, className }: HeaderProps) => {
         <div className="flex w-full items-center justify-between">
           {left}
 
-          <nav
+          <menu
             data-test="desktopNavMenu"
             className="hidden flex-row gap-9 lg:flex">
-            <NavItems itemData={data} />
-          </nav>
+            {data.map((item) => (
+              <NavMenuItem
+                key={item.link}
+                label={item.title}
+                link={item.link}
+                icon={item.icon}></NavMenuItem>
+            ))}
+          </menu>
           <div className="hidden lg:flex">{right}</div>
 
           {/* Menu button only show in small screen */}

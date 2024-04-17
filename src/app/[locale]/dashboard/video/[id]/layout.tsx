@@ -1,5 +1,5 @@
 import { retrieveVideo } from '../../../../../features/video/api/video-actions'
-import SecondaryNav, { NavItemData } from '@/components/molecule/secondary-nav'
+import SecondaryNav, { MenuItemData } from '@/components/molecule/secondary-nav'
 import { Separator } from '@/components/ui/separator'
 import { Metadata } from 'next'
 import Link from 'next/link'
@@ -17,7 +17,7 @@ export default async function VideoLayout({
   params: { id: string }
 }) {
   const { data } = await retrieveVideo(params.id)
-  const navConfig: NavItemData[] = [
+  const navConfig: MenuItemData[] = [
     {
       href: `/dashboard/video/${params.id}`,
       label: 'Home',

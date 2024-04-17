@@ -1,16 +1,11 @@
 'use client'
 
-import { NavItemData } from './nav-menu-data'
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+import { MenuItemData } from './menu-data'
+import { MobileNavMenuItem } from './nav-menu'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { usePathname } from '@/i18n/navigation'
 import clsx from 'clsx'
 import { Menu } from 'lucide-react'
-import Link from 'next/link'
 
 export const MobileNavPopover = ({
   left,
@@ -19,40 +14,34 @@ export const MobileNavPopover = ({
 }: {
   left?: React.ReactNode
   right?: React.ReactNode
-  data: NavItemData[]
+  data: MenuItemData[]
 }) => {
   const pathname = usePathname()
 
   return (
-    <Dialog>
-      <DialogTrigger className="lg:hidden" asChild>
-        <Menu />
-      </DialogTrigger>
-      <DialogContent className="h-full w-full">
-        <div className="flex flex-col gap-6">
-          <div className="mt-9 flex flex-row justify-between">
-            {left}
-            {right}
+    <>
+      <Sheet>
+        <SheetTrigger className="lg:hidden">
+          <Menu />
+        </SheetTrigger>
+        <SheetContent>
+          <div className="flex flex-col gap-6">
+            <div className="mt-9 flex flex-row justify-between">
+              {left}
+              {right}
+            </div>
+            <menu className={clsx('flex flex-col gap-6')}>
+              {data.map((item) => (
+                <MobileNavMenuItem
+                  key={item.link}
+                  label={item.title}
+                  {...item}
+                />
+              ))}
+            </menu>
           </div>
-          <nav className={clsx('flex flex-col gap-6')}>
-            {data.map((item) => {
-              return (
-                <Link key={item.link} href={item.link}>
-                  <DialogClose className="w-full text-left">
-                    <span
-                      className={clsx(
-                        'w-full',
-                        pathname === item.link ? 'font-bold' : 'font-normal',
-                      )}>
-                      {item.title}
-                    </span>
-                  </DialogClose>
-                </Link>
-              )
-            })}
-          </nav>
-        </div>
-      </DialogContent>
-    </Dialog>
+        </SheetContent>
+      </Sheet>
+    </>
   )
 }

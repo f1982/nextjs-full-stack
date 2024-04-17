@@ -1,40 +1,60 @@
-'use client'
-
-import { NavItemData } from './nav-menu-data'
+import { SheetClose } from '@/components/ui/sheet'
 import { usePathname } from '@/i18n/navigation'
 import clsx from 'clsx'
 import Link from 'next/link'
 
-export function NavItems({
-  itemData,
-  handleClick,
+export function NavMenuItem({
+  link,
+  label,
+  icon,
 }: {
-  itemData: NavItemData[]
-  handleClick?: () => void
+  link: string
+  label: string
+  icon?: React.ReactNode
 }) {
   const pathname = usePathname()
 
   return (
     <>
-      {itemData.map((item) => {
-        return (
-          <Link
-            key={item.link}
-            onClickCapture={() => {
-              handleClick?.()
-            }}
+      <Link
+        className={clsx(
+          'flex items-center',
+          'text-sm font-bold hover:text-foreground',
+          pathname === link ? 'text-foreground' : 'text-muted-foreground',
+        )}
+        href={link}>
+        {icon}
+        {label}
+      </Link>
+    </>
+  )
+}
+
+export function MobileNavMenuItem({
+  link,
+  label,
+  icon,
+}: {
+  link: string
+  label: string
+  icon?: React.ReactNode
+}) {
+  const pathname = usePathname()
+
+  return (
+    <>
+      <Link href={link}>
+        <SheetClose className="w-full text-left">
+          {icon}
+          <span
             className={clsx(
-              'flex items-center',
-              'text-sm font-bold hover:text-foreground',
-              pathname === item.link
-                ? 'text-foreground'
-                : 'text-muted-foreground',
-            )}
-            href={item.link}>
-            {item.title}
-          </Link>
-        )
-      })}
+              'w-full text-lg',
+              pathname === link ? 'font-bold' : 'font-normal',
+            )}>
+            {label}
+          </span>
+        </SheetClose>
+      </Link>
     </>
   )
 }

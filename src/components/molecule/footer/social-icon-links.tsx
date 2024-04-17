@@ -1,14 +1,13 @@
-import { NavItemData } from '../header/nav-menu-data'
+import { MenuItemData } from '../header/menu-data'
 import { WithCN } from '@/types/types'
-import clsx from 'clsx'
 import Link from 'next/link'
 
 function SocialIconLinks({
   data,
   className,
-}: WithCN & { data: NavItemData[] }) {
+}: WithCN & { data: MenuItemData[] }) {
   return (
-    <div className={clsx('', className)}>
+    <div className="flex flex-row gap-6">
       {data.map((item) => (
         <Link
           href={item.link}

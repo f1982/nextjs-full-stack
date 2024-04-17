@@ -1,5 +1,5 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/ui/avatar'
 import clsx from 'clsx'
 import { truncate } from 'lodash'
 import capitalize from 'lodash/capitalize'
