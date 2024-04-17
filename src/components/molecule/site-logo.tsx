@@ -4,7 +4,7 @@ import React from 'react'
 export default function SiteLogo({ className }: { className?: string }) {
   return (
     <svg
-      className={clsx('h-auto w-36 fill-primary', className)}
+      className={clsx('h-12 w-36 fill-primary', className)}
       width="284"
       height="59"
       viewBox="0 0 284 59"
