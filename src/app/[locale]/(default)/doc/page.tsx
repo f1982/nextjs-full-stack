@@ -1,6 +1,7 @@
 import Tags from '@/components/molecule/tags'
 import CTA from '@/components/page/cta'
 import Hero from '@/components/page/hero'
+import { NavigationMenuDemo } from '@/features/aggregation/components/filter-bar'
 import { ProductList } from '@/features/aggregation/components/product-list'
 import React from 'react'
 
@@ -170,6 +171,9 @@ export default function Page() {
     <>
       <div className="container"></div>
       <CTA />
+      <div className="mx-6 my-9">
+        <NavigationMenuDemo />
+      </div>
       <div className="mx-6 mb-36 flex flex-row gap-9">
         <div className="w-48">
           <Tags data={tagsData}></Tags>
