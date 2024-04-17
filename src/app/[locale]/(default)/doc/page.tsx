@@ -1,3 +1,6 @@
+import Tags from '@/components/molecule/tags'
+import CTA from '@/components/page/cta'
+import Hero from '@/components/page/hero'
 import { ProductList } from '@/features/aggregation/components/product-list'
 import React from 'react'
 
@@ -103,10 +106,78 @@ const mockData = [
     price: 399.99,
   },
 ]
+
+const tagsData = [
+  'outdoors',
+  'hiking',
+  'camping',
+  'fishing',
+  'sports',
+  'running',
+  'yoga',
+  'fitness',
+  'health',
+  'lifestyle',
+  'technology',
+  'gadgets',
+  'photography',
+  'cameras',
+  'computers',
+  'programming',
+  'coding',
+  'travel',
+  'adventure',
+  'nature',
+  'animals',
+  'pets',
+  'food',
+  'cooking',
+  'recipes',
+  'entertainment',
+  'movies',
+  'music',
+  'books',
+  'art',
+  'culture',
+  'history',
+  'science',
+  'math',
+  'business',
+  'marketing',
+  'finance',
+  'careers',
+  'education',
+  'diy',
+  'crafts',
+  'home',
+  'garden',
+  'family',
+  'parenting',
+  'relationships',
+  'weddings',
+  'fashion',
+  'beauty',
+  'healthcare',
+  'medicine',
+  'news',
+  'politics',
+  'world',
+  'local',
+]
+
 export default function Page() {
   return (
-    <div className="container">
-      <ProductList data={mockData} />
-    </div>
+    <>
+      <div className="container"></div>
+      <CTA />
+      <div className="mx-6 mb-36 flex flex-row gap-9">
+        <div className="w-48">
+          <Tags data={tagsData}></Tags>
+        </div>
+        <div className="flex-1">
+          <ProductList data={mockData} />
+        </div>
+      </div>
+    </>
   )
 }
