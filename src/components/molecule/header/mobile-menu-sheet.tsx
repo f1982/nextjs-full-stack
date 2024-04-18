@@ -1,9 +1,8 @@
 'use client'
 
 import { MenuItemData } from './menu-data'
-import { MobileNavMenuItem } from './nav-menu'
+import { MobileNavMenuItem } from './menu-item'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { usePathname } from '@/i18n/navigation'
 import clsx from 'clsx'
 import { Menu } from 'lucide-react'
 
@@ -16,8 +15,6 @@ export const MobileNavPopover = ({
   right?: React.ReactNode
   data: MenuItemData[]
 }) => {
-  const pathname = usePathname()
-
   return (
     <>
       <Sheet>
@@ -32,11 +29,7 @@ export const MobileNavPopover = ({
             </div>
             <menu className={clsx('flex flex-col gap-6')}>
               {data.map((item) => (
-                <MobileNavMenuItem
-                  key={item.link}
-                  label={item.title}
-                  {...item}
-                />
+                <MobileNavMenuItem key={item.link} {...item} />
               ))}
             </menu>
           </div>

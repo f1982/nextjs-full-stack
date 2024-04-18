@@ -1,8 +1,8 @@
 'use client'
 
 import { MenuItemData } from './menu-data'
-import { NavItems, NavMenuItem } from './nav-menu'
-import { MobileNavPopover } from './nav-mobile-popover'
+import { NavItems, NavMenuItem } from './menu-item'
+import { MobileNavPopover } from './mobile-menu-sheet'
 import clsx from 'clsx'
 import React from 'react'
 

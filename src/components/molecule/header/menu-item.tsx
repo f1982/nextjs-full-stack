@@ -20,7 +20,9 @@ export function NavMenuItem({
         className={clsx(
           'flex items-center',
           'text-sm font-bold hover:text-foreground',
-          pathname === link ? 'text-foreground' : 'text-muted-foreground',
+          pathname.startsWith(link)
+            ? 'text-foreground'
+            : 'text-muted-foreground',
         )}
         href={link}>
         {icon}
@@ -49,7 +51,7 @@ export function MobileNavMenuItem({
           <span
             className={clsx(
               'w-full text-lg',
-              pathname === link ? 'font-bold' : 'font-normal',
+              pathname.startsWith(link) ? 'font-bold' : 'font-normal',
             )}>
             {label}
           </span>
