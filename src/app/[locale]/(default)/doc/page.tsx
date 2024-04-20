@@ -174,8 +174,8 @@ export default function Page() {
       <div className="mx-6 my-9">
         <NavigationMenuDemo />
       </div>
-      <div className="mx-6 mb-36 flex flex-row gap-9">
-        <div className="w-48">
+      <div className="mx-6 mb-36 flex flex-col gap-9 md:flex-row">
+        <div className="w-full md:w-48">
           <Tags data={tagsData}></Tags>
         </div>
         <div className="flex-1">
