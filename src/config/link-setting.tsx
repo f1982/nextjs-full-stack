@@ -1,4 +1,4 @@
-import { MenuItemData } from '@/components/molecule/header/menu-data'
+import { MenuItemData } from '@/components/page/header/menu-data'
 import { Facebook, Instagram, Twitch, Twitter, Youtube } from 'lucide-react'
 
 export const navMenuData: MenuItemData[] = [

@@ -1,7 +1,7 @@
-import { Logo } from '../../../features/dashboard/components/logo'
-import { Menubar } from '../../../features/dashboard/components/menubar'
 import UserInfo from '@/components/molecule/user-info'
 import { Toaster } from '@/components/ui/toaster'
+import { Logo } from '@/features/dashboard/components/logo'
+import { Menubar } from '@/features/dashboard/components/menubar'
 import { Newspaper } from 'lucide-react'
 import { Metadata } from 'next'
 

@@ -1,9 +1,3 @@
-import ScriptMainBlock from '../../../../../../features/video-script/components/main-block'
-import ScriptOutlineBlock from '../../../../../../features/video-script/components/outline-block'
-import ScriptQuotesBlock from '../../../../../../features/video-script/components/quotes-block'
-import ScriptEndingBlock from '../../../../../../features/video-script/components/script-ending-block'
-import ScriptHookBlock from '../../../../../../features/video-script/components/script-hook-block'
-import { retrieveVideo, updateVideo } from '../../../../../../features/video/api/video-actions'
 import SaveButton from '@/components/molecule/save-button'
 import { ServerError } from '@/components/molecule/server-error'
 import {
@@ -13,8 +7,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { mockServerResponse } from '@/utils/debug-only'
+import ScriptMainBlock from '@/features/video-script/components/main-block'
+import ScriptOutlineBlock from '@/features/video-script/components/outline-block'
+import ScriptQuotesBlock from '@/features/video-script/components/quotes-block'
+import ScriptEndingBlock from '@/features/video-script/components/script-ending-block'
+import ScriptHookBlock from '@/features/video-script/components/script-hook-block'
+import { retrieveVideo, updateVideo } from '@/features/video/api/video-actions'
 import { cache } from '@/lib/file-cache'
+import { mockServerResponse } from '@/utils/debug-only'
 import React from 'react'
 
 export default async function Page({ params }: { params: { id: string } }) {

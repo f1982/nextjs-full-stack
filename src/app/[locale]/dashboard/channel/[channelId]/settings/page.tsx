@@ -1,7 +1,10 @@
-import { retrieveChannel, updateChannel } from '../../../../../../features/channel/api/channel-actions'
-import EditChannelForm from '../../../../../../features/channel/components/channel-form'
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
+import {
+  retrieveChannel,
+  updateChannel,
+} from '@/features/channel/api/channel-actions'
+import EditChannelForm from '@/features/channel/components/channel-form'
 import Link from 'next/link'
 
 export default async function Page({

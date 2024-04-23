@@ -1,4 +1,4 @@
-import Footer from '@/components/molecule/footer/footer'
+import Footer from '@/components/page/footer/footer'
 import { footerLinks, socialLinks } from '@/config/link-setting'
 import SiteLogo from '@/lib/site-logo'
 import Link from 'next/link'

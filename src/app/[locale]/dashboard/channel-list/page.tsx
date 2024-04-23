@@ -1,11 +1,11 @@
-import {
-  deleteChannel,
-  retrieveChannels,
-} from '../../../../features/channel/api/channel-actions'
-import ChannelItem from '../../../../features/channel/components/channel-item'
 import { ServerError } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
 import { auth } from '@/config/auth-settings'
+import {
+  deleteChannel,
+  retrieveChannels,
+} from '@/features/channel/api/channel-actions'
+import ChannelItem from '@/features/channel/components/channel-item'
 import prisma from '@/lib/prisma'
 import Link from 'next/link'
 

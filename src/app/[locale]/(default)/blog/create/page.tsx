@@ -1,7 +1,7 @@
-import { createPost } from '../../../../../features/blog/api/create-actions'
-import { AddForm } from '../../../../../features/blog/components/form'
-import { getDraftData } from '../../../../../features/blog/api/loader'
 import Post from '@/components/page/post-item'
+import { createPost } from '@/features/blog/api/create-actions'
+import { getDraftData } from '@/features/blog/api/loader'
+import { AddForm } from '@/features/blog/components/form'
 import React from 'react'
 
 export default async function Page() {
