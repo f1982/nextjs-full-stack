@@ -10,7 +10,8 @@
     "start": "next start",
     "test": "vitest",
     "format:c": "prettier . --check",
-    "format:w": "prettier . --write"
+    "format:w": "prettier . --write",
+    "data-migration:add-status-column": "ts-node ./prisma/migrations/20240425072835_add_resource_table/data-migration.ts"
   },
   "keywords": [],
   "author": "",
@@ -38,12 +39,10 @@
     "@radix-ui/react-toggle-group": "^1.0.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "file-system-cache": "^2.4.4",
     "languagedetect": "^2.0.0",
     "leva": "^0.9.35",
     "lodash": "^4.17.21",
     "lucide-react": "^0.320.0",
-    "md5": "^2.3.0",
     "next": "^14.1.0",
     "next-auth": "^4.24.5",
     "next-intl": "^3.7.0",
@@ -60,6 +59,8 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "file-system-cache": "^2.4.4",
+    "md5": "^2.3.0",
     "@tailwindcss/typography": "^0.5.10",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/md5": "^2.3.5",

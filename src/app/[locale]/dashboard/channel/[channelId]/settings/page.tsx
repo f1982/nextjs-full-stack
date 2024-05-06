@@ -1,6 +1,7 @@
 import { Separator } from '@/components/ui/separator'
-import EditChannelForm from '@/features/channel/components/channel-form'
+import ChannelInfoForm from '@/features/channel/components/channel-form'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 export default async function Page({
   params,
@@ -21,7 +22,7 @@ export default async function Page({
         </p>
       </div>
       <Separator className="mb-6" />
-      <EditChannelForm channelId={params.channelId} />
+      <ChannelInfoForm channelId={params.channelId} />
     </>
   )
 }

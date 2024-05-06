@@ -12,15 +12,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+import { toast } from '@/components/ui/use-toast'
+import { APIResponse } from '@/types/types'
 import { useState } from 'react'
 
-export default function DelButton({
-  actionHandler,
-  itemId,
-}: {
-  actionHandler: (id: string) => void
-  itemId: string
-}) {
+export default function DelButton({ action }: { action: () => Promise<any> }) {
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
 
   return (
@@ -30,7 +26,7 @@ export default function DelButton({
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
@@ -41,10 +37,17 @@ export default function DelButton({
           <AlertDialogAction
             onClick={async () => {
               setIsDeleting(true)
-              const res = await actionHandler(itemId)
+              const res = await action()
               console.log('res', res)
-              //TODO: error handling
-              // setIsDeleting(false)
+              setIsDeleting(false)
+
+              if (res.status !== 'success') {
+                console.log('show toast')
+                toast({
+                  description: 'Something error, try again later.',
+                  variant: 'destructive',
+                })
+              }
             }}>
             Continue
           </AlertDialogAction>

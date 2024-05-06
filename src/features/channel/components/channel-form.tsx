@@ -20,8 +20,6 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { pick } from 'lodash/pick'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -39,7 +37,13 @@ const FormSchema = z.object({
   }),
 })
 
-export default function EditChannelForm({ channelId = null, cancelUrl }: any) {
+interface ChannelFormProps {
+  channelId?: string
+}
+
+export default function ChannelInfoForm({
+  channelId = undefined,
+}: ChannelFormProps) {
   const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -54,8 +58,12 @@ export default function EditChannelForm({ channelId = null, cancelUrl }: any) {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!channelId) {
+        return
+      }
       setIsLoading(true)
       const defaults = await retrieveChannel(channelId)
+
       form.reset({
         id: defaults.data?.id,
         channel_name: defaults.data?.channel_name,
@@ -64,18 +72,17 @@ export default function EditChannelForm({ channelId = null, cancelUrl }: any) {
       })
       setIsLoading(false)
     }
-    if (channelId) {
-      fetchData()
-    }
+    fetchData()
   }, [channelId, form])
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     let result: any = null
-    if (data.id === '') {
+    if (!data.id) {
       result = await createChannel(data)
       form.reset()
     } else {
       result = await updateChannel(data, data.id)
+
       form.reset({
         id: data.id,
         channel_name: data.channel_name,
@@ -84,16 +91,14 @@ export default function EditChannelForm({ channelId = null, cancelUrl }: any) {
       })
     }
 
-    console.log('result', result)
-
     if (result.status === 'failure') {
       return toastServerError()
+    } else {
+      toast({
+        description: 'Saved successfully.',
+        variant: 'default',
+      })
     }
-
-    toast({
-      description: 'Saved successfully.',
-      variant: 'default',
-    })
   }
 
   return (
@@ -173,7 +178,6 @@ export default function EditChannelForm({ channelId = null, cancelUrl }: any) {
                 type="submit">
                 Submit
               </Button>
-              {cancelUrl && <Link href={cancelUrl}>Cancel</Link>}
             </div>
           </form>
         </Form>
