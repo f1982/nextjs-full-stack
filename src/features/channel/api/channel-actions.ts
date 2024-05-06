@@ -110,12 +110,13 @@ export const updateChannel = async (
       },
     })
 
-    revalidatePath('/')
+    revalidatePath('/dashboard/channel/' + channelId)
     return {
       status: 'success',
       message: `Added  successfully`,
     }
   } catch (e) {
+    console.log('e', e)
     return { status: 'failure', message: 'failure to create ' }
   }
 }

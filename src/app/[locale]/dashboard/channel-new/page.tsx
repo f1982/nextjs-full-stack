@@ -17,11 +17,7 @@ export default function Page() {
         handleSubmit={createChannel}
         redirectUrl="/dashboard/channel"
       /> */}
-      <EditChannelForm
-        handleSubmit={createChannel}
-        redirectUrl="/dashboard/channel"
-        cancelUrl="/dashboard/channel-list"
-      />
+      <EditChannelForm />
     </>
   )
 }

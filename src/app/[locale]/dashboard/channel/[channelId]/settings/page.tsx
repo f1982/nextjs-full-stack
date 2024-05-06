@@ -1,9 +1,4 @@
-import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
-import {
-  retrieveChannel,
-  updateChannel,
-} from '@/features/channel/api/channel-actions'
 import EditChannelForm from '@/features/channel/components/channel-form'
 import Link from 'next/link'
 
@@ -12,16 +7,6 @@ export default async function Page({
 }: {
   params: { channelId: string }
 }) {
-  console.log('id', params.channelId)
-  const response = await retrieveChannel(params.channelId)
-
-  if (response.status === 'failure') {
-    return <ServerError message={response.message} />
-  }
-
-  const { data } = response
-
-  function updateChannelById() {}
   return (
     <>
       <div className="mb-6">
@@ -36,13 +21,7 @@ export default async function Page({
         </p>
       </div>
       <Separator className="mb-6" />
-      <EditChannelForm
-        formData={data}
-        handleSubmit={async (data: any) => {
-          'use server'
-          return await updateChannel(data, params.channelId)
-        }}
-      />
+      <EditChannelForm channelId={params.channelId} />
     </>
   )
 }
