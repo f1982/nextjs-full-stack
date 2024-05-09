@@ -1,5 +1,5 @@
 import SelectEditForm from '../../../components/form/select-edit-form'
-import { generatePostUpdate } from '@/features/video-meta/api/post-updates'
+import { generatePostUpdate } from '@/features/video-meta/actions/post-updates'
 import { cache } from '@/lib/file-cache'
 import { Video } from '@prisma/client'
 

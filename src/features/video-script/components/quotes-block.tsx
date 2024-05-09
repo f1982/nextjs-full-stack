@@ -1,6 +1,6 @@
 import SelectEditForm from '../../../components/form/select-edit-form'
+import { generateScriptQuotes } from '@/features/video-script/actions/script-quotes'
 import { cache } from '@/lib/file-cache'
-import { generateScriptQuotes } from '@/features/video-script/api/script-quotes'
 import { Video } from '@prisma/client'
 
 export default async function ScriptQuotesBlock({

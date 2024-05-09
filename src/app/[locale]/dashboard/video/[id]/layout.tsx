@@ -1,6 +1,6 @@
 import SecondaryNav, { MenuItemData } from '@/components/molecule/secondary-nav'
 import { Separator } from '@/components/ui/separator'
-import { retrieveVideo } from '@/features/video-meta/api/video-actions'
+import { retrieveVideo } from '@/features/video-meta/actions/video-actions'
 import { Metadata } from 'next'
 import Link from 'next/link'
 

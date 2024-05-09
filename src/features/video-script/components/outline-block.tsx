@@ -1,6 +1,6 @@
 import GenEditForm from '../../../components/form/gen-edit-form'
+import { generateScriptOutline } from '@/features/video-script/actions/script-outline'
 import { cache } from '@/lib/file-cache'
-import { generateScriptOutline } from '@/features/video-script/api/script-outline'
 import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
 

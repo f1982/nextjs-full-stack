@@ -1,6 +1,6 @@
 import GenEditForm from '../../../components/form/gen-edit-form'
+import { generateScriptHook } from '@/features/video-script/actions/script-hook'
 import { cache } from '@/lib/file-cache'
-import { generateScriptHook } from '@/features/video-script/api/script-hook'
 import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
 

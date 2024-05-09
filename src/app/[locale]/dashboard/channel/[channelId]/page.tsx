@@ -1,6 +1,6 @@
 import { Separator } from '@/components/ui/separator'
 import { retrieveChannel } from '@/features/channel/api/channel-actions'
-import { retrieveVideos } from '@/features/video-meta/api/video-actions'
+import { retrieveVideos } from '@/features/video-meta/actions/video-actions'
 import NewVideoButton from '@/features/video-meta/components/new-video-button'
 
 export default async function Page({

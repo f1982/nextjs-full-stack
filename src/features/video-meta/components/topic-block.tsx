@@ -3,7 +3,7 @@ import { Separator } from '@/components/ui/separator'
 import {
   retrieveVideo,
   updateVideo,
-} from '@/features/video-meta/api/video-actions'
+} from '@/features/video-meta/actions/video-actions'
 import TopicSelect from '@/features/video-meta/components/topic-select'
 
 export default async function TopicBlock({ videoId }: { videoId: string }) {

@@ -1,7 +1,7 @@
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { retrieveVideo } from '@/features/video-meta/api/video-actions'
+import { retrieveVideo } from '@/features/video-meta/actions/video-actions'
 import DescriptionBlock from '@/features/video-meta/components/description-block'
 import PostUpdatesBlock from '@/features/video-meta/components/post-block'
 import TagsBlock from '@/features/video-meta/components/tags-block'

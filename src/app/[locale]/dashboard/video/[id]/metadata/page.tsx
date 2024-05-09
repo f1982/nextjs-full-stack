@@ -1,6 +1,6 @@
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
-import { retrieveVideo } from '@/features/video-meta/api/video-actions'
+import { retrieveVideo } from '@/features/video-meta/actions/video-actions'
 import DescriptionBlock from '@/features/video-meta/components/description-block'
 import TagsBlock from '@/features/video-meta/components/tags-block'
 import TitleBlock from '@/features/video-meta/components/titles-block'

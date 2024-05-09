@@ -1,6 +1,6 @@
 import GenEditForm from '../../../components/form/gen-edit-form'
+import { generateScriptEnding } from '@/features/video-script/actions/script-ending'
 import { cache } from '@/lib/file-cache'
-import { generateScriptEnding } from '@/features/video-script/api/script-ending'
 import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
 

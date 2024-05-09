@@ -10,7 +10,7 @@ import {
 import {
   retrieveVideo,
   updateVideo,
-} from '@/features/video-meta/api/video-actions'
+} from '@/features/video-meta/actions/video-actions'
 import ScriptMainBlock from '@/features/video-script/components/main-block'
 import ScriptOutlineBlock from '@/features/video-script/components/outline-block'
 import ScriptQuotesBlock from '@/features/video-script/components/quotes-block'

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { retrieveChannel } from '@/features/channel/api/channel-actions'
-import { retrieveVideos } from '@/features/video-meta/api/video-actions'
+import { retrieveVideos } from '@/features/video-meta/actions/video-actions'
 import NewVideoButton from '@/features/video-meta/components/new-video-button'
 import { Video } from '@prisma/client'
 import Link from 'next/link'
