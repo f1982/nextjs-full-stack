@@ -1,9 +1,9 @@
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
-import { retrieveVideo } from '@/features/video/api/video-actions'
-import DescriptionBlock from '@/features/video/components/description-block'
-import TagsBlock from '@/features/video/components/tags-block'
-import TitleBlock from '@/features/video/components/titles-block'
+import { retrieveVideo } from '@/features/video-meta/api/video-actions'
+import DescriptionBlock from '@/features/video-meta/components/description-block'
+import TagsBlock from '@/features/video-meta/components/tags-block'
+import TitleBlock from '@/features/video-meta/components/titles-block'
 import React from 'react'
 
 export default async function Page({ params }: { params: { id: string } }) {

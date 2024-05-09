@@ -1,12 +1,12 @@
-import TopicSelect from '@/features/video/components/topic-select'
+import { ServerError } from '@/components/molecule/server-error'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 import {
   createVideoWithTopic,
   retrieveVideo,
   updateVideo,
-} from '@/features/video/api/video-actions'
-import { ServerError } from '@/components/molecule/server-error'
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
+} from '@/features/video-meta/api/video-actions'
+import TopicSelect from '@/features/video-meta/components/topic-select'
 import Link from 'next/link'
 
 export default async function TopicPage({

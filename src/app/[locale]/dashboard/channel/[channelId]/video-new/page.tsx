@@ -1,7 +1,7 @@
-import TopicSelect from '@/features/video/components/topic-select'
-import { createVideoWithTopic } from '@/features/video/api/video-actions'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { createVideoWithTopic } from '@/features/video-meta/api/video-actions'
+import TopicSelect from '@/features/video-meta/components/topic-select'
 import Link from 'next/link'
 
 export default async function Page({

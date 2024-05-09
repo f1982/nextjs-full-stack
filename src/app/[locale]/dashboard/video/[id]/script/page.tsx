@@ -7,12 +7,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import {
+  retrieveVideo,
+  updateVideo,
+} from '@/features/video-meta/api/video-actions'
 import ScriptMainBlock from '@/features/video-script/components/main-block'
 import ScriptOutlineBlock from '@/features/video-script/components/outline-block'
 import ScriptQuotesBlock from '@/features/video-script/components/quotes-block'
 import ScriptEndingBlock from '@/features/video-script/components/script-ending-block'
 import ScriptHookBlock from '@/features/video-script/components/script-hook-block'
-import { retrieveVideo, updateVideo } from '@/features/video/api/video-actions'
 import { cache } from '@/lib/file-cache'
 import { mockServerResponse } from '@/utils/debug-only'
 import React from 'react'

@@ -1,6 +1,6 @@
 import SelectEditForm from '../../../components/form/select-edit-form'
+import { generatePostUpdate } from '@/features/video-meta/api/post-updates'
 import { cache } from '@/lib/file-cache'
-import { generatePostUpdate } from '@/features/video/api/post-updates'
 import { Video } from '@prisma/client'
 
 export default async function PostUpdatesBlock({
