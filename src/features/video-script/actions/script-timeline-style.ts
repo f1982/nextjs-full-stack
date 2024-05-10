@@ -1,3 +1,5 @@
+'use server'
+
 import { generateScriptDefinition } from './script-definition'
 import {
   generateDerivatives,

@@ -1,3 +1,5 @@
+'use server'
+
 import { askGptWithCache } from '../../../lib/gpt'
 
 function getPrompt(topic: string, count: number): string {

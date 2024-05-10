@@ -13,16 +13,16 @@ function generateNavList(id: string): NavBarItem[] {
   const baseUrl = `/dashboard/channel/${id}`
   return [
     {
-      label: 'Info',
-      link: baseUrl,
-    },
-    {
       label: 'Video list',
       link: `${baseUrl}/video-list`,
     },
     {
       label: 'Setting',
       link: `${baseUrl}/settings`,
+    },
+    {
+      label: 'Info',
+      link: baseUrl,
     },
     {
       label: 'Prompt',

@@ -1,3 +1,5 @@
+'use server'
+
 import { auth } from '@/config/auth-settings'
 import prisma from '@/lib/prisma'
 import { APIResponse } from '@/types/types'

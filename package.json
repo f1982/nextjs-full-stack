@@ -84,5 +84,10 @@
   "volta": {
     "node": "18.19.0",
     "npm": "10.2.3"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }

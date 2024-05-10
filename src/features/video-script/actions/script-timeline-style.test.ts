@@ -1,4 +1,4 @@
-import { generateTechScript } from './script-all-timeline-based'
+import { generateTechScript } from './script-timeline-style'
 import { countWords } from '@/utils/utils'
 
 test('test all scripts by timeline', async () => {
