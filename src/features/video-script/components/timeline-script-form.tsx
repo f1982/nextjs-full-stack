@@ -20,9 +20,10 @@ import {
   retrieveVideo,
   updateVideo,
 } from '@/features/video-meta/actions/video-actions'
+import { sleep } from '@/utils/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Wand2 } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { Loader2, Wand2 } from 'lucide-react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -40,35 +41,31 @@ interface ChannelFormProps {
 export default function TimelineScriptForm({
   videoId = undefined,
 }: ChannelFormProps) {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isFetching, setIsFetching] = useState(false)
   const [topic, setTopic] = useState('')
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: {
-      id: '',
-      script: '',
+    defaultValues: async () => {
+      //for testing
+      await sleep(2000)
+
+      if (videoId) {
+        const r = await retrieveVideo(videoId)
+        setTopic(r.data?.topic || '')
+
+        return {
+          id: r.data?.id || '',
+          script: r.data?.script || '',
+        }
+      }
+
+      return Promise.resolve({
+        id: '',
+        script: '',
+      })
     },
   })
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!videoId) {
-        return
-      }
-      setIsLoading(true)
-      const defaults = await retrieveVideo(videoId)
-
-      setTopic(defaults.data?.topic || '')
-
-      form.reset({
-        id: defaults.data?.id,
-        script: defaults.data?.script || '',
-      })
-      setIsLoading(false)
-    }
-    fetchData()
-  }, [videoId, form])
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     let result: any = null
@@ -85,16 +82,25 @@ export default function TimelineScriptForm({
   }
 
   async function generateOption() {
-    setIsLoading(true)
+    setIsFetching(true)
+
     const script = await generateTechScript('无责任猜想', topic)
     form.setValue('script', script)
-    setIsLoading(false)
+
+    setIsFetching(false)
+  }
+
+  function checkDisable() {
+    return form.formState.isSubmitting || form.formState.isLoading
   }
 
   return (
     <>
-      {isLoading ? (
-        <div>Loading...</div>
+      {isFetching ? (
+        <div>
+          <Loader2 className="animate-spin" size={32}></Loader2>
+          <span>Generating content</span>
+        </div>
       ) : (
         <Form {...form}>
           <form
@@ -107,11 +113,11 @@ export default function TimelineScriptForm({
               name="script"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Topic: {topic}</FormLabel>
                   <FormControl>
                     <Textarea
                       rows={20}
-                      disabled={form.formState.isSubmitting}
+                      disabled={checkDisable()}
                       placeholder="Channel description"
                       {...field}
                     />
@@ -125,17 +131,21 @@ export default function TimelineScriptForm({
             />
 
             <div className="flex flex-row items-center gap-6">
-              <Button disabled={form.formState.isSubmitting} type="submit">
+              <Button disabled={checkDisable()} type="submit">
                 Save
               </Button>
-              <CopyButton content={form.getValues().script} />
+
+              <CopyButton
+                content={form.getValues().script}
+                disabled={checkDisable()}
+              />
 
               <Button
                 type="button"
-                disabled={form.formState.isSubmitting}
+                disabled={checkDisable()}
                 className="flex flex-row gap-3"
                 onClick={generateOption}>
-                {isLoading ? <Spinner /> : <Wand2 />}
+                {isFetching ? <Spinner /> : <Wand2 />}
                 <span>Generate </span>
               </Button>
             </div>
