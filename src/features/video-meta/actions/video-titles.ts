@@ -1,12 +1,14 @@
+'use server'
+
 import { LangOptions, askGptWithCache } from '../../../lib/gpt'
 import { promptRequirements } from '../../../lib/prompt-segments'
 import { z } from 'zod'
 
-export const validator = z.object({
+const validator = z.object({
   titles: z.array(z.string().min(3).max(200)).min(2),
 })
 
-export function getPrompt(
+function getPrompt(
   topic: string,
   count: number = 10,
   lang: LangOptions = 'zh',

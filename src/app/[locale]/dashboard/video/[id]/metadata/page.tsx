@@ -4,6 +4,7 @@ import { retrieveVideo } from '@/features/video-meta/actions/video-actions'
 import DescriptionBlock from '@/features/video-meta/components/description-block'
 import TagsBlock from '@/features/video-meta/components/tags-block'
 import TitleBlock from '@/features/video-meta/components/titles-block'
+import VideoMetadataForm from '@/features/video-meta/components/video-metadata-form'
 import React from 'react'
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -20,6 +21,8 @@ export default async function Page({ params }: { params: { id: string } }) {
         <p>Start a new video by adding a topic.</p>
         <Separator className="mb-6" />
       </div>
+
+      <VideoMetadataForm videoId={videoData.id} />
 
       <TitleBlock videoData={videoData} />
       <DescriptionBlock videoData={videoData} />

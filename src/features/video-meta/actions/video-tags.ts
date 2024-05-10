@@ -1,9 +1,11 @@
+'use server'
+
 import { LangOptions, askGptWithCache } from '../../../lib/gpt'
 import { promptRequirements } from '../../../lib/prompt-segments'
 import { z } from 'zod'
 
 const keywordsValidator = z.array(z.string().min(2)).min(3)
-export const validator = z.object({
+const validator = z.object({
   data: z.object({
     twTags: keywordsValidator,
     enTags: keywordsValidator,

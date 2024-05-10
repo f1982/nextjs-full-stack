@@ -1,12 +1,14 @@
+'use server'
+
 import { askGptWithCache } from '../../../lib/gpt'
 import { promptRequirements } from '../../../lib/prompt-segments'
 import { z } from 'zod'
 
-export const validator = z.object({
+const validator = z.object({
   data: z.array(z.string().min(20).max(2000)).min(3),
 })
 
-export function getPrompt(topic: string): string {
+function getPrompt(topic: string) {
   return `
 为一个关于 "${topic}" 的视频生成 YouTube 视频简介。
 
