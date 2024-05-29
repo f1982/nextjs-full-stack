@@ -45,6 +45,7 @@ function DescriptionBlock(
 ) {
   const [isLoading, setIsLoading] = useState(false)
 
+  // expose refresh function to parent
   useImperativeHandle(
     ref,
     () => {
@@ -57,16 +58,19 @@ function DescriptionBlock(
     [],
   )
 
+  // default form
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     values: { value: videoData.description || '' },
     mode: 'onTouched',
   })
 
+  // save description to db
   const handleSubmit = async (data: any): Promise<APIResponse<any>> => {
     return await updateVideo({ description: data.value, id: videoData.id })
   }
 
+  // gen description by ai
   const generateDescription = async () => {
     try {
       setIsLoading(true)
@@ -87,13 +91,15 @@ function DescriptionBlock(
 
   return (
     <>
-      <Button
-        disabled={isLoading}
-        className="flex flex-row gap-3"
-        onClick={generateDescription}>
-        {isLoading ? <Spinner /> : <Wand2 />}
-        <span>Generate Description</span>
-      </Button>
+      <div>
+        <Button
+          disabled={isLoading}
+          className="flex flex-row gap-3"
+          onClick={generateDescription}>
+          {isLoading ? <Spinner /> : <Wand2 />}
+          <span>Generate Description</span>
+        </Button>
+      </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
@@ -105,7 +111,7 @@ function DescriptionBlock(
                 <FormLabel>Description {fieldState.isDirty && '✏︎'}</FormLabel>
                 <FormControl>
                   <Textarea
-                    rows={10}
+                    rows={8}
                     disabled={form.formState.isSubmitting}
                     placeholder="Description"
                     {...field}
