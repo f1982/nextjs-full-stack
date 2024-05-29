@@ -15,7 +15,7 @@ export default function ContentGenAll({ videoData }: { videoData: any }) {
   const descRef = useRef<any>()
   const tagsRef = useRef<any>()
 
-  async function genAll() {
+  async function generateAllMetadata() {
     await titleRef.current?.refresh()
     await descRef.current?.refresh()
     await tagsRef.current?.refresh()
@@ -24,7 +24,7 @@ export default function ContentGenAll({ videoData }: { videoData: any }) {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <Button onClick={async () => await genAll()}>
+        <Button onClick={generateAllMetadata}>
           <Play />
           <span>Generate all metadata</span>
         </Button>

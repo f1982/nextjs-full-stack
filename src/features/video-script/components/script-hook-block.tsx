@@ -4,26 +4,16 @@ import { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Video } from '@prisma/client'
-import { SaveIcon, Wand2 } from 'lucide-react'
+import { Wand2 } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { sleep } from '@/utils/utils'
 
-import { CopyButton } from '@/components/molecule/copy-button'
+import SingleFieldForm from '@/components/form/single-field-form'
 import { toastServerError } from '@/components/molecule/server-error'
 import Spinner from '@/components/molecule/spinner'
 import { Button } from '@/components/ui/button'
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
-import { Textarea } from '@/components/ui/textarea'
 
 import { generateScriptHook } from '../actions/script-hook'
 import { getCache, setCache } from '../actions/temp-storage'
@@ -120,38 +110,12 @@ function ScriptHookBlock(
         </Button>
       </div>
 
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-          <FormField
-            control={form.control}
-            name="value"
-            render={({ field, fieldState }) => (
-              <FormItem>
-                <FormLabel>Script hook {fieldState.isDirty && '✏︎'}</FormLabel>
-                <FormControl>
-                  <Textarea
-                    rows={8}
-                    disabled={form.formState.isSubmitting}
-                    placeholder="Description"
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>
-                  This is your video script hook.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <div className="flex flex-row items-center gap-3">
-            <Button disabled={form.formState.isSubmitting} type="submit">
-              {form.formState.isSubmitting ? <Spinner /> : <SaveIcon />}
-              <span>Save</span>
-            </Button>
-            <CopyButton content={form.getValues().value} />
-          </div>
-        </form>
-      </Form>
+      <SingleFieldForm
+        label="Script hook"
+        form={form}
+        rows={8}
+        handleSubmit={handleSubmit}
+      />
     </>
   )
 }

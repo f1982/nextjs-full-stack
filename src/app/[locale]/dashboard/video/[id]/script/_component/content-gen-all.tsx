@@ -6,6 +6,7 @@ import { Play } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
+import SaveScriptsButton from '@/features/video-script/components/save-scripts-button'
 import ScriptEndingBlock from '@/features/video-script/components/script-ending-block'
 import ScriptHookBlock from '@/features/video-script/components/script-hook-block'
 
@@ -13,38 +14,22 @@ export default function ContentGenAll({ videoData }: { videoData: any }) {
   const hookRef = useRef<any>()
   const endingRef = useRef<any>()
 
-  async function genAll() {
+  async function generateAllScripts() {
     await hookRef.current?.refresh()
     await endingRef.current?.refresh()
   }
 
-  // const saveAllScriptToDB = async () => {
-  //   'use server'
-
-  //   // Create new video
-  //   let script = ''
-  //   script += (await cache.get('script-hook-' + videoData.id)) || ''
-  //   script += '\n\n'
-  //   script += (await cache.get('script-quote-' + videoData.id)) || ''
-  //   script += '\n\n'
-  //   script += (await cache.get('script-main-' + videoData.id)) || ''
-  //   script += '\n\n'
-  //   script += (await cache.get('script-ending-' + videoData.id)) || ''
-  //   script += '\n\n'
-
-  //   const updatedData = { script, id: videoData.id }
-  //   return await updateVideo(updatedData)
-  // }
-
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <Button onClick={async () => await genAll()}>
+        <Button onClick={generateAllScripts}>
           <Play />
-          <span>Generate all metadata</span>
+          <span>Generate all scripts</span>
         </Button>
       </div>
-      {/* <SaveButton callback={saveAllScriptToDB} /> */}
+      <div>
+        <SaveScriptsButton videoId={videoData.id} />
+      </div>
       {/* <TimelineScriptForm videoId={videoData.id}></TimelineScriptForm> */}
       <ScriptHookBlock ref={hookRef} videoData={videoData} />
       <ScriptEndingBlock ref={endingRef} videoData={videoData} />
