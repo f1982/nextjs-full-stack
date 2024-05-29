@@ -1,7 +1,10 @@
-import SelectEditForm from '../../../components/form/select-edit-form'
-import { generatePostUpdate } from '@/features/video-meta/actions/post-updates'
-import { cache } from '@/lib/file-cache'
 import { Video } from '@prisma/client'
+
+import { cache } from '@/lib/file-cache'
+
+import { generatePostUpdate } from '@/features/video-meta/actions/post-updates'
+
+import SelectEditForm from '../../../components/form/select-edit-form'
 
 export default async function PostUpdatesBlock({
   videoData,
@@ -33,8 +36,8 @@ export default async function PostUpdatesBlock({
   return (
     <SelectEditForm
       fieldName={name}
-      value={value || ''}
-      generator={handleOptionGeneration}
+      defaultValue={value || ''}
+      optionsFactory={handleOptionGeneration}
       onSubmit={handleSubmission}
     />
   )

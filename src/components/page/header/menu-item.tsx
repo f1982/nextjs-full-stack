@@ -15,20 +15,16 @@ export function NavMenuItem({
   const pathname = usePathname()
 
   return (
-    <>
-      <Link
-        className={clsx(
-          'flex items-center',
-          'text-sm font-bold hover:text-foreground',
-          pathname.startsWith(link)
-            ? 'text-foreground'
-            : 'text-muted-foreground',
-        )}
-        href={link}>
-        {icon}
-        {label}
-      </Link>
-    </>
+    <Link
+      className={clsx(
+        'flex items-center',
+        'text-sm font-bold hover:text-foreground',
+        pathname.startsWith(link) ? 'text-foreground' : 'text-muted-foreground',
+      )}
+      href={link}>
+      {icon}
+      {label}
+    </Link>
   )
 }
 

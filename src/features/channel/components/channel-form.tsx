@@ -1,10 +1,11 @@
 'use client'
 
-import {
-  createChannel,
-  retrieveChannel,
-  updateChannel,
-} from '../api/channel-actions'
+import { useEffect, useState } from 'react'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
 import { toastServerError } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
 import {
@@ -19,10 +20,12 @@ import {
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from '@/components/ui/use-toast'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+
+import {
+  createChannel,
+  retrieveChannel,
+  updateChannel,
+} from '../api/channel-actions'
 
 const FormSchema = z.object({
   id: z.string(),

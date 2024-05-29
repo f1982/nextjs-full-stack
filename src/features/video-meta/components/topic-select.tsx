@@ -1,61 +1,35 @@
 'use client'
 
-import VideoTopicForm from './topic-form'
+import { useState } from 'react'
+
 import ListSelector from '@/components/molecule/list-select'
-import Spinner from '@/components/molecule/spinner'
-import { Button } from '@/components/ui/button'
-import { Video } from '@prisma/client'
-import { Wand2 } from 'lucide-react'
-import React, { useState } from 'react'
 
-export default function TopicSelect({
-  value,
-  onSubmit,
-}: {
-  value?: Video
-  onSubmit: any
-}) {
-  const [topicOpts, setTopicOpts] = useState([])
+import VideoTopicForm from './topic-form'
+import TopicGenButton from './topic/topic-gen-button'
 
-  const [selectedTopic, setSelectedTopic] = useState<any>({
-    topic: value?.topic,
-  })
-  const [isLoading, setIsLoading] = useState(false)
-
-  async function loadTopicOpts() {
-    setIsLoading(true)
-    const response = await fetch(`/api/gen/video-topic`, {
-      method: 'GET',
-    })
-
-    const result = await response.json()
-
-    setTopicOpts(result.data)
-    setIsLoading(false)
-  }
+export default function TopicSelect({ videoId }: { videoId: string }) {
+  const [topicList, setTopicList] = useState<string[] | null>(null)
+  const [selectedTopic, setSelectedTopic] = useState<string>('')
 
   return (
     <div className="flex flex-col gap-6">
-      <div>
-        <Button
-          disabled={isLoading}
-          className="flex flex-row gap-3"
-          onClick={loadTopicOpts}>
-          {isLoading ? <Spinner /> : <Wand2 />}
-          <span>Generate Topic By AI</span>
-        </Button>
-      </div>
-
-      <ListSelector
-        label="Topic"
-        options={topicOpts}
-        callback={(opt: any) => {
-          console.log('opt', opt)
-          setSelectedTopic({ topic: opt })
+      <TopicGenButton
+        callback={async (l: string[]) => {
+          setTopicList(l)
         }}
       />
 
-      <VideoTopicForm formData={selectedTopic} handleSubmit={onSubmit} />
+      {topicList && (
+        <ListSelector
+          label="Topic"
+          options={topicList}
+          onSelect={(topic: string) => {
+            setSelectedTopic(topic)
+          }}
+        />
+      )}
+
+      <VideoTopicForm topic={selectedTopic} videoId={videoId} />
     </div>
   )
 }

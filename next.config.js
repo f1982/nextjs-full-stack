@@ -5,6 +5,7 @@ const withNextIntl = createNextIntlPlugin()
 
 const withPWA = require("@ducanh2912/next-pwa").default({
   dest: "public",
+  scope: "/src/app",
   disable: process.env.NODE_ENV !== "production",
 });
 

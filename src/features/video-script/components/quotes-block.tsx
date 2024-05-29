@@ -1,7 +1,10 @@
-import SelectEditForm from '../../../components/form/select-edit-form'
-import { generateScriptQuotes } from '@/features/video-script/actions/script-quotes'
-import { cache } from '@/lib/file-cache'
 import { Video } from '@prisma/client'
+
+import { cache } from '@/lib/file-cache'
+
+import { generateScriptQuotes } from '@/features/video-script/actions/script-quotes'
+
+import SelectEditForm from '../../../components/form/select-edit-form'
 
 export default async function ScriptQuotesBlock({
   videoData,
@@ -33,8 +36,8 @@ export default async function ScriptQuotesBlock({
   return (
     <SelectEditForm
       fieldName="quote"
-      value={quote || ''}
-      generator={handleOptionGeneration}
+      defaultValue={quote || ''}
+      optionsFactory={handleOptionGeneration}
       onSubmit={handleSubmission}
     />
   )

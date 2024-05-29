@@ -1,8 +1,11 @@
-import GenEditForm from '../../../components/form/gen-edit-form'
-import { generateScriptHook } from '@/features/video-script/actions/script-hook'
-import { cache } from '@/lib/file-cache'
 import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
+
+import { cache } from '@/lib/file-cache'
+
+import { generateScriptHook } from '@/features/video-script/actions/script-hook'
+
+import GenEditForm from '../../../components/form/gen-edit-form'
 
 export default async function ScriptHookBlock({
   videoData,
@@ -37,8 +40,8 @@ export default async function ScriptHookBlock({
     <GenEditForm
       fieldName="scriptHook"
       value={hook || ''}
-      generator={handleOptionGeneration}
-      submission={handleSubmission}
+      optionsFactory={handleOptionGeneration}
+      onSubmit={handleSubmission}
     />
   )
 }

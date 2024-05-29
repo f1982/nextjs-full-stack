@@ -1,8 +1,12 @@
-import GenEditForm from '../../../components/form/gen-edit-form'
-import { updateVideo } from '@/features/video-meta/actions/video-actions'
-import { generateVideoTags } from '@/features/video-meta/actions/video-tags'
+'use client'
+
 import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
+
+import { updateVideo } from '@/features/video-meta/actions/video-actions'
+import { generateVideoTags } from '@/features/video-meta/actions/video-tags'
+
+import GenEditForm from '../../../components/form/gen-edit-form'
 
 export default async function TagsBlock({
   videoData: { id, tags, topic },
@@ -10,13 +14,13 @@ export default async function TagsBlock({
   videoData: Video
 }) {
   const handleSubmission = async (data: any): Promise<APIResponse<any>> => {
-    'use server'
+    // 'use server'
 
     return await updateVideo({ tags: data.value, id })
   }
 
   const handleGen = async (): Promise<APIResponse<any>> => {
-    'use server'
+    // 'use server'
 
     const desc = await generateVideoTags(topic!)
     return { data: desc, status: 'success' }
@@ -27,8 +31,8 @@ export default async function TagsBlock({
       <GenEditForm
         fieldName="tags"
         value={tags || ''}
-        generator={handleGen}
-        submission={handleSubmission}
+        optionsFactory={handleGen}
+        onSubmit={handleSubmission}
       />
     </>
   )

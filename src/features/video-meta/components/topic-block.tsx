@@ -1,5 +1,6 @@
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
+
 import {
   retrieveVideo,
   updateVideo,
@@ -29,7 +30,11 @@ export default async function TopicBlock({ videoId }: { videoId: string }) {
 
       <Separator className="mb-6" />
 
-      <TopicSelect value={videoData!} onSubmit={handleSubmit} />
+      <TopicSelect
+        videoId={videoId}
+        value={videoData!}
+        onSubmit={handleSubmit}
+      />
     </>
   )
 }

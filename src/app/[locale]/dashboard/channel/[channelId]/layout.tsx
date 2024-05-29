@@ -1,8 +1,10 @@
+import { Metadata } from 'next'
+
 import NavigationBar, { NavBarItem } from '@/components/molecule/nav-bar'
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
+
 import { retrieveChannel } from '@/features/channel/api/channel-actions'
-import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Video',
@@ -46,9 +48,9 @@ export default async function ChannelLayout({
 
   return (
     <>
-      <div className="prose prose-sm">
+      {/* <div className="prose prose-sm">
         <p>{JSON.stringify(channelInf)}</p>
-      </div>
+      </div> */}
       <NavigationBar items={generateNavList(channelId)} />
       <Separator className="my-2" />
 

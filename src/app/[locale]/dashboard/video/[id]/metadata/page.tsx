@@ -1,11 +1,9 @@
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
+
 import { retrieveVideo } from '@/features/video-meta/actions/video-actions'
-import DescriptionBlock from '@/features/video-meta/components/description-block'
-import TagsBlock from '@/features/video-meta/components/tags-block'
-import TitleBlock from '@/features/video-meta/components/titles-block'
-import VideoMetadataForm from '@/features/video-meta/components/video-metadata-form'
-import React from 'react'
+
+import ContentGenAll from './_component/content-gen-all'
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { status, data: videoData } = await retrieveVideo(params.id)
@@ -22,11 +20,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <Separator className="mb-6" />
       </div>
 
-      <VideoMetadataForm videoId={videoData.id} />
-
-      <TitleBlock videoData={videoData} />
-      <DescriptionBlock videoData={videoData} />
-      <TagsBlock videoData={videoData} />
+      <ContentGenAll videoData={videoData} />
     </div>
   )
 }

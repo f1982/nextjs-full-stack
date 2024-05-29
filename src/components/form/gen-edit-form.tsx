@@ -1,31 +1,34 @@
 'use client'
 
-import UniversalSingleForm from './universal-single-form'
-import Spinner from '@/components/molecule/spinner'
-import { Button } from '@/components/ui/button'
+import { useState } from 'react'
+
 import { APIResponse } from '@/types/types'
 import { Wand2 } from 'lucide-react'
-import { useState } from 'react'
+
+import Spinner from '@/components/molecule/spinner'
+import { Button } from '@/components/ui/button'
+
+import UniversalSingleForm from './universal-single-form'
 
 export default function GenEditForm({
   value,
   rows = 5,
   fieldName,
-  generator,
-  submission,
+  optionsFactory,
+  onSubmit: handleSubmit,
 }: {
   value?: string
   rows?: number
   fieldName: string
-  generator: () => Promise<APIResponse<string | null>>
-  submission: (data: { value: string }) => Promise<APIResponse<any>>
+  optionsFactory: () => Promise<APIResponse<string | null>>
+  onSubmit: (data: { value: string }) => Promise<APIResponse<any>>
 }) {
   const [selectedOption, setSelectedOption] = useState<any>(value)
   const [isLoading, setIsLoading] = useState(false)
 
   async function requestOptions() {
     setIsLoading(true)
-    const { data } = await generator()
+    const { data } = await optionsFactory()
 
     setSelectedOption(data)
     setIsLoading(false)
@@ -33,10 +36,11 @@ export default function GenEditForm({
 
   return (
     <div className="flex flex-col gap-6">
+      <p>value: {value}</p>
       <UniversalSingleForm
         fieldName={fieldName}
-        defaultData={selectedOption}
-        handleSubmit={submission}
+        defaultValue={value}
+        onSubmit={handleSubmit}
         rows={rows}
         extraButtons={
           <Button

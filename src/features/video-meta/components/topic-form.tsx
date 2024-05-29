@@ -1,5 +1,13 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+import { cache } from '@/lib/file-cache'
+
 import { toastServerError } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
 import {
@@ -13,11 +21,9 @@ import {
 } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from '@/components/ui/use-toast'
-import { zodResolver } from '@hookform/resolvers/zod'
-import Link from 'next/link'
-import { useEffect } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+
+import { retrieveVideo, updateVideo } from '../actions/video-actions'
+import { getSelectedTopic } from '../actions/video-titles'
 
 const FormSchema = z.object({
   id: z.string().optional(),
@@ -26,39 +32,47 @@ const FormSchema = z.object({
   }),
 })
 
-const initialState = {
-  id: '',
-  topic: '',
-}
-
 export default function VideoTopicForm({
-  handleSubmit,
-  formData = null,
-  redirectUrl,
-  cancelUrl,
-}: any) {
+  videoId,
+  topic,
+}: {
+  videoId: string
+  topic: string
+}) {
+  const [isLoading, setIsLoading] = useState(false)
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    // defaultValues: formData || initialState,
-    values: formData || initialState,
-    mode: 'onTouched',
+    defaultValues: { id: videoId, topic: topic },
   })
 
   useEffect(() => {
-    console.log('formData changed: ', formData)
-  }, [formData])
+    const fetchData = async () => {
+      if (!videoId) {
+        return
+      }
+      setIsLoading(true)
+      const videoData = await retrieveVideo(videoId)
+
+      form.reset({
+        id: videoId,
+        topic: videoData.data?.topic || '',
+      })
+      setIsLoading(false)
+    }
+    if (!topic) {
+      fetchData()
+    } else {
+      form.setValue('topic', topic)
+    }
+  }, [videoId, form, topic])
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    if (!handleSubmit) {
-      return
-    }
-
-    const result = await handleSubmit(data)
+    const result = await updateVideo({ id: data.id, topic: data.topic })
 
     if (result.status === 'failure') {
       return toastServerError()
     }
-
     toast({
       description: 'Saved successfully.',
       variant: 'default',
@@ -68,13 +82,11 @@ export default function VideoTopicForm({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-        {formData?.id && (
-          <FormField
-            control={form.control}
-            name="id"
-            render={({ field }) => <input hidden {...field}></input>}
-          />
-        )}
+        <FormField
+          control={form.control}
+          name="id"
+          render={({ field }) => <input hidden {...field}></input>}
+        />
 
         <FormField
           control={form.control}
@@ -99,7 +111,6 @@ export default function VideoTopicForm({
           <Button disabled={form.formState.isSubmitting} type="submit">
             Submit
           </Button>
-          {cancelUrl && <Link href={cancelUrl}>Cancel</Link>}
         </div>
       </form>
     </Form>

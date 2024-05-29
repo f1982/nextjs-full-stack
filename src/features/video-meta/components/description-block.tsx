@@ -1,52 +1,134 @@
-import GenEditForm from '../../../components/form/gen-edit-form'
+'use client'
+
+import { forwardRef, useImperativeHandle, useState } from 'react'
+
+import { APIResponse } from '@/types/types'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Video } from '@prisma/client'
+import { SaveIcon, Wand2 } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+import { sleep } from '@/utils/utils'
+
+import { CopyButton } from '@/components/molecule/copy-button'
+import { toastServerError } from '@/components/molecule/server-error'
+import Spinner from '@/components/molecule/spinner'
+import { Button } from '@/components/ui/button'
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+import { Textarea } from '@/components/ui/textarea'
+
 import { updateVideo } from '@/features/video-meta/actions/video-actions'
 import { generateVideoDescription } from '@/features/video-meta/actions/video-description'
-import { APIResponse } from '@/types/types'
-import { Video } from '@prisma/client'
 
-//Design
-// input video.description, video.id
-// <VideoField videoData='' fieldName="" fieldValue="" generator='' generatorOptions='' submit='' />
-// <VideoFieldSelect id='' desc='' generator='' submit='' />
-//
+const FormSchema = z.object({
+  value: z.string().min(2, {
+    message: 'topic must be at least 2 characters.',
+  }),
+})
 
-export default async function DescriptionBlock({
-  videoData,
-}: {
-  videoData: Video
-}) {
-  const handleSubmission = async (data: any): Promise<APIResponse<any>> => {
-    'use server'
+function DescriptionBlock(
+  {
+    videoData,
+  }: {
+    videoData: Video
+  },
+  ref: any,
+) {
+  const [isLoading, setIsLoading] = useState(false)
 
-    console.log('save desc')
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        refresh: async () => {
+          await generateDescription()
+        },
+      }
+    },
+    [],
+  )
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    values: { value: videoData.description || '' },
+    mode: 'onTouched',
+  })
+
+  const handleSubmit = async (data: any): Promise<APIResponse<any>> => {
     return await updateVideo({ description: data.value, id: videoData.id })
   }
 
-  const handleOptionGeneration = async (): Promise<
-    APIResponse<string | null>
-  > => {
-    'use server'
-
+  const generateDescription = async () => {
     try {
+      setIsLoading(true)
       const desc = await generateVideoDescription(videoData.topic!)
-      console.log('desc', desc)
-      //auto save
-      await handleSubmission({ description: desc, id: videoData.id })
-      return { data: desc, status: 'success', message: 'gen and saved' }
+      //for testing
+      await sleep(3000)
+
+      form.setValue('value', desc, {
+        shouldDirty: true,
+        shouldValidate: true,
+      })
+
+      setIsLoading(false)
     } catch (error) {
-      return { data: null, status: 'failure' }
+      return toastServerError()
     }
   }
 
   return (
     <>
-      <GenEditForm
-        fieldName="description"
-        rows={10}
-        value={videoData.description || ''}
-        generator={handleOptionGeneration}
-        submission={handleSubmission}
-      />
+      <Button
+        disabled={isLoading}
+        className="flex flex-row gap-3"
+        onClick={generateDescription}>
+        {isLoading ? <Spinner /> : <Wand2 />}
+        <span>Generate Description</span>
+      </Button>
+
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+          <FormField
+            control={form.control}
+            name="value"
+            render={({ field, fieldState }) => (
+              <FormItem>
+                <FormLabel>Description {fieldState.isDirty && '✏︎'}</FormLabel>
+                <FormControl>
+                  <Textarea
+                    rows={10}
+                    disabled={form.formState.isSubmitting}
+                    placeholder="Description"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>
+                  This is your video description.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="flex flex-row items-center gap-3">
+            <Button disabled={form.formState.isSubmitting} type="submit">
+              {form.formState.isSubmitting ? <Spinner /> : <SaveIcon />}
+              <span>Save</span>
+            </Button>
+            <CopyButton content={form.getValues().value} />
+          </div>
+        </form>
+      </Form>
     </>
   )
 }
+
+export default forwardRef(DescriptionBlock)

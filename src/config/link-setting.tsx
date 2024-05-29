@@ -18,14 +18,14 @@ export const navMenuData: MenuItemData[] = [
     label: 'Blog',
   },
   {
-    title: 'About',
-    link: '/about',
-    label: 'About',
-  },
-  {
     title: 'Beats',
     link: '/beats',
     label: 'Beats',
+  },
+  {
+    title: 'Dashboard',
+    link: '/dashboard',
+    label: 'Dashboard',
   },
 ]
 

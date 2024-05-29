@@ -1,10 +1,12 @@
 'use server'
 
-import { auth } from '@/config/auth-settings'
-import prisma from '@/lib/prisma'
 import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
+
+import prisma from '@/lib/prisma'
+
+import { auth } from '@/config/auth-settings'
 
 export const retrieveVideos = async (
   channelId: string,
@@ -75,7 +77,7 @@ export const updateVideo = async (
   // test mock error message
   // console.log('update video data:', data)
   // return mockServerResponse('success')
-  // console.log('data', data)
+  console.log('data', data)
 
   const session = await auth()
   if (!session) {

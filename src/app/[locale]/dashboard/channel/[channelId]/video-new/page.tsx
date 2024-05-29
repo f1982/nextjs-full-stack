@@ -1,8 +1,10 @@
+import Link from 'next/link'
+
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+
 import { createVideoWithTopic } from '@/features/video-meta/actions/video-actions'
 import TopicSelect from '@/features/video-meta/components/topic-select'
-import Link from 'next/link'
 
 export default async function Page({
   params,
@@ -31,8 +33,9 @@ export default async function Page({
       </Link>
 
       <Separator className="mb-6" />
+      {/* <TopicGenButton /> */}
 
-      <TopicSelect onSubmit={handleSubmit} />
+      {/* <TopicSelect onSubmit={handleSubmit} /> */}
     </>
   )
 }

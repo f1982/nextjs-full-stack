@@ -1,4 +1,5 @@
 import { Separator } from '@/components/ui/separator'
+
 import { retrieveChannel } from '@/features/channel/api/channel-actions'
 import { retrieveVideos } from '@/features/video-meta/actions/video-actions'
 import NewVideoButton from '@/features/video-meta/components/new-video-button'
@@ -29,8 +30,7 @@ export default async function Page({
 
         <NewVideoButton channelId={params.channelId}></NewVideoButton>
         <div className="prose prose-lg">
-          <h2>video details</h2>
-          <p>Video count: {videos?.length}</p>
+          <p>Videos count: {videos?.length}</p>
         </div>
       </div>
     </>
