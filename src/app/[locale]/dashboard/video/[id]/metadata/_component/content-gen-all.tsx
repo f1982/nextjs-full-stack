@@ -26,7 +26,7 @@ export default function ContentGenAll({ videoData }: { videoData: any }) {
       <div>
         <Button onClick={async () => await genAll()}>
           <Play />
-          <span>Gen all</span>
+          <span>Generate all metadata</span>
         </Button>
       </div>
       <TitleBlock ref={titleRef} videoData={videoData} />

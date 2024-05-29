@@ -1,49 +1,162 @@
-import { APIResponse } from '@/types/types'
+'use client'
+
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
+
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Video } from '@prisma/client'
+import { SaveIcon, Wand2 } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
-import { cache } from '@/lib/file-cache'
+import { sleep } from '@/utils/utils'
 
-import { generateScriptEnding } from '@/features/video-script/actions/script-ending'
+import { CopyButton } from '@/components/molecule/copy-button'
+import { toastServerError } from '@/components/molecule/server-error'
+import Spinner from '@/components/molecule/spinner'
+import { Button } from '@/components/ui/button'
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+import { Textarea } from '@/components/ui/textarea'
 
-import GenEditForm from '../../../components/form/gen-edit-form'
+import { generateScriptEnding } from '../actions/script-ending'
+import { generateScriptHook } from '../actions/script-hook'
+import { getCache, setCache } from '../actions/temp-storage'
 
-export default async function ScriptHookBlock({
-  videoData,
-}: {
-  videoData: Video
-}) {
-  const prefix = 'script-ending-'
-  const cacheKey = prefix + videoData.id
+const FormSchema = z.object({
+  value: z.string().min(2, {
+    message: 'hook must be at least 2 characters.',
+  }),
+})
 
-  let content = await cache.get(cacheKey)
+function ScriptEndBlock(
+  {
+    videoData,
+  }: {
+    videoData: Video
+  },
+  ref: any,
+) {
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmission = async (
-    data: any,
-  ): Promise<APIResponse<string | null>> => {
-    'use server'
+  // expose refresh function to parent
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        refresh: async () => {
+          await generateEnding()
+        },
+      }
+    },
+    [],
+  )
 
-    await cache.set(cacheKey, data.value)
-    return { status: 'success', message: '', data: data.value }
+  const getCacheKey = () => {
+    return 'script-end-' + videoData.id
+  }
+  // default form
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    values: {
+      value: '',
+    },
+    mode: 'onTouched',
+  })
+
+  // save description to db
+  const handleSubmit = async (data: any) => {
+    await setCache(getCacheKey(), data.value)
+    //for testing
+    await sleep(1000)
+    return {}
   }
 
-  const handleOptionGeneration = async (): Promise<
-    APIResponse<string | null>
-  > => {
-    'use server'
+  // gen description by ai
+  const generateEnding = async () => {
+    try {
+      setIsLoading(true)
+      const hook = await generateScriptEnding(videoData.topic!, '无责猜想')
 
-    const content = await generateScriptEnding(videoData.topic!, '无责任猜想')
-    //auto save
-    await cache.set(cacheKey, content)
+      //for testing
+      await sleep(1000)
 
-    return { data: content, status: 'success' }
+      form.setValue('value', hook, {
+        shouldDirty: true,
+        shouldValidate: true,
+      })
+
+      setIsLoading(false)
+    } catch (error) {
+      return toastServerError()
+    }
   }
+
+  useEffect(() => {
+    // load existing value
+    const fetchData = async () => {
+      const hook = await getCache(getCacheKey())
+      form.reset({
+        value: hook,
+      })
+    }
+    fetchData()
+  }, [])
 
   return (
-    <GenEditForm
-      fieldName="scriptEnding"
-      value={content || ''}
-      optionsFactory={handleOptionGeneration}
-      onSubmit={handleSubmission}
-    />
+    <>
+      <div>
+        <Button
+          disabled={isLoading}
+          className="flex flex-row gap-3"
+          onClick={generateEnding}>
+          {isLoading ? <Spinner /> : <Wand2 />}
+          <span>Generate script ending</span>
+        </Button>
+      </div>
+
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+          <FormField
+            control={form.control}
+            name="value"
+            render={({ field, fieldState }) => (
+              <FormItem>
+                <FormLabel>
+                  Script ending {fieldState.isDirty && '✏︎'}
+                </FormLabel>
+                <FormControl>
+                  <Textarea
+                    rows={8}
+                    disabled={form.formState.isSubmitting}
+                    placeholder="Description"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>
+                  This is your video script ending
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="flex flex-row items-center gap-3">
+            <Button disabled={form.formState.isSubmitting} type="submit">
+              {form.formState.isSubmitting ? <Spinner /> : <SaveIcon />}
+              <span>Save</span>
+            </Button>
+            <CopyButton content={form.getValues().value} />
+          </div>
+        </form>
+      </Form>
+    </>
   )
 }
+
+export default forwardRef(ScriptEndBlock)
