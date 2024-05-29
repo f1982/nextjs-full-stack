@@ -1,6 +1,10 @@
+import { Suspense } from 'react'
+
+import Spinner from '@/components/molecule/spinner'
 import { Separator } from '@/components/ui/separator'
 
 import { retrieveChannel } from '@/features/channel/api/channel-actions'
+import VideoListView from '@/features/channel/components/video-list-view'
 import { retrieveVideos } from '@/features/video-meta/actions/video-actions'
 import NewVideoButton from '@/features/video-meta/components/new-video-button'
 
@@ -32,6 +36,9 @@ export default async function Page({
         <div className="prose prose-lg">
           <p>Videos count: {videos?.length}</p>
         </div>
+        <Suspense fallback={<Spinner />}>
+          <VideoListView channelId={params.channelId}></VideoListView>
+        </Suspense>
       </div>
     </>
   )
