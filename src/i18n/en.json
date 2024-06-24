@@ -1,0 +1,12 @@
+{
+  "homepage": {
+    "hi": "Hello"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard"
+  },
+  "LocaleSwitcher": {
+    "label": "Select language",
+    "locale": "{locale, select, cn {🇨🇳} en {🇺🇸} other {Unknown}}"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "homepage": {
+    "hi": "你好"
+  },
+  "dashboard": {
+    "dashboard": "面板"
+  },
+  "LocaleSwitcher": {
+    "label": "选择语言",
+    "locale": "{locale, select, cn {🇨🇳} en {🇺🇸} other {Unknown}}"
+  }
+}
