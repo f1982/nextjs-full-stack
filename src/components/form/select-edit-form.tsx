@@ -1,12 +1,15 @@
 'use client'
 
+import { useState } from 'react'
+
+import { Wand2 } from 'lucide-react'
+
 import ListMultipleSelect, {
   OptionItemData,
 } from '@/components/molecule/list-multiple-select'
 import Spinner from '@/components/molecule/spinner'
 import { Button } from '@/components/ui/button'
-import { Wand2 } from 'lucide-react'
-import { useState } from 'react'
+
 import UniversalSingleForm from './universal-single-form'
 
 function convertStringArrayToObjectArray(stringArray) {
@@ -17,26 +20,26 @@ function convertStringArrayToObjectArray(stringArray) {
 }
 
 export default function SelectEditForm({
-  value,
+  defaultValue,
   fieldName,
-  generator,
+  optionsFactory,
   onSubmit,
 }: {
-  value?: string
+  defaultValue?: string
   fieldName: string
-  generator: any
+  optionsFactory: any
   onSubmit: any
 }) {
   const [selectOptions, setSelectOptions] = useState<OptionItemData[] | null>(
     null,
   )
-  const [selectedOption, setSelectedOption] = useState<any>(value)
-  
+  const [selectedOption, setSelectedOption] = useState<any>(defaultValue)
+
   const [isLoading, setIsLoading] = useState(false)
 
   async function requestOptions() {
     setIsLoading(true)
-    const { data } = await generator()
+    const { data } = await optionsFactory()
 
     if (typeof data[0] === 'string') {
       const opts = convertStringArrayToObjectArray(data)
@@ -53,16 +56,16 @@ export default function SelectEditForm({
         <ListMultipleSelect
           label="Paragraph Selector"
           options={selectOptions}
-          select={(opt: OptionItemData) => {
-            console.log('opt', opt)
+          onSelect={(opt: OptionItemData) => {
             setSelectedOption(opt.value)
           }}
         />
       )}
+
       <UniversalSingleForm
         fieldName={fieldName}
-        defaultData={selectedOption}
-        handleSubmit={onSubmit}
+        defaultValue={selectedOption}
+        onSubmit={onSubmit}
         extraButtons={
           <Button
             disabled={isLoading}

@@ -1,5 +1,5 @@
 import { auth } from '@/config/auth-settings'
-import { generateVideoTitles } from '@/features/video/api/video-titles'
+import { generateVideoTitles } from '@/features/video-meta/actions/video-titles'
 import { sleep } from '@/utils/utils'
 import { NextRequest, NextResponse } from 'next/server'
 

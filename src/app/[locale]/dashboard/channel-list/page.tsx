@@ -1,11 +1,12 @@
-import {
-  deleteChannel,
-  retrieveChannels,
-} from '../../../../features/channel/api/channel-actions'
-import ChannelItem from '../../../../features/channel/components/channel-item'
 import { ServerError } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
 import { auth } from '@/config/auth-settings'
+import {
+  deleteChannel,
+  retrieveChannels,
+} from '@/features/channel/api/channel-actions'
+import ChannelDelButton from '@/features/channel/components/channel-del-button'
+import ChannelItem from '@/features/channel/components/channel-item'
 import prisma from '@/lib/prisma'
 import Link from 'next/link'
 
@@ -47,11 +48,12 @@ export default async function Page() {
       <section>
         <div className="mx-auto grid max-w-5xl justify-items-center gap-5 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:gap-6">
           {channels?.map((channel) => (
-            <ChannelItem
-              key={channel.id}
-              channel={channel}
-              onDelete={deleteChannel}
-            />
+            <ChannelItem key={channel.id} channel={channel}>
+              <Link href={`/dashboard/channel/${channel.id}/settings`}>
+                Edit
+              </Link>
+              <ChannelDelButton channelId={channel.id} />
+            </ChannelItem>
           ))}
         </div>
       </section>

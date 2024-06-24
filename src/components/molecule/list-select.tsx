@@ -1,5 +1,9 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
 import { Button } from '../ui/button'
 import {
   Form,
@@ -10,9 +14,6 @@ import {
   FormMessage,
 } from '../ui/form'
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 
 const FormSchema = z.object({
   value: z.string(),
@@ -21,21 +22,18 @@ const FormSchema = z.object({
 export default function ListSelector({
   label,
   options,
-  callback,
+  onSelect,
 }: {
   label?: string
   options: string[]
-  callback?: (opt: any) => void
+  onSelect?: (opt: string) => void
 }) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    if (callback) {
-      console.log('data', data.value)
-      callback(data.value)
-    }
+    onSelect?.(data.value)
   }
   return (
     <Form {...form}>

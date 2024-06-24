@@ -1,12 +1,17 @@
 'use client'
 
-import UniversalSingleForm from './universal-single-form'
-import ListMultipleSelect, { OptionItemData } from '@/components/molecule/list-multiple-select'
+import { useState } from 'react'
+
+import { Wand2 } from 'lucide-react'
+
+import ListMultipleSelect, {
+  OptionItemData,
+} from '@/components/molecule/list-multiple-select'
 import ListSelector from '@/components/molecule/list-select'
 import Spinner from '@/components/molecule/spinner'
 import { Button } from '@/components/ui/button'
-import { Wand2 } from 'lucide-react'
-import { useState } from 'react'
+
+import UniversalSingleForm from './universal-single-form'
 
 export default function SelectEditForm({
   value,
@@ -19,7 +24,9 @@ export default function SelectEditForm({
   generator: any
   onSubmit: any
 }) {
-  const [selectOptions, setSelectOptions] = useState<OptionItemData[] | null>(null)
+  const [selectOptions, setSelectOptions] = useState<OptionItemData[] | null>(
+    null,
+  )
 
   const [selectedOption, setSelectedOption] = useState<any>(value)
   const [isLoading, setIsLoading] = useState(false)
@@ -40,15 +47,15 @@ export default function SelectEditForm({
         <ListMultipleSelect
           label={fieldName}
           options={selectOptions}
-          select={(opt: any) => {
+          onSelect={(opt: any) => {
             setSelectedOption(opt)
           }}
         />
       )}
       <UniversalSingleForm
         fieldName={fieldName}
-        defaultData={selectedOption}
-        handleSubmit={onSubmit}
+        defaultValue={selectedOption}
+        onSubmit={onSubmit}
         extraButtons={
           <Button
             disabled={isLoading}

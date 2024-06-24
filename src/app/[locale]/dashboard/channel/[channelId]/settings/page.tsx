@@ -1,24 +1,13 @@
-import { retrieveChannel, updateChannel } from '../../../../../../features/channel/api/channel-actions'
-import EditChannelForm from '../../../../../../features/channel/components/channel-form'
-import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
+import ChannelInfoForm from '@/features/channel/components/channel-form'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 export default async function Page({
   params,
 }: {
   params: { channelId: string }
 }) {
-  console.log('id', params.channelId)
-  const response = await retrieveChannel(params.channelId)
-
-  if (response.status === 'failure') {
-    return <ServerError message={response.message} />
-  }
-
-  const { data } = response
-
-  function updateChannelById() {}
   return (
     <>
       <div className="mb-6">
@@ -33,13 +22,7 @@ export default async function Page({
         </p>
       </div>
       <Separator className="mb-6" />
-      <EditChannelForm
-        formData={data}
-        handleSubmit={async (data: any) => {
-          'use server'
-          return await updateChannel(data, params.channelId)
-        }}
-      />
+      <ChannelInfoForm channelId={params.channelId} />
     </>
   )
 }

@@ -3,7 +3,7 @@ import NavigationLinkNormal from '@/components/molecule/navigation-link-normal'
 import { FileVideo2, Gauge, Tv } from 'lucide-react'
 
 export const Menubar = () => (
-  <ul className="mt-2 capitalize text-gray-700 dark:text-gray-400">
+  <ul className="mt-2 capitalize dark:text-gray-400">
     <li className="mt-3 rounded-lg p-2 text-blue-600 dark:text-blue-300">
       <a href="/dashboard" className=" flex flex-col items-center">
         <Gauge />

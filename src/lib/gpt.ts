@@ -21,30 +21,6 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 })
 
-export async function askGpt(prompt: string) {
-  const messages: Array<ChatCompletionMessageParam> = []
-  // messages.push({ role: 'system', content: systemContent })
-  messages.push({ role: 'user', content: prompt })
-
-  const chatCompletion = await openai.chat.completions
-    .create(
-      {
-        messages,
-        model: gptModel!,
-        temperature: 0.9,
-      },
-      { maxRetries: 3 },
-    )
-    .catch((error) => {
-      if (error instanceof OpenAI.APIError) {
-        console.log(error)
-      } else {
-        throw error
-      }
-    })
-  return chatCompletion?.choices[0]?.message?.content
-}
-
 /**
  * Get gpt with json
  * @param prompt

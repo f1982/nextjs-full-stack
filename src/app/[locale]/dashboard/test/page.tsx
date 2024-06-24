@@ -1,4 +1,6 @@
-import ListMultipleSelect, { OptionItemData } from "@/components/molecule/list-multiple-select"
+import ListMultipleSelect, {
+  OptionItemData,
+} from '@/components/molecule/list-multiple-select'
 
 export default function page() {
   const mockData = [
@@ -13,11 +15,10 @@ export default function page() {
       <ListMultipleSelect
         label="Paragraph Selector"
         options={mockData}
-        select={(opt: OptionItemData) => {
+        onSelect={(opt: OptionItemData) => {
           console.log('opt', opt)
         }}
       />
-      
     </div>
   )
 }

@@ -1,8 +1,11 @@
-import GenEditForm from '../../../components/form/gen-edit-form'
-import { cache } from '@/lib/file-cache'
-import { generateScriptOutline } from '@/features/video-script/api/script-outline'
 import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
+
+import { cache } from '@/lib/file-cache'
+
+import { generateScriptOutline } from '@/features/video-script/actions/script-outline'
+
+import GenEditForm from '../../../components/form/gen-edit-form'
 
 export default async function ScriptOutlineBlock({
   videoData,
@@ -41,8 +44,8 @@ export default async function ScriptOutlineBlock({
       rows={20}
       fieldName={name}
       value={value || ''}
-      generator={handleOptionGeneration}
-      submission={handleSubmission}
+      optionsFactory={handleOptionGeneration}
+      onSubmit={handleSubmission}
     />
   )
 }

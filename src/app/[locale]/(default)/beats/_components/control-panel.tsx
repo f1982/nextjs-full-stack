@@ -89,19 +89,20 @@ export default function ControlPanel(props: ControlPanelProps) {
             setFrequency(v)
             setFrequencyLeft(v)
             setFrequencyRight(v + frequencyDiff)
-          }}
-        ><Button className='px-1'
-        variant={'ghost'}
-        onClick={() => setShowFrequencyDetails((v) => !v)}>
-        {showFrequencyDetails ? <ChevronUp /> : <ChevronDown />}
-      </Button></SliderButtons>
-        
+          }}>
+          <Button
+            className="px-1"
+            variant={'ghost'}
+            onClick={() => setShowFrequencyDetails((v) => !v)}>
+            {showFrequencyDetails ? <ChevronUp /> : <ChevronDown />}
+          </Button>
+        </SliderButtons>
       </div>
 
       {showFrequencyDetails && (
         <>
           <div className="mb-9 flex flex-col gap-6">
-            <label className="mb-1 block text-sm font-medium text-gray-700">
+            <label className="mb-1 block text-sm font-medium">
               Left Frequency ({frequencyLeft}Hz)
             </label>
             <Slider
@@ -112,7 +113,7 @@ export default function ControlPanel(props: ControlPanelProps) {
               onValueChange={(value) => setFrequencyLeft(value[0])}
             />
 
-            <label className="mb-1 block text-sm font-medium text-gray-700">
+            <label className="mb-1 block text-sm font-medium">
               Right Frequency ({frequencyRight}Hz)
             </label>
             <Slider
@@ -139,9 +140,7 @@ export default function ControlPanel(props: ControlPanelProps) {
             setFrequencyDiff(diffValue)
             setFrequencyLeft(frequency)
             setFrequencyRight(frequency + diffValue)
-          }}>
-          
-        </SliderButtons>
+          }}></SliderButtons>
       </div>
 
       <div className="flex flex-row items-center justify-center">
@@ -156,18 +155,19 @@ export default function ControlPanel(props: ControlPanelProps) {
           handleValueChange={(v) => {
             setVolumeLeft(v)
             setVolumeRight(v)
-          }}
-        ><Button className='px-1'
-        variant={'ghost'}
-        onClick={() => setShowVolumeDetails((v) => !v)}>
-        {showVolumeDetails ? <ChevronUp /> : <ChevronDown />}
-      </Button></SliderButtons>
-        
+          }}>
+          <Button
+            className="px-1"
+            variant={'ghost'}
+            onClick={() => setShowVolumeDetails((v) => !v)}>
+            {showVolumeDetails ? <ChevronUp /> : <ChevronDown />}
+          </Button>
+        </SliderButtons>
       </div>
 
       {showVolumeDetails && (
         <div className="flex flex-col gap-3">
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium">
             Volume ({volumeLeft} L)
           </label>
           <Slider
@@ -178,7 +178,7 @@ export default function ControlPanel(props: ControlPanelProps) {
             onValueChange={(value) => setVolumeLeft(value[0])}
           />
 
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium">
             Volume ({volumeRight} R)
           </label>
           <Slider

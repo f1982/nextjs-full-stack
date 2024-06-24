@@ -144,3 +144,22 @@ enum VideoStatus {
   Ready
   Published
 }
+
+model Resource {
+  id          String  @id @default(cuid())
+  title       String
+  description String?
+  category    String
+  subcategory String
+  tags        String
+  thumbnail   String?
+  url         String
+  markdown    String?
+  status      String?
+  weight      Int     @default(0)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  author String?
+}

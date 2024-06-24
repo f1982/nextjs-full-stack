@@ -1,37 +1,18 @@
-import TopicSelect from '@/features/video/components/topic-select'
-import {
-  createVideoWithTopic,
-  retrieveVideo,
-  updateVideo,
-} from '@/features/video/api/video-actions'
+import Link from 'next/link'
+
 import { ServerError } from '@/components/molecule/server-error'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import Link from 'next/link'
+
+import { retrieveVideo } from '@/features/video-meta/actions/video-actions'
+import TopicSelect from '@/features/video-meta/components/topic-select'
 
 export default async function TopicPage({
   params,
 }: {
   params: { id: string }
 }) {
-  const handleSubmit = async (data: any) => {
-    'use server'
-
-    // Update existing video
-    if (!params.id) {
-      const updatedData = Object.assign(data, {
-        channel_id: params.id,
-      })
-      return await createVideoWithTopic(updatedData)
-    }
-
-    // Create new video
-    const updatedData = { ...data, id: params.id }
-    return await updateVideo(updatedData)
-  }
-
   const { status, data: videoData } = await retrieveVideo(params.id)
-  console.log('videoData', videoData)
 
   if (status === 'failure' || !videoData) {
     return <ServerError message=""></ServerError>
@@ -50,7 +31,7 @@ export default async function TopicPage({
 
       <Separator className="mb-6" />
 
-      <TopicSelect value={videoData!} onSubmit={handleSubmit} />
+      <TopicSelect videoId={params.id} />
     </>
   )
 }

@@ -29,9 +29,9 @@ export default function BeatsPlayer() {
   }, [])
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-3">
-      <div className="prose-md prose mb-6 dark:prose-invert ">
-        <h1 className='text-center'>Binaural Beats Generator</h1>
+    <div className="mx-auto w-full max-w-3xl">
+      <div className="prose prose-lg my-48 max-w-none dark:prose-invert">
+        <h1 className="text-center">Binaural Beats Generator</h1>
         <p>
           A Binaural Beats Generator is a tool or device that creates binaural
           beats, which are auditory illusions perceived when two slightly
@@ -58,7 +58,7 @@ export default function BeatsPlayer() {
         />
       )}
 
-      <div className='mb-12'></div>
+      <div className="mb-12"></div>
     </div>
   )
 }

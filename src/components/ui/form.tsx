@@ -1,4 +1,4 @@
-import { cn } from '../lib/utils'
+import { cn } from './utils'
 import { Label } from './label'
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { Slot } from '@radix-ui/react-slot'

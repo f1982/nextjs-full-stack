@@ -23,12 +23,10 @@ export default async function RootLayout({
 }) {
   return (
     <html lang={locale} suppressHydrationWarning>
-      {/* className="dark" */}
       <NextAuthProvider>
         <body
           className={clsx(
             'flex min-h-screen flex-col',
-            'bg-background dark:bg-slate-950',
             'font-sans antialiased',
             fontSans.variable,
           )}>

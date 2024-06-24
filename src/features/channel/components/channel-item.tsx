@@ -7,12 +7,10 @@ import Link from 'next/link'
 
 export default function ChannelItem({
   channel,
-  onDelete,
-  onEdit,
+  children,
 }: {
   channel: Channel
-  onDelete: any
-  onEdit?: any
+  children?: React.ReactNode
 }) {
   return (
     <div
@@ -32,8 +30,7 @@ export default function ChannelItem({
         </div>
       </Link>
       <div className="flex w-full flex-row justify-between gap-3 text-sm">
-        <Link href={`/dashboard/channel/${channel.id}/settings`}>Edit</Link>
-        <DelButton actionHandler={onDelete} itemId={channel.id} />
+        {children}
       </div>
     </div>
   )

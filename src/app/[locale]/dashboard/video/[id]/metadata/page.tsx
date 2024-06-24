@@ -1,10 +1,9 @@
-import DescriptionBlock from '../../../../../../features/video/components/description-block'
-import TagsBlock from '../../../../../../features/video/components/tags-block'
-import TitleBlock from '../../../../../../features/video/components/titles-block'
-import { retrieveVideo } from '../../../../../../features/video/api/video-actions'
 import { ServerError } from '@/components/molecule/server-error'
 import { Separator } from '@/components/ui/separator'
-import React from 'react'
+
+import { retrieveVideo } from '@/features/video-meta/actions/video-actions'
+
+import ContentGenAll from './_component/content-gen-all'
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { status, data: videoData } = await retrieveVideo(params.id)
@@ -21,9 +20,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <Separator className="mb-6" />
       </div>
 
-      <TitleBlock videoData={videoData} />
-      <DescriptionBlock videoData={videoData} />
-      <TagsBlock videoData={videoData} />
+      <ContentGenAll videoData={videoData} />
     </div>
   )
 }

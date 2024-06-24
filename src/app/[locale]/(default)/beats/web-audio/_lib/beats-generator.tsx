@@ -10,7 +10,7 @@ import React, { useEffect, useRef, useState } from 'react'
 const BeatsGenerator = () => {
   const audioContext = useRef(new AudioContext())
   const [isPlaying, setIsPlaying] = useState(false)
-  
+
   const [frequencyLeft, setFrequencyLeft] = useState(200)
   const [frequencyRight, setFrequencyRight] = useState(210)
   const [volume, setVolume] = useState(0.5)
@@ -66,7 +66,7 @@ const BeatsGenerator = () => {
     <div className="p-4">
       <h1 className="mb-4 text-2xl font-bold">Binaural Beats Generator</h1>
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">
+        <label className="mb-1 block text-sm font-medium">
           Left Frequency ({frequencyLeft}Hz)
         </label>
         <Slider
@@ -78,7 +78,7 @@ const BeatsGenerator = () => {
         />
       </div>
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">
+        <label className="mb-1 block text-sm font-medium">
           Right Frequency ({frequencyRight}Hz)
         </label>
         <Slider
@@ -90,7 +90,7 @@ const BeatsGenerator = () => {
         />
       </div>
       <div className="mb-4">
-        <label className="mb-1 block text-sm font-medium text-gray-700">
+        <label className="mb-1 block text-sm font-medium">
           Volume {volume}
         </label>
         <Slider

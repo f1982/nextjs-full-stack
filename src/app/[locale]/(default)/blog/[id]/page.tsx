@@ -1,6 +1,6 @@
-import { auth } from '../../../../../config/auth-settings'
-import prisma from '../../../../../lib/prisma'
-import DraftPublishButton from '../../../../../features/blog/components/publish-button'
+import { auth } from '@/config/auth-settings'
+import DraftPublishButton from '@/features/blog/components/publish-button'
+import prisma from '@/lib/prisma'
 import ReactMarkdown from 'react-markdown'
 
 const getData = async (params: any): Promise<{ post: any }> => {

@@ -4,12 +4,12 @@ import React from 'react'
 export default function Features() {
   return (
     <section>
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+      <div className="container mx-auto py-16 md:py-24 lg:py-32">
         <div className="text-center">
           <h2 className="text-3xl font-bold md:text-5xl">
             Make every step user-centric
           </h2>
-          <p className="mx-auto mb-8 mt-4 max-w-lg text-[#647084] md:mb-12 lg:mb-16">
+          <p className="mx-auto mb-8 mt-4 max-w-lg md:mb-12 lg:mb-16">
             Lorem ipsum dolor sit amet consectetur adipiscing elit ut
             aliquam,purus sit amet luctus magna fringilla urna
           </p>
@@ -24,7 +24,7 @@ export default function Features() {
               className="inline-block h-8"
             />
             <p className="text-xl font-semibold">Support</p>
-            <p className="text-sm text-[#636262]">
+            <p className="text-sm  ">
               Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam,
               purus sit.
             </p>
@@ -38,7 +38,7 @@ export default function Features() {
               className="inline-block h-8"
             />
             <p className="text-xl font-semibold">Organise</p>
-            <p className="text-sm text-[#636262]">
+            <p className="text-sm  ">
               Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam,
               purus sit.
             </p>
@@ -52,7 +52,7 @@ export default function Features() {
               className="inline-block h-8"
             />
             <p className="text-xl font-semibold">Flexibility</p>
-            <p className="text-sm text-[#636262]">
+            <p className="text-sm  ">
               Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam,
               purus sit.
             </p>

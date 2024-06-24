@@ -1,8 +1,11 @@
-import GenEditForm from '../../../components/form/gen-edit-form'
-import { cache } from '@/lib/file-cache'
-import { generateExtend } from '@/features/video-script/api/script-extend'
 import { APIResponse } from '@/types/types'
 import { Video } from '@prisma/client'
+
+import { cache } from '@/lib/file-cache'
+
+import { generateExtend } from '@/features/video-script/actions/script-extend'
+
+import GenEditForm from '../../../components/form/gen-edit-form'
 
 export default async function ScriptMainBlock({
   videoData,
@@ -59,8 +62,8 @@ export default async function ScriptMainBlock({
       rows={20}
       fieldName={name}
       value={value || ''}
-      generator={handleOptionGeneration}
-      submission={handleSubmission}
+      optionsFactory={handleOptionGeneration}
+      onSubmit={handleSubmission}
     />
   )
 }

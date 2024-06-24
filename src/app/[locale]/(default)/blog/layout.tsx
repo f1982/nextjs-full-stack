@@ -1,4 +1,3 @@
-import Header from '@/components/page/header'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
@@ -17,7 +16,6 @@ export default async function RootLayout({
   return (
     <>
       <div className="container">
-        <Header />
         <ul>
           <li>
             <Link href={'/'}>home</Link>

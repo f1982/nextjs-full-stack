@@ -1,5 +1,9 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+import { useFormContext } from 'react-hook-form'
+import { z } from 'zod'
+
 import { CopyButton } from '@/components/molecule/copy-button'
 import {
   toastServerError,
@@ -9,47 +13,34 @@ import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-
-const FormSchema = z.object({
-  id: z.string().optional(),
-  value: z.string().min(2, {
-    message: 'topic must be at least 2 characters.',
-  }),
-})
 
 export default function UniversalSingleForm({
   fieldName,
-  handleSubmit,
+  onSubmit: handleSubmit,
   rows = 5,
-  defaultData = null,
   extraButtons = null,
-}: any) {
+}: {
+  fieldName: string
+  onSubmit: (data: any) => Promise<any>
+  rows?: number
+  extraButtons?: React.ReactNode
+}) {
   const router = useRouter()
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    values: { value: defaultData },
-    mode: 'onTouched',
-  })
+  const form = useFormContext()
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: any) {
     if (!handleSubmit) {
       return
     }
 
     const result = await handleSubmit(data)
-
     //Update the saved data in the text field
     router.refresh()
 
@@ -64,14 +55,6 @@ export default function UniversalSingleForm({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        {defaultData?.id && (
-          <FormField
-            control={form.control}
-            name="id"
-            render={({ field }) => <input hidden {...field}></input>}
-          />
-        )}
-
         <FormField
           control={form.control}
           name="value"

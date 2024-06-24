@@ -1,6 +1,6 @@
+import { auth } from '@/../config/auth-settings'
+import prisma from '@/../lib/prisma'
 import DraftPublishButton from '@/features/blog/components/publish-button'
-import { auth } from '../../../../../../config/auth-settings'
-import prisma from '../../../../../../lib/prisma'
 import clsx from 'clsx'
 import ReactMarkdown from 'react-markdown'
 

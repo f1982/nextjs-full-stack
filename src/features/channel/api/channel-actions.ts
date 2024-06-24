@@ -110,12 +110,13 @@ export const updateChannel = async (
       },
     })
 
-    revalidatePath('/')
+    revalidatePath('/dashboard/channel/' + channelId)
     return {
       status: 'success',
       message: `Added  successfully`,
     }
   } catch (e) {
+    console.log('e', e)
     return { status: 'failure', message: 'failure to create ' }
   }
 }
@@ -124,30 +125,31 @@ export async function deleteChannel(id: string) {
   'use server'
   const session = await auth()
   console.log('session', session)
-  if (!session) {
-    return { status: 'failure', message: 'You need to log in first' }
-  }
+  return { status: 'failure', message: 'You need to log in first' }
+  // if (!session) {
+  //   return { status: 'failure', message: 'You need to log in first' }
+  // }
 
-  try {
-    await prisma.video.deleteMany({
-      where: {
-        channel_id: id,
-      },
-    })
+  // try {
+  //   await prisma.video.deleteMany({
+  //     where: {
+  //       channel_id: id,
+  //     },
+  //   })
 
-    await prisma.channel.delete({
-      where: {
-        id,
-      },
-    })
+  //   await prisma.channel.delete({
+  //     where: {
+  //       id,
+  //     },
+  //   })
 
-    revalidatePath('/')
-    return {
-      status: 'success',
-      error: null,
-      message: `delete  successfully`,
-    }
-  } catch (e) {
-    return { status: 'failure', message: 'failure to create ' }
-  }
+  //   revalidatePath('/')
+  //   return {
+  //     status: 'success',
+  //     error: null,
+  //     message: `delete  successfully`,
+  //   }
+  // } catch (e) {
+  //   return { status: 'failure', error: e, message: 'failure to create ' }
+  // }
 }
