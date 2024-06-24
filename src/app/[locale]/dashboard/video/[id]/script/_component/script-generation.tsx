@@ -9,13 +9,16 @@ import { Button } from '@/components/ui/button'
 import SaveScriptsButton from '@/features/video-script/components/save-scripts-button'
 import ScriptEndingBlock from '@/features/video-script/components/script-ending-block'
 import ScriptHookBlock from '@/features/video-script/components/script-hook-block'
+import ScriptQuotesBlock from '@/features/video-script/components/script-quotes-block'
 
-export default function ContentGenAll({ videoData }: { videoData: any }) {
+export default function ScriptGeneration({ videoData }: { videoData: any }) {
   const hookRef = useRef<any>()
+  const quoteRef = useRef<any>()
   const endingRef = useRef<any>()
 
   async function generateAllScripts() {
     await hookRef.current?.refresh()
+    await quoteRef.current?.refresh()
     await endingRef.current?.refresh()
   }
 
@@ -32,6 +35,7 @@ export default function ContentGenAll({ videoData }: { videoData: any }) {
       </div>
       {/* <TimelineScriptForm videoId={videoData.id}></TimelineScriptForm> */}
       <ScriptHookBlock ref={hookRef} videoData={videoData} />
+      <ScriptQuotesBlock ref={quoteRef} videoData={videoData} />
       <ScriptEndingBlock ref={endingRef} videoData={videoData} />
       {/* <ScriptQuotesBlock videoData={videoData} />
       <div className="prose prose-xl">

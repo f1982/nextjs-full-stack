@@ -22,6 +22,7 @@ import Spinner from '@/components/molecule/spinner'
 import { Button } from '@/components/ui/button'
 
 import { generateScriptEnding } from '../actions/script-ending'
+import { generateScriptQuotes } from '../actions/script-quotes'
 import { getCache, setCache } from '../actions/temp-storage'
 
 const FormSchema = z.object({
@@ -30,7 +31,7 @@ const FormSchema = z.object({
   }),
 })
 
-function ScriptEndBlock(
+function ScriptQuotesBlock(
   {
     videoData,
   }: {
@@ -46,7 +47,7 @@ function ScriptEndBlock(
     () => {
       return {
         refresh: async () => {
-          await generateEnding()
+          await generateQuotes()
         },
       }
     },
@@ -54,7 +55,7 @@ function ScriptEndBlock(
   )
 
   const getCacheKey = () => {
-    return 'script-end-' + videoData.id
+    return 'script-quote-' + videoData.id
   }
   // default form
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -74,15 +75,22 @@ function ScriptEndBlock(
   }
 
   // gen description by ai
-  const generateEnding = async () => {
+  const generateQuotes = async () => {
     try {
       setIsLoading(true)
-      const hook = await generateScriptEnding(videoData.topic!, '无责猜想')
+
+      const quotes = await generateScriptQuotes(videoData.topic!)
+      console.log('quotes', quotes)
+      const sentences = quotes
+        .map((quote) => {
+          return quote.author + ' ' + quote.quote
+        })
+        .join('\n\n')
 
       //for testing
       await sleep(1000)
 
-      form.setValue('value', hook, {
+      form.setValue('value', sentences, {
         shouldDirty: true,
         shouldValidate: true,
       })
@@ -110,14 +118,14 @@ function ScriptEndBlock(
         <Button
           disabled={isLoading}
           className="flex flex-row gap-3"
-          onClick={generateEnding}>
+          onClick={generateQuotes}>
           {isLoading ? <Spinner /> : <Wand2 />}
-          <span>Generate script ending</span>
+          <span>Generate script quote</span>
         </Button>
       </div>
 
       <SingleFieldForm
-        label="Script ending"
+        label="Script quote"
         form={form}
         handleSubmit={handleSubmit}
       />
@@ -125,4 +133,4 @@ function ScriptEndBlock(
   )
 }
 
-export default forwardRef(ScriptEndBlock)
+export default forwardRef(ScriptQuotesBlock)

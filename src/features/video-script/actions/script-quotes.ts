@@ -1,6 +1,9 @@
+'use server'
+
+import { z } from 'zod'
+
 import { askGptWithCache } from '../../../lib/gpt'
 import { promptRequirements } from '../../../lib/prompt-segments'
-import { z } from 'zod'
 
 const validator = z.object({
   data: z.array(
@@ -12,16 +15,16 @@ const validator = z.object({
   ),
 })
 
-export const getQuoteItemDesc = (d: any) => {
-  return d.author + '\n' + d.quote + '\n' + d.year + '\n' + d.reference + '\n'
-}
+// export const getQuoteItemDesc = (d: any) => {
+//   return d.author + '\n' + d.quote + '\n' + d.year + '\n' + d.reference + '\n'
+// }
 
-export const getQuoteItemBrief = (d: any) => {
-  // return d.author + '在 ' + d.reference + ' 裏提到 ' + d.quote
-  return `"${d.quote}" ${d.author}`
-}
+// export const getQuoteItemBrief = (d: any) => {
+//   // return d.author + '在 ' + d.reference + ' 裏提到 ' + d.quote
+//   return `"${d.quote}" ${d.author}`
+// }
 
-export function getPrompts(topic: string, count: number = 5): string {
+function getPrompts(topic: string, count: number = 5): string {
   return `
 生成 ${count}个 关于 "${topic}" 的有意思的名人名言。要求内容真实有出处。最好是书籍或者演讲里提及。
 按照名言的影响力从高到低排序。

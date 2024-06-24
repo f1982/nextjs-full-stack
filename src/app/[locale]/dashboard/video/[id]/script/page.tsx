@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 
 import { retrieveVideo } from '@/features/video-meta/actions/video-actions'
 
-import ContentGenAll from './_component/content-gen-all'
+import ScriptGeneration from './_component/script-generation'
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { status, data: videoData } = await retrieveVideo(params.id)
@@ -11,5 +11,5 @@ export default async function Page({ params }: { params: { id: string } }) {
     return notFound()
   }
 
-  return <ContentGenAll videoData={videoData} />
+  return <ScriptGeneration videoData={videoData} />
 }

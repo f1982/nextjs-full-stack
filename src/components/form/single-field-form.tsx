@@ -38,6 +38,7 @@ export default function SingleFieldForm({
               <FormLabel>
                 {label} {fieldState.isDirty && '✏︎'}
               </FormLabel>
+              <FormDescription>This is {label}</FormDescription>
               <FormControl>
                 <Textarea
                   rows={rows}
@@ -46,7 +47,6 @@ export default function SingleFieldForm({
                   {...field}
                 />
               </FormControl>
-              <FormDescription>This is {label}</FormDescription>
               <FormMessage />
             </FormItem>
           )}
