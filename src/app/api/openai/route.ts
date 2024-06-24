@@ -8,6 +8,7 @@ const openai = new OpenAI({
   timeout: 20 * 1000, // 20 seconds (default is 10 minutes)
 })
 
+export const maxDuration = 60 // This function can run for a maximum of 5 seconds
 // IMPORTANT! Set the runtime to edge
 export const runtime = 'edge'
 
