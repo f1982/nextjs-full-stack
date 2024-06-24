@@ -37,6 +37,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-toggle-group": "^1.0.4",
+    "ai": "^3.2.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "languagedetect": "^2.0.0",
@@ -59,8 +60,6 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "file-system-cache": "^2.4.4",
-    "md5": "^2.3.0",
     "@tailwindcss/typography": "^0.5.10",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/md5": "^2.3.5",
@@ -69,7 +68,9 @@
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.17",
     "eslint-config-next": "^14.1.0",
+    "file-system-cache": "^2.4.4",
     "happy-dom": "^13.3.8",
+    "md5": "^2.3.0",
     "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
