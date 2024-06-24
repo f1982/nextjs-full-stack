@@ -39,7 +39,6 @@ export default function GenEditForm({
       <p>value: {value}</p>
       <UniversalSingleForm
         fieldName={fieldName}
-        defaultValue={value}
         onSubmit={handleSubmit}
         rows={rows}
         extraButtons={

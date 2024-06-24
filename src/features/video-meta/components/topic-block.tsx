@@ -30,11 +30,7 @@ export default async function TopicBlock({ videoId }: { videoId: string }) {
 
       <Separator className="mb-6" />
 
-      <TopicSelect
-        videoId={videoId}
-        value={videoData!}
-        onSubmit={handleSubmit}
-      />
+      {/* <TopicSelect videoId={videoId} onSubmit={handleSubmit} /> */}
     </>
   )
 }

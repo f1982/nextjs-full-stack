@@ -18,7 +18,7 @@ export default function ListMultipleSelect({
       <h3>{label}</h3>
       {options.map((item: OptionItemData, index: number) => {
         return (
-          <div className="flex flex-row gap-3">
+          <div key={item.value} className="flex flex-row gap-3">
             <Button onClick={() => onSelect?.(item)}>Select</Button>
             {item.value}
           </div>

@@ -1,3 +1,4 @@
+import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 import { ChatCompletionCreateParams } from 'openai/resources'
 
@@ -10,11 +11,11 @@ const openai = new OpenAI({
 // IMPORTANT! Set the runtime to edge
 export const runtime = 'edge'
 
-export async function OPTIONS(req) {
+export async function OPTIONS(req: NextRequest) {
   return new Response('', { status: 200 })
 }
 
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   const { prompt, imageUrl } = await req.json()
 
   const params: ChatCompletionCreateParams = {
@@ -36,7 +37,8 @@ export async function POST(req) {
     ],
   }
   const response = await openai.chat.completions.create(params)
-  return response.choices[0].message
+  // return response.choices[0].message
+  return NextResponse.json({ status: 'success', data: response })
   // Convert the response into a friendly text-stream
   // const stream = OpenAIStream(response)
   // Respond with the stream

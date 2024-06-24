@@ -1,8 +1,11 @@
-import { auth } from '@/../config/auth-settings'
-import prisma from '@/../lib/prisma'
-import DraftPublishButton from '@/features/blog/components/publish-button'
 import clsx from 'clsx'
 import ReactMarkdown from 'react-markdown'
+
+import prisma from '@/lib/prisma'
+
+import DraftPublishButton from '@/features/blog/components/publish-button'
+
+import { auth } from '@/config/auth-settings'
 
 const getData = async (params: any): Promise<{ post: any }> => {
   const post = await prisma.post.findUnique({

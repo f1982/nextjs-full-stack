@@ -19,10 +19,10 @@ const validator = z.object({
 //   return d.author + '\n' + d.quote + '\n' + d.year + '\n' + d.reference + '\n'
 // }
 
-// export const getQuoteItemBrief = (d: any) => {
-//   // return d.author + '在 ' + d.reference + ' 裏提到 ' + d.quote
-//   return `"${d.quote}" ${d.author}`
-// }
+export const getQuoteItemBrief = (d: any) => {
+  // return d.author + '在 ' + d.reference + ' 裏提到 ' + d.quote
+  return `"${d.quote}" ${d.author}`
+}
 
 function getPrompts(topic: string, count: number = 5): string {
   return `

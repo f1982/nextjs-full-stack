@@ -64,7 +64,6 @@ export default function SelectEditForm({
 
       <UniversalSingleForm
         fieldName={fieldName}
-        defaultValue={selectedOption}
         onSubmit={onSubmit}
         extraButtons={
           <Button

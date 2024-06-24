@@ -1,7 +1,8 @@
-import BeatsPlayer from '../_components/beats-player'
 import dynamic from 'next/dynamic'
 
-export default function () {
+import BeatsPlayer from '../_components/beats-player'
+
+export default function Page() {
   return (
     <div>
       <BeatsPlayer />

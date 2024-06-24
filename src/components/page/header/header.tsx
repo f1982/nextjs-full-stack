@@ -1,10 +1,12 @@
 'use client'
 
-import { MenuItemData } from './menu-data'
-import { NavItems, NavMenuItem } from './menu-item'
-import { MobileNavPopover } from './mobile-menu-sheet'
-import clsx from 'clsx'
 import React from 'react'
+
+import clsx from 'clsx'
+
+import { MenuItemData } from './menu-data'
+import { NavMenuItem } from './menu-item'
+import { MobileNavPopover } from './mobile-menu-sheet'
 
 type HeaderProps = {
   left?: React.ReactNode
