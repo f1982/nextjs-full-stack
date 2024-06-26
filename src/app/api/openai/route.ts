@@ -31,16 +31,17 @@ function getClientSignature(message: string) {
 
   return hmacClient
 }
+
+export async function GET(req: NextRequest) {
+  return NextResponse.json({ status: 'success', data: 'hello' })
+}
+
 export async function POST(req: NextRequest) {
   const message = 'your-message-to-sign'
-  // getClientSignature(message)
-
   const signature = req.headers.get('x-signature')
   const timestamp = req.headers.get('x-timestamp')
-
-  console.log('header timestamp: ', timestamp)
-  console.log('header signature: ', signature)
-
+  // console.log('header timestamp: ', timestamp)
+  // console.log('header signature: ', signature)
   if (!signature || !timestamp) {
     return NextResponse.json({
       status: 403,
@@ -48,7 +49,6 @@ export async function POST(req: NextRequest) {
       message: 'Missing headers',
     })
   }
-
   // Validate timestamp (e.g., allow a 5-minute window)
   const requestTime = new Date(timestamp).getTime()
   const currentTime = new Date().getTime()
@@ -59,12 +59,10 @@ export async function POST(req: NextRequest) {
       message: 'Request expired',
     })
   }
-
   const hmac = CryptoJS.HmacSHA256(
     `${message}:${timestamp}`,
     SECRET_KEY,
   ).toString(CryptoJS.enc.Hex)
-
   if (hmac !== signature) {
     return NextResponse.json({
       status: 403,
@@ -73,26 +71,31 @@ export async function POST(req: NextRequest) {
     })
   }
 
-  const { prompt, imageUrl } = await req.json()
+  try {
+    const { prompt, imageUrl } = await req.json()
 
-  const params: ChatCompletionCreateParams = {
-    model: process.env.OPENAI_MODEL!,
-    messages: [
-      {
-        role: 'user',
-        content: [
-          { type: 'text', text: prompt },
-          {
-            type: 'image_url',
-            image_url: {
-              url: imageUrl,
-              detail: 'low',
+    const params: ChatCompletionCreateParams = {
+      model: process.env.OPENAI_MODEL!,
+      messages: [
+        {
+          role: 'user',
+          content: [
+            { type: 'text', text: prompt },
+            {
+              type: 'image_url',
+              image_url: {
+                url: imageUrl,
+                detail: 'low',
+              },
             },
-          },
-        ],
-      },
-    ],
+          ],
+        },
+      ],
+    }
+    const response = await openai.chat.completions.create(params)
+    return NextResponse.json({ status: 'success', data: response })
+  } catch (error) {
+    console.log('error', error)
+    return NextResponse.json({ status: 'error', message: error.message })
   }
-  const response = await openai.chat.completions.create(params)
-  return NextResponse.json({ status: 'success', data: response })
 }
