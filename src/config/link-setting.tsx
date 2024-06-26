@@ -1,5 +1,6 @@
-import { MenuItemData } from '@/components/page/header/menu-data'
 import { Facebook, Instagram, Twitch, Twitter, Youtube } from 'lucide-react'
+
+import { MenuItemData } from '@/components/page/header/menu-data'
 
 export const navMenuData: MenuItemData[] = [
   {
@@ -46,13 +47,13 @@ export const socialLinks: MenuItemData[] = [
     title: 'Ins',
     label: 'Ins',
     icon: <Instagram />,
-    link: 'https://www.youtube.com/channel/UC8_l368_87i370525030',
+    link: 'https://www.youtube.com/channel/UC8_l368_87i370525031',
   },
   {
     title: 'Facebook',
     label: 'Facebook',
     icon: <Facebook />,
-    link: 'https://www.youtube.com/channel/UC8_l368_87i370525030',
+    link: 'https://www.youtube.com/channel/UC8_l368_87i370525032',
   },
 ]
 
